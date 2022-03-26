@@ -577,3 +577,7 @@ D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\stamp\_ConvertResourcesCases.s
 D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\res\drawable\img.png
+D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\res\drawable\img2.png
+D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\res\drawable\background.png
+D:\tusur\TP\PFA\PFA\PFA\PFA.Android\obj\Debug\110\res\drawable\door.png

@@ -1,5 +1,4 @@
-﻿using PFA.Services;
-using PFA.Views;
+﻿using PFA.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,9 +11,7 @@ namespace PFA
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new MainMenu();
         }
 
         protected override void OnStart()
