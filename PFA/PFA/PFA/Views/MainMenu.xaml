@@ -1,47 +1,50 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PFA.Views.MainMenu" BackgroundImageSource="background.png">
+             x:Class="PFA.Views.MainMenu" 
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
     <!-- Layout children vertically -->
-    <StackLayout Margin="40, 0, 40, 0" VerticalOptions="Center">
-        <Grid Style="{StaticResource gridStyle}">
+    <StackLayout Margin="40, -50, 40, 0" VerticalOptions="Center">
+        <ImageButton Source="door.png" BackgroundColor="Transparent" HorizontalOptions="End" Margin="0, 0, 0, 40"
+             x:Name="Quit" Clicked="OnQuitClicked"/>
+        <Grid Style="{StaticResource gridStyle}" x:Name="Cheques">
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Управление чеками" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuItemClicked" />
+                    <TapGestureRecognizer Tapped="OnChequeClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Grid Style="{StaticResource gridStyle}">
-            <ImageButton Style="{StaticResource imageButStyle}"
-                         Clicked="OnDeleteButtonClicked"/>
+        <Grid Style="{StaticResource gridStyle}" x:Name="Budget">
+            <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Управление бюджетом" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuItemClicked" />
+                    <TapGestureRecognizer Tapped="OnChequeClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Grid Style="{StaticResource gridStyle}">
+        <Grid Style="{StaticResource gridStyle}" x:Name="Statistics">
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Статистика" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuItemClicked" />
+                    <TapGestureRecognizer Tapped="OnChequeClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Grid Style="{StaticResource gridStyle}">
+        <Grid Style="{StaticResource gridStyle}" x:Name="InfoBlock">
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Информационный блок" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuItemClicked" />
+                    <TapGestureRecognizer Tapped="OnChequeClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Grid Style="{StaticResource gridStyle}">
+        <Grid Style="{StaticResource gridStyle}" x:Name="Settings">
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Настройки" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuItemClicked" />
+                    <TapGestureRecognizer Tapped="OnChequeClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
@@ -55,7 +58,6 @@
                 <Setter Property="BackgroundColor" Value="#D9A653"/>
                 <Setter Property="BorderColor" Value="#9E6C1A"/>
                 <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="ImageSource" Value="img2.png"/>
             </Style>
             <Style TargetType="ImageButton" x:Key="imageButStyle">
                 <Setter Property="Source" Value="img2.png"/>

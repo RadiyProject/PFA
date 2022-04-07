@@ -11,13 +11,13 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("PFA")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("RaPG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("PFA")]
-[assembly: System.Reflection.AssemblyTitleAttribute("PFA")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.2.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.2")]
+[assembly: System.Reflection.AssemblyProductAttribute("Personal Financial Analyst")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Personal Financial Analyst")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.0.2.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
 

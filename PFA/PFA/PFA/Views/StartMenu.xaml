@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.StartMenu"
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column"
+                AlignItems="Center"
+                JustifyContent="SpaceEvenly">
+            <Grid VerticalOptions="Center">
+                <Image Source="logo.png"/>
+            </Grid>
+            <Grid RowSpacing="-3">
+                <Grid x:Name="LogIn" Grid.Row="0">
+                        <ImageButton Source="button2.png" BackgroundColor="Transparent" Scale="1.2"
+                                Clicked="Login"/>
+                        <Label Text="Log in"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                        Padding="0, 0, 0, 10"
+                        FontSize="27"
+                        FontAttributes="Bold"
+                        TextColor="#865318">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Login" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                <Grid x:Name="SignIn" Grid.Row="1">
+                    <Label Text="Sign in" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                            FontSize="22"
+                            TextColor="#528C83"
+                            TextDecorations="Underline"
+                            FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Signin" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

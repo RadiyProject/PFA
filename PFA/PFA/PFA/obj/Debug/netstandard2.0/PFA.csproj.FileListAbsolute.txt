@@ -1,16 +1,22 @@
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\PFA.deps.json
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\PFA.dll
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\ref\PFA.dll
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\PFA.pdb
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csprojAssemblyReference.cache
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\MainMenu.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.AssemblyInfoInputs.cache
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.AssemblyInfo.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.CoreCompileInputs.cache
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\XamlC.stamp
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.dll
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\PFA.dll
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.pdb
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\MainMenu.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csprojAssemblyReference.cache
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\StartMenu.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.deps.json
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.dll
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.pdb
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.dll
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.pdb
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Login.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\System.Drawing.Common.dll
+D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\System.Drawing.Common.pdb
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.CopyComplete
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs

@@ -11,7 +11,9 @@ namespace PFA
         public App()
         {
             InitializeComponent();
-            MainPage = new MainMenu();
+            //NavigationPage page = new NavigationPage(new MainMenu());
+            NavigationPage page = new NavigationPage(new StartMenu());
+            MainPage = page;
         }
 
         protected override void OnStart()

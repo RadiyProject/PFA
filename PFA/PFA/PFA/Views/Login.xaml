@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.Login"
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                Clicked="Return" x:Name="Arrow" FlexLayout.AlignSelf="Start" Padding="30, 30, 0, 0"/>
+            <FlexLayout FlexLayout.Grow="1" Direction="Column" JustifyContent="Center">
+                <Grid RowSpacing="15" Margin="0, 0, 0, 80">
+                    <Grid Grid.Row="0" RowSpacing="-30" Padding="50, 0">
+                        <Label Text="Логин" Style="{StaticResource textStyle}" Grid.Row="0"/>
+                        <Entry Placeholder="Username" Style="{StaticResource entryStyle}" Grid.Row="1"/>
+                    </Grid>
+                    <Grid Grid.Row="1" RowSpacing="-30" Padding="50, 0">
+                        <Label Text="Пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
+                        <Grid Grid.Row="1" Padding="0, 0, -20, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="Pass" IsPassword="True" Grid.Column="0"/>
+                            <Button Style="{StaticResource buttonStyle}" Grid.Column="1"
+                                Clicked="ShowPas" x:Name="Circle"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <ImageButton Source="button3.png" BackgroundColor="Transparent" x:Name="Authorize" Clicked="Authorization"/>
+            </FlexLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="entryStyle">
+                <Setter Property="PlaceholderColor" Value="#909090"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="Label" x:Key="textStyle">
+                <Setter Property="TextColor" Value="#305C55"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style TargetType="Button" x:Key="buttonStyle">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderColor" Value="#528C83"/>
+                <Setter Property="CornerRadius" Value="100"/>
+                <Setter Property="BorderWidth" Value="6"/>
+                <Setter Property="Scale" Value="0.5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>
