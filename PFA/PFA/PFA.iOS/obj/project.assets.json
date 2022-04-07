@@ -991,26 +991,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IS\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
       "projectName": "PFA.iOS",
-      "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
-      "packagesPath": "C:\\Users\\IS\\.nuget\\packages\\",
-      "outputPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
+      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\IS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -1025,8 +1025,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
-              "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
+            "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+              "projectPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
             }
           }
         }
