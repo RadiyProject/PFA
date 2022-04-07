@@ -8,5 +8,9 @@ namespace Recommendation
     class InfoBlock
     {
         List<Recommendation> recommendations = new List<Recommendation>();
+        
+        public InfoBlock() { };
     }
+
+ 
 }
