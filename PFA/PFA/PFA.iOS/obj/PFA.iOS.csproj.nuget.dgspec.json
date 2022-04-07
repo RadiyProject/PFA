@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {}
+    "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {}
   },
   "projects": {
-    "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {
+    "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+        "projectUniqueName": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
         "projectName": "PFA.iOS",
-        "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
-        "packagesPath": "C:\\Users\\IS\\.nuget\\packages\\",
-        "outputPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
+        "projectPath": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+        "packagesPath": "C:\\Users\\kir9l\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,7 +19,7 @@
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\IS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kir9l\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -34,8 +34,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
-                "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
+              "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+                "projectPath": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
               }
             }
           }
@@ -67,21 +67,21 @@
         }
       }
     },
-    "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+    "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
       "version": "0.0.2",
       "restore": {
-        "projectUniqueName": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
+        "projectUniqueName": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
         "projectName": "Personal Financial Analyst",
-        "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
-        "packagesPath": "C:\\Users\\IS\\.nuget\\packages\\",
-        "outputPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\obj\\",
+        "projectPath": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
+        "packagesPath": "C:\\Users\\kir9l\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kir9l\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\IS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kir9l\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -134,7 +134,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
