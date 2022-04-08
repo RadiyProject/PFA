@@ -18,12 +18,17 @@ namespace Recommendation
             this.recText = recText;
             this.recCategory = recCategory;
         }
-        public static void ChangeRecText(string recText, Recommendation Recommendation)
+        
+        public static void ChangeRecText(Recommendation recommendation, string recText)
         {
-        Recommendation.recText = recText;
+            Recommendation.recText = recText;
         }
 
-        
+        public static void ChangeRecCategory(Recommendation recommendation, int recCategory)
+        {
+            recommendation.recCategory = recCategory;
+        }
+
     }
 }
  

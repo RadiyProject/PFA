@@ -9,7 +9,7 @@ namespace Recommendation
     {
         List<Recommendation> recommendations = new List<Recommendation>();
         
-        public InfoBlock() { };
+        public InfoBlock() { }
     }
 
  
