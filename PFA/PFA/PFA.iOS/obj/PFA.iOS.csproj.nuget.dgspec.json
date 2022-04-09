@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {}
+    "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {
+    "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+        "projectUniqueName": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
         "projectName": "PFA.iOS",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
+        "projectPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.iOS\\PFA.iOS.csproj",
+        "packagesPath": "C:\\Users\\main\\.nuget\\packages\\",
+        "outputPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\main\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -34,8 +34,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
-                "projectPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
+              "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+                "projectPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
               }
             }
           }
@@ -67,21 +67,21 @@
         }
       }
     },
-    "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+    "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
       "version": "0.0.2",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
+        "projectUniqueName": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
         "projectName": "Personal Financial Analyst",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\PFA\\PFA\\PFA\\PFA\\obj\\",
+        "projectPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
+        "packagesPath": "C:\\Users\\main\\.nuget\\packages\\",
+        "outputPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\main\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -115,6 +115,18 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "SQLiteNetExtensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Sharpnado.Shadows": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -122,6 +134,10 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2012, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.8.116, )"
             }
           },
           "imports": [
@@ -134,7 +150,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
