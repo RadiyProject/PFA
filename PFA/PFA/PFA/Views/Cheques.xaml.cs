@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Sharpnado.Shades;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PFA.Database;
+using System.Collections.ObjectModel;
 
 namespace PFA.Views
 {
@@ -19,7 +21,7 @@ namespace PFA.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            name_colec.ItemsSource = await App.Database_receipt.GetReceiptAsync();
+            name_colec.ItemsSource = await App.Cheques.GetAsync();
         }
         void Close_card_information(object sender, EventArgs e)
         {
@@ -34,16 +36,19 @@ namespace PFA.Views
         }
         async void new_reseipt(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Новый чек", "Имя чека");
-            if (result.Length != 0)
+            string result = await DisplayPromptAsync("Новый чек", "Имя чека", "Добавить", "Отмена");
+            if (result != null)
             {
-                await App.Database_receipt.CreateReceipt(new Database.Receipt
+                if (result.Length != 0)
                 {
-                    reseipt_name = result,
-                    reseipt_date = DateTime.Today.ToString("d"),
-                    reseipt_total = 1500
-                });
-                name_colec.ItemsSource = await App.Database_receipt.GetReceiptAsync();
+                    await App.Cheques.Create(new Database.Cheque(result, DateTime.Today));
+                    name_colec.ItemsSource = await App.Cheques.GetAsync();
+                }
+                else
+                {
+                    await App.Cheques.Create(new Database.Cheque());
+                    name_colec.ItemsSource = await App.Cheques.GetAsync();
+                }
             }
 
         }
@@ -54,9 +59,11 @@ namespace PFA.Views
 
         async void delete_button(object sender, EventArgs e)
         {
-            var receipt = (Database.Receipt)BindingContext;
-            await App.Database_receipt.DeleteReceipt(receipt);
-
+            Button button = (Button)sender;
+            Cheque cheque = (Cheque)button.CommandParameter;
+            if (cheque != null)
+                await App.Cheques.Delete(cheque);
+            name_colec.ItemsSource = await App.Cheques.GetAsync();
         }
     }
 }

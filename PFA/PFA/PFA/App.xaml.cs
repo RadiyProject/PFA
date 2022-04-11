@@ -9,34 +9,29 @@ namespace PFA
 {
     public partial class App : Application
     {
-        static Database_receipt databaseReceit;
-        static Database_product databaseProduct;
-        public static Database_receipt Database_receipt
+        static DBCheque cheques;
+        static DBGood goods;
+        public static DBCheque Cheques
         {
             get
             {
-                if (databaseReceit == null)
-                {
-                    databaseReceit = new Database_receipt(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Receipt.db3"));
-                }
-                return databaseReceit;
+                if (cheques == null)
+                    cheques = new DBCheque(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Cheques.db3"));
+                return cheques;
             }
         }
-        public static Database_product Database_Product
+        public static DBGood Goods
         {
             get
             {
-                if (databaseProduct == null)
-                {
-                    databaseProduct = new Database_product(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Product.db3"));
-                }
-                return databaseProduct;
+                if (goods == null)
+                    goods = new DBGood(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Goods.db3"));
+                return goods;
             }
         }
         public App()
         {
             InitializeComponent();
-            //NavigationPage page = new NavigationPage(new MainMenu());
             NavigationPage page = new NavigationPage(new StartMenu());
             MainPage = page;
         }

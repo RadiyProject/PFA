@@ -2,126 +2,101 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PFA.Views.Cheques" BackgroundImageSource="background.png"
+             x:Name="ChequesPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
 
         <StackLayout x:Name="Main_stack">
-            <ImageButton Source="arrow.png" BackgroundColor="Transparent"
-                 x:Name="Arrow" FlexLayout.AlignSelf="Start" Padding="30, 30, 0, 0"/>
+            <Grid>
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"/>
+            </Grid>
             <Label Text="Управление чеками"
-                   FontSize="33" 
-                   Margin="15,0,20,0" 
-                   FontFamily="Montserrat" 
-                   LineHeight="0"
-                   FontAttributes="Bold"
-                   TextColor="#305C55" 
-                   HorizontalTextAlignment="Center"
-                   />
+                FontSize="33" 
+                HorizontalOptions="Center"
+                FontFamily="Montserrat" 
+                LineHeight="0"
+                FontAttributes="Bold"
+                TextColor="#305C55" 
+                HorizontalTextAlignment="Center"
+            />
             <StackLayout Margin="40,17,40,0"
                          x:Name="Frame_informations"
-                         
                          HeightRequest="450">
                 <ScrollView>
-                    <CollectionView  x:Name="name_colec"  >
+                    <CollectionView  x:Name="name_colec">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame 
                         x:Name="info_card"
                         BackgroundColor="#F0EEEE"
-                        WidthRequest="50"
-                        HeightRequest="310"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
-                        Padding="10"
                         CornerRadius="8"
-                        BorderColor="black"
-                        HasShadow="True"
-                        Margin="0,10,10,19">
+                        BorderColor="#305C55"
+                        HasShadow="True">
                                     <StackLayout x:Name="mini_information_card">
                                         <Grid x:Name="Information_of_card">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="0.9*"/>
-                                                <ColumnDefinition Width="auto"/>
-                                                <ColumnDefinition Width="0.4*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions >
                                             <Label 
-                                                Text="{Binding reseipt_name}" 
+                                                Text="{Binding name}" 
                                                 FontSize="25" 
                                                 TextColor="#305C55" 
-                                                Grid.Column="0" 
+                                                HorizontalOptions="Start"
                                                 x:Name="Label_name_card"/>
-                                            <Label 
-                                                Text="{Binding reseipt_date}" 
-                                                FontSize="25" 
-                                                TextColor="#305C55" 
-                                                Grid.Column="1" 
-                                                x:Name="Data_card"/>
-                                            <Label 
-                                                Text="{Binding reseipt_total}" 
-                                                FontSize="25" 
-                                                TextColor="#305C55" 
-                                                Grid.Column="2" 
-                                                x:Name="Local_prima"/>
-                                            <Button Text="+" 
-                                                    Grid.Column="3" 
-                                                    Clicked="open_card_full" 
-                                                    HeightRequest="40" 
-                                                    WidthRequest="40" 
-                                                    HorizontalOptions="Center" 
-                                                    VerticalOptions="Start"/>
-                                            <BoxView 
-                                            HeightRequest="1" 
-                                            Color="black" 
-                                            WidthRequest="290" 
-                                            Margin="1,45,-222,18" 
-                                            HorizontalOptions="Start" 
-                                            VerticalOptions="Start" 
-                                            Grid.Column="0" 
-                                            Grid.Row="0" />
+                                            <Label Text="X" 
+                                                    FontSize="25" 
+                                                    TextColor="#305C55"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    BackgroundColor="Transparent">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="open_card_full" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
                                         </Grid>
-                                        <StackLayout Margin="0,-10,10,10">
-                                            <Grid Margin="0,-10,-10,0" >
+                                        <Line 
+                                            Stroke="#305C55" 
+                                            X1="550" 
+                                            StrokeThickness="2.5"/>
+                                        <StackLayout>
+                                            <Grid>
                                                 <Label 
-                                                    Text="{Binding reseipt_prime}" 
-                                                    Margin="100,0,0,0" FontSize="18" 
-                                                    Grid.Row="0" 
-                                                    Grid.Column="1"/>
+                                                    Text="{Binding totalPriceText}" 
+                                                    HorizontalOptions="End"
+                                                    FontSize="18" 
+                                                    TextColor="#305C55"/>
                                             </Grid>
                                         </StackLayout>
 
                                         <Line 
-                                            Stroke="black" 
-                                            X1="500" 
-                                            Margin="10,60,10,0" 
+                                            Stroke="#305C55" 
+                                            X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
-                                            StrokeThickness="1"/>
+                                            StrokeThickness="2"/>
                                         <Grid>
                                             <Label 
                                                 Text="ИТОГО:" 
                                                 TextColor="#305C55" 
-                                                FontSize="30" 
-                                                Margin="10,0,0,0"/>
-                                            <Label Text="{Binding reseipt_total}" 
+                                                FontSize="30"/>
+                                            <Label Text="{Binding totalPriceText}" 
                                                 TextColor="#305C55" 
                                                 FontSize="30" 
-                                                Margin="190,0,0,0"/>
+                                                HorizontalOptions="End"/>
                                         </Grid>
                                         <Line 
-                                            Stroke="black" 
-                                            X1="500" 
-                                            Margin="10,3,10,0" 
+                                            Stroke="#305C55" 
+                                            X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
-                                            StrokeThickness="1"/>
+                                            StrokeThickness="2"/>
                                         <Label 
-                                            Text="{Binding reseipt_date}" 
-                                            Margin="220,0,0,0"/>
+                                            Text="{Binding dateText}" 
+                                            TextColor="#305C55"
+                                            HorizontalOptions="End"/>
                                         <Grid>
                                             <Button WidthRequest="110" 
                                                     HeightRequest="50"
@@ -136,6 +111,7 @@
                                                     CornerRadius="24" 
                                                     HorizontalOptions="End" 
                                                     ImageSource="delete.png"
+                                                    CommandParameter="{Binding .}"
                                                     Clicked="delete_button"/>
                                         </Grid>
                                     </StackLayout>
@@ -157,6 +133,18 @@
                     VerticalTextAlignment="Center" 
                     FontSize="20"
                     FontAttributes="Bold"
+                    TextColor="Black"
+                    Padding="2, 2, 0, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="new_reseipt" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label 
+                    Text="Добавить чек" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="20"
+                    FontAttributes="Bold"
                     TextColor="White"
                     Padding="0, 0, 0, 10">
                     <Label.GestureRecognizers>
@@ -164,21 +152,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
-            <!--
-            <Button WidthRequest="300"
-                    HeightRequest="60"
-                    HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
-                    CornerRadius="30"
-                    BackgroundColor="#528C83"
-                    BorderColor="#305C55"
-                    x:Name="add_cheque"
-                    FontFamily="Montserrat"
-                    Padding="1"
-                    Margin="20,50,20,80"
-                    Clicked="new_reseipt"
-                    />
-            -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

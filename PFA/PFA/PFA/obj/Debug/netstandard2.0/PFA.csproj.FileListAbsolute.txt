@@ -16,9 +16,6 @@ D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.pdb
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Login.xaml.g.cs
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\System.Drawing.Common.dll
-D:\tusur\TP\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\System.Drawing.Common.pdb
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.CopyComplete
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.deps.json
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.dll
@@ -41,3 +38,4 @@ D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Ana
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.pdb
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
