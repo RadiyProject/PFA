@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Test_Project_Pidor
-{
     class Cheque
     {
         public string name;
@@ -31,5 +29,4 @@ namespace Test_Project_Pidor
                 i++;
             }
         }
-    }
 }
