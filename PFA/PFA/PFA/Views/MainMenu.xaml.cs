@@ -25,5 +25,11 @@ namespace PFA.Views
             await Quit.ScaleTo(1, 50);
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
+        async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await Settings.ScaleTo(0.9, 50);
+            await Settings.ScaleTo(1, 50);
+            await Navigation.PushAsync(new Settings());
+        }
     }
 }

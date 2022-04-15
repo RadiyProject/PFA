@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.GoodsBase"
+             x:Name="GoodsBasePage"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundImageSource="background.png">
+    <ContentPage.Content>
+        <StackLayout x:Name="Main_stack">
+            <Grid>
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0" Clicked="GoBack"/>
+            </Grid>
+            <Label Text="База продуктов"
+                FontSize="33" 
+                HorizontalOptions="Center"
+                FontFamily="Montserrat" 
+                LineHeight="0"
+                FontAttributes="Bold"
+                TextColor="#305C55" 
+                HorizontalTextAlignment="Center"
+            />
+            <StackLayout Margin="40,17,40,0"
+                         x:Name="Frame_informations"
+                         HeightRequest="450">
+                <ScrollView>
+                    <CollectionView  x:Name="name_colec">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame 
+                                    x:Name="info_card"
+                                    BackgroundColor="#F0EEEE"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="Center"
+                                    CornerRadius="8"
+                                    BorderColor="#305C55"
+                                    HasShadow="True">
+                                    <StackLayout x:Name="mini_information_card">
+                                        <Grid x:Name="Information_of_card">
+                                            <Label 
+                                                x:Name="GoodName"
+                                                Text="{Binding name}" 
+                                                FontSize="25" 
+                                                TextColor="#305C55" 
+                                                HorizontalOptions="Center"
+                                                />
+                                            <Label Text="X" 
+                                                    FontSize="25" 
+                                                    TextColor="#305C55"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    BackgroundColor="Transparent">
+                                            </Label>
+                                        </Grid>
+                                        <Grid>
+                                            <Label 
+                                                Text="Стоимость:" 
+                                                TextColor="#305C55" 
+                                                FontSize="20"/>
+                                            <Label Text="{Binding price}" 
+                                                TextColor="#305C55" 
+                                                FontSize="20" 
+                                                HorizontalOptions="End"
+                                                x:Name="GoodPrice"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Button WidthRequest="110" 
+                                                    HeightRequest="50"
+                                                    Margin="20,10,0,0" 
+                                                    CornerRadius="24" 
+                                                    HorizontalOptions="Start"
+                                                    ImageSource="edit.png"/>
+                                            <Button 
+                                                    WidthRequest="110" 
+                                                    HeightRequest="50"
+                                                    Margin="0,10,20,0" 
+                                                    CornerRadius="24" 
+                                                    HorizontalOptions="End" 
+                                                    ImageSource="delete.png"
+                                                    CommandParameter="{Binding .}"
+                                                    Clicked="delete_button"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </StackLayout>
+            <Grid Margin="0,0,0,30" x:Name="AddProduct">
+                <ImageButton 
+                    x:Name="add_cheque" 
+                    Source="GreenButton.png" 
+                    BackgroundColor="Transparent"
+                    />
+                <Label 
+                    Text="Добавить продукт" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    Padding="2, 2, 0, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShowNewUserPopup" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label 
+                    Text="Добавить продукт" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Padding="0, 0, 0, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShowNewUserPopup" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

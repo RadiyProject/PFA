@@ -17,25 +17,28 @@ D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\Personal Financial Anal
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.pdb
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Login.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.deps.json
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.dll
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.pdb
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.AssemblyReference.cache
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.GeneratedMSBuildEditorConfig.editorconfig
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\GoodsBase.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Login.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\MainMenu.xaml.g.cs
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Settings.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Signin.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\StartMenu.xaml.g.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.AssemblyInfoInputs.cache
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.AssemblyInfo.cs
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.CoreCompileInputs.cache
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\XamlC.stamp
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.dll
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
 D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Personal Financial Analyst.pdb
-D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
-D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Cheques.xaml.g.cs
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.deps.json
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.dll
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\ref\Personal Financial Analyst.dll
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\bin\Debug\netstandard2.0\Personal Financial Analyst.pdb
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\XamlC.stamp
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\PFA.csproj.AssemblyReference.cache
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\GoodPopup.xaml.g.cs
