@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Recommendation
-{
+
     class Target
     {
         public string targetName;
@@ -45,4 +44,4 @@ namespace Recommendation
 
 
     }
-}
+
