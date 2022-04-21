@@ -9,21 +9,22 @@ namespace PFA.Database
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string name { get; set; }
+        public string nameWithPrice { get; set; }
         public float price { get; set; }
         public string priceText { get; set; }
         public Good()
         {
-            name = "Новый чек";
-            price = 0;
         }
         public Good(string name, float price)
         {
             this.name = name;
             this.price = price;
+            GetTextPrice();
         }
         public string GetTextPrice()
         {
             priceText = price + "р.";
+            nameWithPrice = name + " " + priceText;
             return priceText;
         }
     }

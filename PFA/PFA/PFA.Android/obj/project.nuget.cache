@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4yGOqmDQT9OCBhi1RAF4rsGMQ8J1eCANuWrn7bu94MPF1qvUGJTH10Cyh7DK9tmdR3HplbXYTVGQxRj62yq8ug==",
+  "dgSpecHash": "+HPOURjHJRPcDADY2gfN84+Ziue0IY0/gH5NZIeJBLdTcxAml65/OPWIwwdH/ALTCmfdVyGUCg2GfDIbLyYbAw==",
   "success": true,
   "projectFilePath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\IS\\.nuget\\packages\\sharpnado.shadows\\1.2.0\\sharpnado.shadows.1.2.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitenetextensions\\2.1.0\\sqlitenetextensions.2.1.0.nupkg.sha512",
+    "C:\\Users\\IS\\.nuget\\packages\\sqlitenetextensions.async\\2.1.0\\sqlitenetextensions.async.2.1.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.android\\2.0.4\\sqlitepclraw.lib.e_sqlite3.android.2.0.4.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PNPjDGjO/X7EX3dRqtFPFs61XRjAK9bVs040D6preK16aKyBSwKXYoBCsVIKdkRMQprVDlW4S1j9/SwnZdMOzQ==",
+  "dgSpecHash": "25wF46JGXENbgi06esv+HGWbuGAjPtAmKg6eDODwnsuWK+fhrwROxE1gbge4vfSzRZLpTPh1U1pI8rnOqW+PzA==",
   "success": true,
   "projectFilePath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\IS\\.nuget\\packages\\sharpnado.shadows\\1.2.0\\sharpnado.shadows.1.2.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitenetextensions\\2.1.0\\sqlitenetextensions.2.1.0.nupkg.sha512",
+    "C:\\Users\\IS\\.nuget\\packages\\sqlitenetextensions.async\\2.1.0\\sqlitenetextensions.async.2.1.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

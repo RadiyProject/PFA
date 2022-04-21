@@ -1,133 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:PFA.Views"
              x:Class="PFA.Views.Cheques" BackgroundImageSource="background.png"
-             x:Name="ChequesPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-
-        <StackLayout x:Name="Main_stack">
+        <StackLayout>
             <Grid>
-                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
-                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"/>
-            </Grid>
-            <Label Text="Управление чеками"
-                FontSize="33" 
-                HorizontalOptions="Center"
-                FontFamily="Montserrat" 
-                LineHeight="0"
-                FontAttributes="Bold"
-                TextColor="#305C55" 
-                HorizontalTextAlignment="Center"
-            />
-            <StackLayout Margin="40,17,40,0"
-                         x:Name="Frame_informations"
-                         HeightRequest="450">
-                <ScrollView>
-                    <CollectionView  x:Name="name_colec">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame 
-                        x:Name="info_card"
-                        BackgroundColor="#F0EEEE"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="Center"
-                        CornerRadius="8"
-                        BorderColor="#305C55"
-                        HasShadow="True">
-                                    <StackLayout x:Name="mini_information_card">
-                                        <Grid x:Name="Information_of_card">
-                                            <Label 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.18*"/>
+                    <RowDefinition Height="0.69*"/>
+                    <RowDefinition Height="0.13*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                        x:Name="Arrow" HorizontalOptions="Start" Clicked="Return" Padding="30, 30, 0, 0"/>
+                    <Label Text="Управление чеками" Style="{StaticResource titleStyle}" x:Name="text" Grid.Row="1"/>
+                </Grid>
+                <StackLayout Padding="40, 0, 40, 10" Grid.Row="1">
+                    <ScrollView>
+                        <StackLayout x:Name="ChequesStack" Spacing="20">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Style="{StaticResource frameStyle}">
+                                        <StackLayout>
+                                            <Grid>
+                                                <Label 
                                                 Text="{Binding name}" 
                                                 FontSize="25" 
                                                 TextColor="#305C55" 
-                                                HorizontalOptions="Start"
-                                                x:Name="Label_name_card"/>
-                                            <Label Text="X" 
+                                                HorizontalOptions="Start"/>
+                                                <Label Text="X" 
                                                     FontSize="25" 
                                                     TextColor="#305C55"
                                                     HorizontalOptions="End"
                                                     VerticalOptions="Start"
                                                     BackgroundColor="Transparent">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="open_card_full" />
-                                                </Label.GestureRecognizers>
-                                            </Label>
-                                        </Grid>
-                                        <Line 
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="CloseCheque" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Grid>
+                                            <Line 
                                             Stroke="#305C55" 
                                             X1="550" 
                                             StrokeThickness="2.5"/>
-                                        <StackLayout>
+                                            <StackLayout Margin="0, 10">
+                                                <StackLayout BindableLayout.ItemsSource="{Binding goodsN}" Spacing="5">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <FlexLayout JustifyContent="SpaceBetween">
+                                                                <Label Text="{Binding name}" 
+                                                                HorizontalOptions="Start"
+                                                                FontSize="18" 
+                                                                TextColor="#305C55"/>
+                                                                <Label Text="{Binding amountText}"
+                                                                FontSize="18" 
+                                                                HorizontalOptions="Center"
+                                                                TextColor="#305C55"/>
+                                                                <Grid>
+                                                                    <Grid>
+                                                                        <Button CornerRadius="100" WidthRequest="25" HeightRequest="25" BackgroundColor="#528C83"/>
+                                                                        <Label Text="+" 
+                                                                            FontSize="18" 
+                                                                            HorizontalOptions="Center"
+                                                                            VerticalOptions="Center"
+                                                                            TextColor="White"/>
+                                                                        <Button CornerRadius="100" WidthRequest="25" HeightRequest="25" BackgroundColor="Transparent"
+                                                                            CommandParameter="{Binding .}"
+                                                                            Clicked="IncreaseVal"/>
+                                                                    </Grid>
+                                                                    <Grid Grid.Column="1">
+                                                                        <Button CornerRadius="100" WidthRequest="25" HeightRequest="25" BackgroundColor="#528C83"/>
+                                                                        <Label Text="-" 
+                                                                            FontSize="18" 
+                                                                            HorizontalOptions="Center"
+                                                                            VerticalOptions="Center"
+                                                                            TextColor="White"/>
+                                                                        <Button CornerRadius="100" WidthRequest="25" HeightRequest="25" BackgroundColor="Transparent" 
+                                                                            CommandParameter="{Binding .}"
+                                                                            Clicked="DecreaseVal"/>
+                                                                    </Grid>
+                                                                </Grid>
+                                                                <Label Text="{Binding priceText}" 
+                                                                HorizontalOptions="End"
+                                                                FontSize="18" 
+                                                                TextColor="#305C55"/>
+                                                            </FlexLayout>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                            </StackLayout>
                                             <Grid>
-                                                <Label 
-                                                    Text="{Binding totalPriceText}" 
-                                                    HorizontalOptions="End"
-                                                    FontSize="18" 
-                                                    TextColor="#305C55"/>
+                                                <Line Stroke="#305C55" 
+                                                X1="550" 
+                                                Margin="0, 0, 0, 10"
+                                                StrokeDashArray="2,2" 
+                                                StrokeDashOffset="10" 
+                                                StrokeThickness="2"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Picker ItemsSource="{Binding allGoods}" ItemDisplayBinding="{Binding nameWithPrice}" Title="Выберите товар" 
+                                                    TitleColor="#305C55" Grid.Column="1" TextColor="#305C55" x:Name="picker"/>
+                                                    <Grid>
+                                                        <Label Text="+" 
+                                                        FontSize="40" 
+                                                        HorizontalOptions="Start"
+                                                        VerticalOptions="Center"
+                                                        TextColor="#305C55" Grid.Column="0"/>
+                                                        <Button BackgroundColor="Transparent" Grid.Column="0" Clicked="AddGood" CommandParameter="{x:Reference picker}"/>
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
-                                        </StackLayout>
-
-                                        <Line 
-                                            Stroke="#305C55" 
+                                            <Line Stroke="#305C55" 
                                             X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
                                             StrokeThickness="2"/>
-                                        <Grid>
-                                            <Label 
+                                            <Grid>
+                                                <Label 
                                                 Text="ИТОГО:" 
                                                 TextColor="#305C55" 
                                                 FontSize="30"/>
-                                            <Label Text="{Binding totalPriceText}" 
+                                                <Label Text="{Binding totalPriceText}" 
                                                 TextColor="#305C55" 
                                                 FontSize="30" 
                                                 HorizontalOptions="End"/>
-                                        </Grid>
-                                        <Line 
+                                            </Grid>
+                                            <Line 
                                             Stroke="#305C55" 
                                             X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
                                             StrokeThickness="2"/>
-                                        <Label 
+                                            <Label 
                                             Text="{Binding dateText}" 
                                             TextColor="#305C55"
-                                            HorizontalOptions="End"/>
-                                        <Grid>
-                                            <Button WidthRequest="110" 
-                                                    HeightRequest="50"
-                                                    Margin="20,10,0,0" 
-                                                    CornerRadius="24" 
-                                                    HorizontalOptions="Start"
-                                                    ImageSource="edit.png"/>
+                                            HorizontalOptions="End"
+                                            FontSize="20"/>
                                             <Button 
-                                                    WidthRequest="110" 
-                                                    HeightRequest="50"
-                                                    Margin="0,10,20,0" 
-                                                    CornerRadius="24" 
-                                                    HorizontalOptions="End" 
-                                                    ImageSource="delete.png"
-                                                    CommandParameter="{Binding .}"
-                                                    Clicked="delete_button"/>
-                                        </Grid>
-                                    </StackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </ScrollView>
-            </StackLayout>
-            <Grid Margin="0,0,0,30">
-                <ImageButton 
+                                            WidthRequest="110" 
+                                            HeightRequest="50"
+                                            Margin="0,10,20,0" 
+                                            CornerRadius="24" 
+                                            HorizontalOptions="Center" 
+                                            ImageSource="delete.png"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="DeleteCheque"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+                <Grid Margin="0,0,0,30" x:Name="Add" Grid.Row="2">
+                    <ImageButton 
                     x:Name="add_cheque" 
                     Source="GreenButton.png" 
                     BackgroundColor="Transparent"
                     />
-                <Label 
+                    <Label 
                     Text="Добавить чек" 
                     HorizontalTextAlignment="Center" 
                     VerticalTextAlignment="Center" 
@@ -135,11 +170,11 @@
                     FontAttributes="Bold"
                     TextColor="Black"
                     Padding="2, 2, 0, 10">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="new_reseipt" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label 
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CreateCheque"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label 
                     Text="Добавить чек" 
                     HorizontalTextAlignment="Center" 
                     VerticalTextAlignment="Center" 
@@ -147,11 +182,43 @@
                     FontAttributes="Bold"
                     TextColor="White"
                     Padding="0, 0, 0, 10">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="new_reseipt" />
-                    </Label.GestureRecognizers>
-                </Label>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CreateCheque"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="titleStyle">
+                <Setter Property="FontSize" Value="33"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="LineHeight" Value="0"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#305C55"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="frameStyle">
+                <Setter Property="BackgroundColor" Value="#F0EEEE"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderColor" Value="#305C55"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+            <Style TargetType="Label" x:Key="textStyle">
+                <Setter Property="TextColor" Value="#865318"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Padding" Value="0, 0, 0, 10"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Grid" x:Key="gridStyle">
+                <Setter Property="Margin" Value="0, 0, 0, 20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

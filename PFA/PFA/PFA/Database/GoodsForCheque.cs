@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,21 +8,43 @@ namespace PFA.Database
 {
     public class GoodsForCheque
     {
-        [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
         public string name { get; set; }
         public float price { get; set; }
+        public string priceText { get; set; }
+        public string nameWithPrice { get; set; }
         public int amount { get; set; }
-
+        public string amountText { get; set; }
+        public int id { get; set; }
         public GoodsForCheque()
         {
-            amount = 0;
+            name = "Новый чек";
+            price = 0;
+            GetTextPrice();
         }
-        public GoodsForCheque(string name, float price, int amount)
+        public GoodsForCheque(string name, float price, int amount, int id)
         {
             this.name = name;
             this.price = price;
             this.amount = amount;
+            this.id = id;
+            GetTextPrice();
+        }
+        public void IncreaseAmount()
+        {
+            amount++;
+            GetTextPrice();
+        }
+        public void DecreaseAmount()
+        {
+            amount--;
+            GetTextPrice();
+        }
+        public string GetTextPrice()
+        {
+            priceText = price * amount + "р.";
+            amountText = "x" + amount;
+            nameWithPrice = name + " " + priceText;
+            return priceText;
         }
     }
 }

@@ -123,6 +123,10 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "SQLiteNetExtensions.Async": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Sharpnado.Shadows": {
               "target": "Package",
               "version": "[1.2.0, )"
