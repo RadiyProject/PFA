@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.FiveAdvices"
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HeightRequest="150">
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"
+                 Clicked="GoBack"
+                 />
+            </Grid>
+            <Label Text="5 советов как тратить меньше денег"
+                FontSize="33" 
+                Padding="0, 10, 0, 0"
+                HorizontalOptions="Center"
+                FontFamily="Montserrat" 
+                FontAttributes="Bold"
+                TextColor="#305C55" 
+                HorizontalTextAlignment="Center"
+            />
+            <ScrollView Margin="20,10,20,10">
+                <StackLayout >
+                    <Grid >
+                        <Ellipse Stroke="#305C55"
+                        StrokeThickness="2"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Fill="#528C83"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+                        <Label Text="1"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="10,5,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="StartAndExpand"
+                            />
+                        <Label Margin="40,0,10,0"
+                               FontAttributes="Bold"
+                               TextColor="#305C55"
+                               FontSize="18"
+                            Text="Покупки за наличные помогут сократить траты."
+                            />
+                    </Grid>
+                    <Label Margin="40,0,10,0"
+                           TextColor="#305C55"
+                        Text="Если хотите не тратить много денег, то безналичный расчет при помощи банковской карты вам не подойдет. Определите сумму, которую желаете потратить на необходимые покупки (продукты, вещи, бытовую химию и т.д.), и при походе в магазин не берите с собой денег с запасом. Часто знание того, что на пластиковой карте хранится большая сумма, приводит к приобретению ненужных безделушек и тех вещей, без которых вы с успехом можете прожить. Этому даже есть популярное (и заодно абсурдное) объяснение:Могу себе позволить!. Конечно, можете. И в конце месяца можете искать способы дотянуть до зарплаты."
+                        />
+                    <Grid >
+                        <Ellipse Stroke="#305C55"
+                        StrokeThickness="2"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Fill="#528C83"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+                        <Label Text="2"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="10,5,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="StartAndExpand"
+                            />
+                        <Label Margin="40,0,10,0"
+                               FontAttributes="Bold"
+                               TextColor="#305C55"
+                               FontSize="18"
+                            Text="Списки учат, как лучше тратить деньги."
+                            />
+                    </Grid>
+                    <Label Margin="40,0,10,0"
+                           TextColor="#305C55"
+                           Text="Во-первых, план покупок позволит не тратить много денег, поскольку перед вашими глазами будет четкая картина того, что действительно необходимо. Учитывая цены на некоторые товары, итоговая сумма (на лекарства, косметику, продукты, коммунальные платежи и др.) окажется немалой. Кроме того, список позволит вам не растеряться при походе за покупками – не забыть приобрести нужные товары. Но составленному плану нужно следовать четко, а для этого выделите себе денежную сумму, соразмерную подведенному в списке итогу (возможно, с небольшим запасом)."
+                               />
+                    <Grid >
+                        <Ellipse Stroke="#305C55"
+                        StrokeThickness="2"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Fill="#528C83"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+                        <Label Text="3"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="10,5,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="StartAndExpand"
+                            />
+                        <Label Margin="40,0,10,0"
+                               FontAttributes="Bold"
+                               TextColor="#305C55"
+                               FontSize="18"
+                            Text="Устройте своему кошельку «разгрузочные» дни."
+                            />
+                    </Grid>
+                    <Label Margin="40,0,10,0"
+                           TextColor="#305C55"
+                           Text="Если любите побродить по торговым рядам от скуки, то даже небольшая сумма будет потрачена вами на приятную сердцу, но ненужную вещь. Попробуйте занять себя чем-то другим помимо разглядывания витрин и прилавков. Прогуляйтесь с близкими, узнайте, какие бесплатные развлечения проводятся в вашем городе, перечитайте любимые книги, подготовьте термос с горячим чаем для прогулки в парке. Не заглядывать постоянно в кошелек – действенный способ меньше тратить денег."
+                           />
+                    <Grid >
+                        <Ellipse Stroke="#305C55"
+                        StrokeThickness="2"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Fill="#528C83"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+                        <Label Text="4"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="10,5,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="StartAndExpand"
+                            />
+                        <Label Margin="40,0,10,0"
+                               FontAttributes="Bold"
+                               TextColor="#305C55"
+                               FontSize="18"
+                            Text="Ведите список совершенных покупок."
+                            />
+                    </Grid>
+                    <Label Margin="40,0,10,0"
+                           TextColor="#305C55"
+                           Text="Воспользуйтесь нашим приложением и фиксируйте все даже мизерные покупки (вроде чашки чая в кафе или приобретенного в киоске журнала). Подведение итогов в конце месяца позволит вам определиться, на что лучше тратить деньги. Определите сумму, которая была отдана за те вещи, продукты, развлечения, без которых вы могли бы с легкостью обойтись. Вы удивитесь, но это будет немалая цена за необдуманные покупки."
+                           />
+                    <Grid >
+                        <Ellipse Stroke="#305C55"
+                        StrokeThickness="2"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Fill="#528C83"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"/>
+                        <Label Text="5"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="10,5,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="StartAndExpand"
+                            />
+                        <Label Margin="40,0,10,0"
+                               FontAttributes="Bold"
+                               TextColor="#305C55"
+                               FontSize="18"
+                            Text="Обходите места, где привыкли тратить много денег."
+                            />
+                    </Grid>
+                    <Label Margin="40,0,10,0"
+                           TextColor="#305C55"
+                           Text="Как мало тратить, если столь велик соблазн заглянуть в магазин и приобрести очередную помаду или флакон любимых духов? Если такое стихийное поведение, которое вы не можете объяснить даже сами себе, участилось, запретите себе на время посещать такие заведения, где теряете контроль над собственными финансами. Вплоть до построения маршрута по-новому, чтобы избежать искушения. Определите для себя, на что лучше тратить деньги, и придерживайтесь этого плана."
+                           />
+                    <Label
+                        Margin="0,50,0,0"
+                        Text="Источник: https://piter-trening.ru/kak-tratit-menshe-deneg/"
+                        />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

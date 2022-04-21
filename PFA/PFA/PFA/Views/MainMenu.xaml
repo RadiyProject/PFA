@@ -36,7 +36,7 @@
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Информационный блок" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnChequeClicked" />
+                    <TapGestureRecognizer Tapped="OnInfoBlockClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>

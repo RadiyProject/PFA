@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.InfoBlock"
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"
+                Clicked="GoBack"/>
+            </Grid>
+            <Label Text="Информационный блок"
+                FontSize="33" 
+                Padding="0, 10, 0, 0"
+                HorizontalOptions="Center"
+                FontFamily="Montserrat" 
+                LineHeight="0"
+                FontAttributes="Bold"
+                TextColor="#305C55" 
+                HorizontalTextAlignment="Center"
+            />
+            <ScrollView Margin="10,17,10,0">
+                <StackLayout>
+                    <Grid>
+                        <Rectangle Fill="#D3A354"
+                             Stroke="#9E6C1A"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+
+                        <Label Text="Общее" 
+                               FontSize="20"
+                               TextColor="#865318"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </Grid>
+                    <StackLayout>
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text="5 советов как тратить меньше денег"
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                Clicked="OpenFiveAdvices"       
+                                />
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                    </StackLayout>
+                    <Grid>
+                        <Rectangle Fill="#D3A354"
+                             Stroke="#9E6C1A"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+
+                        <Label Text="Транспорт" 
+                               FontSize="20"
+                               TextColor="#865318"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </Grid>
+                    <StackLayout>
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="320"
+                                HeightRequest="45"
+                                BackgroundColor="#F0EEEE"
+                                BorderColor="#305C55"
+                                BorderWidth="1"
+                                CornerRadius="8"
+                                Text=". . ."
+                                TextColor="#305C55"
+                                Margin="0,0,0,10"
+                                />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
