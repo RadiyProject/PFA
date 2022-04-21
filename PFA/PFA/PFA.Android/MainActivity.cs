@@ -1,9 +1,14 @@
 ﻿using System;
 
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+
+
 
 namespace PFA.Android
 {
@@ -13,7 +18,7 @@ namespace PFA.Android
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            Rg.Plugins.Popup.Popup.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

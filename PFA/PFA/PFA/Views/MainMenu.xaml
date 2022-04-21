@@ -44,7 +44,7 @@
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Настройки" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnChequeClicked" />
+                    <TapGestureRecognizer Tapped="OnSettingsClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
