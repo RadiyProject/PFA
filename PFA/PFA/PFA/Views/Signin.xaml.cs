@@ -26,9 +26,9 @@ namespace PFA.Views
         }
         async void Return(object sender, EventArgs e)
         {
-            await Arrow.ScaleTo(0.9, 50);
+            await Arrow.ScaleTo(0.8, 50);
             await Arrow.ScaleTo(1, 50);
-            await Navigation.PushAsync(new StartMenu());
+            await Navigation.PopAsync();
         }
         void ShowPas(object sender, EventArgs e)
         {

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.Settings"
+             x:Name="SettingsPage"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundImageSource="background.png">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"
+                Clicked="GoBack"/>
+            </Grid>
+            <Label Text="Настройки"
+                FontSize="33" 
+                HorizontalOptions="Center"
+                LineHeight="0"
+                FontAttributes="Bold"
+                TextColor="#305C55" 
+                HorizontalTextAlignment="Center"
+            />
+            <Frame 
+                x:Name="info_user"
+                Margin="0,15,0,30" 
+                WidthRequest="280"
+                HeightRequest="80"
+                BackgroundColor="#F0EEEE"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                CornerRadius="8"
+                BorderColor="#305C55"
+                HasShadow="True"/>
+            <Grid 
+                    Margin="0,0,0,30" 
+                    x:Name="GoodDatabase" >
+                <ImageButton  
+                    Source="GreenButton.png" 
+                    BackgroundColor="Transparent"
+                    />
+                <Label 
+                    Text="База продуктов" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    Padding="2, 2, 0, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GotoGoodDatabase" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label 
+                    Text="База продуктов" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center" 
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Padding="0, 0, 0, 10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GotoGoodDatabase" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

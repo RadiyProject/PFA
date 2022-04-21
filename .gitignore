@@ -193,3 +193,43 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vscode/settings.json
+PFA/PFA/PFA.Android/obj/Debug/110/android/assets/PFA.Android.dll
+PFA/PFA/PFA.Android/obj/Debug/110/android/assets/PFA.Android.pdb
+PFA/PFA/PFA.Android/obj/Debug/110/android/assets/PFA.Android.pdb
+PFA/PFA/PFA.Android/obj/Debug/110/android/bin/com.rapg.pfa.apk
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.arm64-v8a.o
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.arm64-v8a.s
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.armeabi-v7a.o
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.armeabi-v7a.s
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.x86.o
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.x86.s
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.x86_64.o
+PFA/PFA/PFA.Android/obj/Debug/110/android/environment.x86_64.s
+PFA/PFA/PFA.Android/obj/Debug/110/androidx/_AndroidXJetifyJavaLibraryRules.jetify
+PFA/PFA/PFA.Android/obj/Debug/110/androidx/_AndroidXJetifyProguardRules.jetify
+PFA/PFA/PFA.Android/obj/Debug/110/app_shared_libraries/arm64-v8a/libxamarin-app.so
+PFA/PFA/PFA.Android/obj/Debug/110/app_shared_libraries/armeabi-v7a/libxamarin-app.so
+PFA/PFA/PFA.Android/obj/Debug/110/app_shared_libraries/x86/libxamarin-app.so
+PFA/PFA/PFA.Android/obj/Debug/110/app_shared_libraries/x86_64/libxamarin-app.so
+PFA/PFA/PFA.Android/obj/Debug/110/build.props
+PFA/PFA/PFA.Android/obj/Debug/110/buildid.txt
+PFA/PFA/PFA.Android/obj/Debug/110/designtime/build.props
+PFA/PFA/PFA.Android/obj/Debug/110/DesignTimeResolveAssemblyReferencesInput.cache
+PFA/PFA/PFA.Android/obj/Debug/110/PFA.Android.csproj.CoreCompileInputs.cache
+PFA/PFA/PFA.Android/obj/Debug/110/PFA.Android.csproj.FileListAbsolute.txt
+PFA/PFA/PFA.Android/obj/Debug/110/PFA.Android.dll
+PFA/PFA/PFA.Android/obj/Debug/110/PFA.Android.pdb
+PFA/PFA/PFA.Android/obj/Debug/110/resolvedassemblies.hash
+PFA/PFA/PFA.Android/obj/project.nuget.cache
+PFA/PFA/PFA.iOS/obj/iPhone/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+PFA/PFA/PFA.iOS/obj/iPhone/Debug/PFA.iOS.csproj.FileListAbsolute.txt
+PFA/PFA/PFA.iOS/obj/project.nuget.cache
+PFA/PFA/PFA/bin/Debug/netstandard2.0/Personal Financial Analyst.dll
+PFA/PFA/PFA/bin/Debug/netstandard2.0/Personal Financial Analyst.pdb
+PFA/PFA/PFA/bin/Debug/netstandard2.0/ref/Personal Financial Analyst.dll
+PFA/PFA/PFA/obj/Debug/netstandard2.0/Personal Financial Analyst.dll
+PFA/PFA/PFA/obj/Debug/netstandard2.0/Personal Financial Analyst.pdb
+PFA/PFA/PFA/obj/Debug/netstandard2.0/PFA.assets.cache
+PFA/PFA/PFA/obj/Debug/netstandard2.0/PFA.csproj.CoreCompileInputs.cache
+PFA/PFA/PFA/obj/Debug/netstandard2.0/ref/Personal Financial Analyst.dll
+PFA/PFA/PFA/obj/project.nuget.cache
