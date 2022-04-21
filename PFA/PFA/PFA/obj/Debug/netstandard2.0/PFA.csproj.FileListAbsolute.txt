@@ -45,3 +45,4 @@ D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\GoodPopup.xaml.g
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\GoodPopup.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\GoodsBase.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Settings.xaml.g.cs
+D:\study\4sem\tp\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Statistics.xaml.g.cs

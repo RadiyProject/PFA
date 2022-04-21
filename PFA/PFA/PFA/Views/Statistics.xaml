@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PFA.Views.Statistics"
+             BackgroundImageSource="background.png"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid>
+                <ImageButton Source="arrow.png" BackgroundColor="Transparent"
+                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"
+                Clicked="GoBack"/>
+            </Grid>
+
+            <ScrollView Margin="10,0,10,0">
+                <StackLayout>
+                    <Label Text="Статистика"
+                            FontSize="33" 
+                            Padding="0, 10, 0, 0"
+                            HorizontalOptions="Center"
+                            FontFamily="Montserrat" 
+                            LineHeight="0"
+                            FontAttributes="Bold"
+                            TextColor="#305C55" 
+                            HorizontalTextAlignment="Center"
+                           
+                     />
+                    <Grid>
+                        <Rectangle Fill="#D3A354"
+                             Stroke="#9E6C1A"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+
+                        <Label Text="История" 
+                               FontSize="20"
+                               TextColor="#865318"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </Grid>
+                    <Grid>
+                        <Rectangle Fill="White"
+                             Stroke="#9E6C1A"
+                             Margin="0,-10,0,10"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+                        <DatePicker x:Name="StartDatePicker"  
+                                        MinimumDate="1/1/22" 
+                                        HorizontalOptions="Start"
+                                        WidthRequest="100" 
+                                        HeightRequest="20"
+                                        MaximumDate="12/31/23" 
+                                        Margin="100,-20,0,0"
+                                        TextColor="#865318"
+                         />
+
+                        <DatePicker x:Name="EndDatePicker"  
+                                        MinimumDate="1/1/22" 
+                                        HorizontalOptions="Center"
+                                        WidthRequest="100" 
+                                        HeightRequest="20"
+                                        MaximumDate="12/31/23" 
+                                        Margin="0,-20,-100,0"   
+                                        TextColor="#865318"
+                         />
+                    </Grid>
+                    <ScrollView Margin="37,0,37,0"
+                                HeightRequest="250">
+                        <CollectionView  x:Name="name_colec">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Style="{StaticResource frameStyle}">
+                                        <StackLayout x:Name="mini_information_card">
+                                            <Grid x:Name="Information_of_card">
+                                                <Label 
+                                                x:Name="Name"
+                                                Text="{Binding name}" 
+                                                FontSize="25" 
+                                                TextColor="#305C55" 
+                                                HorizontalOptions="Start"
+                                                />
+                                                <Label 
+                                                    Text="{Binding dateText}" 
+                                                    TextColor="#305C55"
+                                                    HorizontalOptions="Center"
+                                                    Margin="-60,0,0,0"
+                                                    FontSize="20"/>
+                                                <Label Text="{Binding totalPriceText}" 
+                                                    TextColor="#305C55" 
+                                                    FontSize="20" 
+                                                    HorizontalOptions="Center"
+                                                    Margin="150,0,0,0"
+                                                    x:Name="Price"/>
+                                                <Label Text="X" 
+                                                    FontSize="25" 
+                                                    TextColor="#305C55"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    BackgroundColor="Transparent">
+                                                </Label>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                    <Grid Margin="0,10,0,0">
+                        <Rectangle Fill="#D3A354"
+                             Stroke="#9E6C1A"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+
+                        <Label Text="Отчет" 
+                               FontSize="20"
+                               TextColor="#865318"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </Grid>
+
+                    <Grid>
+                        <Rectangle Fill="#D3A354"
+                             Stroke="#9E6C1A"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="25"
+                             HorizontalOptions="Center" />
+
+                        <Label Text="Рекомендация" 
+                               FontSize="20"
+                               TextColor="#865318"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="CenterAndExpand">
+                        </Label>
+                    </Grid>
+                    <Grid>
+                        <Rectangle Fill="White"
+                             Stroke="#9E6C1A"
+                             Margin="0,-10,0,10"
+                             StrokeThickness="2"
+                             WidthRequest="320"
+                             HeightRequest="90"
+                             HorizontalOptions="Center" 
+                                   />
+                        <Label
+                            Text="Вам следует меньше тратить денег на развлечения :)"
+                            FontSize="16"
+                            TextColor="#305C55"
+                            Margin="43,0,43,0"
+                            />
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="frameStyle">
+                <Setter Property="BackgroundColor" Value="#F0EEEE"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderColor" Value="#305C55"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

@@ -31,5 +31,11 @@ namespace PFA.Views
             await Settings.ScaleTo(1, 50);
             await Navigation.PushAsync(new Settings());
         }
+        async void OnStatisticsClicked(object sender, EventArgs e)
+        {
+            await Statistics.ScaleTo(0.9, 50);
+            await Statistics.ScaleTo(1, 50);
+            await Navigation.PushAsync(new Statistics());
+        }
     }
 }
