@@ -15,7 +15,6 @@
             <Label Text="Настройки"
                 FontSize="33" 
                 HorizontalOptions="Center"
-                FontFamily="Montserrat" 
                 LineHeight="0"
                 FontAttributes="Bold"
                 TextColor="#305C55" 

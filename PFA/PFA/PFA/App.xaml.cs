@@ -39,11 +39,11 @@ namespace PFA
                     Cheques.Delete(cheq);*/
             /*if (Goods != null)
                 foreach (Good good in Task.Run(() => Goods.GetAsync()).Result) //Если нужно очистить данные
-                    Goods.Delete(good);*/
+                    Goods.Delete(good);
             Goods.Create(new Database.Good("Хлеб", 35));
             Goods.Create(new Database.Good("Шоколад", 120));
             Goods.Create(new Database.Good("Пельмени", 309.2f));
-            Goods.Create(new Database.Good("Колбаса", 225.1f));
+            Goods.Create(new Database.Good("Колбаса", 225.1f));*/
             NavigationPage page = new NavigationPage(new StartMenu());
             MainPage = page;
         }

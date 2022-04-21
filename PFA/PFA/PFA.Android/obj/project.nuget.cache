@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+HPOURjHJRPcDADY2gfN84+Ziue0IY0/gH5NZIeJBLdTcxAml65/OPWIwwdH/ALTCmfdVyGUCg2GfDIbLyYbAw==",
+  "dgSpecHash": "uzFw+RjwD/5sd8pshRSDORhQh0VMxQ75PuenkOcn7fxvcns1OsHzbDhHS5MhyGfRMEkOvvUQu1CTHej/kvceyQ==",
   "success": true,
   "projectFilePath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\IS\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\IS\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\rg.plugins.popup\\2.1.0\\rg.plugins.popup.2.1.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sharpnado.shadows\\1.2.0\\sharpnado.shadows.1.2.0.nupkg.sha512",
     "C:\\Users\\IS\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",

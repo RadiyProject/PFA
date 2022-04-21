@@ -21,10 +21,12 @@ namespace PFA.Views
         {
             InitializeComponent();
         }
-        private void ShowNewUserPopup(object o, EventArgs e)
+        private async void ShowNewUserPopup(object sender, EventArgs e)
         {
-
-            PopupNavigation.Instance.PushAsync(new GoodPopup());
+            Grid parent = (Grid)((Label)sender).Parent;
+            await parent.ScaleTo(0.9, 50);
+            await parent.ScaleTo(1, 50);
+            await PopupNavigation.Instance.PushAsync(new GoodPopup(this));
         }
         public GoodsBase(string name, float price)
         {
@@ -37,6 +39,10 @@ namespace PFA.Views
             base.OnAppearing();
             name_colec.ItemsSource = await App.Goods.GetAsync();
         }
+        public async void Refresh()
+        {
+            name_colec.ItemsSource = await App.Goods.GetAsync();
+        }
         public async void NewProductToDB(string result, float result2)
         {
             await App.Goods.Create(new Database.Good(result, result2));
@@ -46,16 +52,22 @@ namespace PFA.Views
         async void delete_button(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            Good good = (Good)button.CommandParameter;
-            if (good != null)
-                await App.Goods.Delete(good);
-            name_colec.ItemsSource = await App.Goods.GetAsync();
+            await button.ScaleTo(0.9, 50);
+            await button.ScaleTo(1, 50);
+            bool result = await DisplayAlert("Удаление чека", "Вы действительно хотите удалить чек?", "Удалить", "Отмена");
+            if (result)
+            {
+                Good good = (Good)button.CommandParameter;
+                if (good != null)
+                    await App.Goods.Delete(good);
+                name_colec.ItemsSource = await App.Goods.GetAsync();
+            }
         }
         async void GoBack(object sender, EventArgs e)
         {
-            await Arrow.ScaleTo(0.9, 50);
+            await Arrow.ScaleTo(0.8, 50);
             await Arrow.ScaleTo(1, 50);
-            await Navigation.PushAsync(new Settings());
+            await Navigation.PopAsync();
         }
     }
 }

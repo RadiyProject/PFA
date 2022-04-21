@@ -18,9 +18,9 @@ namespace PFA.Views
         }
         async void GoBack(object sender, EventArgs e)
         {
-            await Arrow.ScaleTo(0.9, 50);
+            await Arrow.ScaleTo(0.8, 50);
             await Arrow.ScaleTo(1, 50);
-            await Navigation.PushAsync(new MainMenu());
+            await Navigation.PopAsync();
         }
         async void GotoGoodDatabase(object sender, EventArgs e)
         {
