@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PFA.Views.Signin"
+             x:Class="PFA.Views.Budget"
              BackgroundImageSource="background.png"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
@@ -9,35 +9,20 @@
             <ImageButton Source="arrow.png" BackgroundColor="Transparent"
                 Clicked="Return" x:Name="Arrow" FlexLayout.AlignSelf="Start" Padding="30, 30, 0, 0"/>
             <FlexLayout FlexLayout.Grow="1" Direction="Column" JustifyContent="Center">
-                <Grid RowSpacing="15" Margin="0, 0, 0, 60">
+                <Grid RowSpacing="15" Margin="0, 0, 0, 80">
                     <Grid Grid.Row="0" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Логин" Style="{StaticResource textStyle}" Grid.Row="0"/>
                         <Entry Placeholder="Username" Style="{StaticResource entryStyle}" Grid.Row="1"/>
                     </Grid>
                     <Grid Grid.Row="1" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" Padding="0, 0, -20, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
                             <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="Pass" IsPassword="True" Grid.Column="0"/>
-                            <FlexLayout HeightRequest="0" JustifyContent="End">
-                                <Button Style="{StaticResource buttonStyle}"
+                            <Button Style="{StaticResource buttonStyle}" Grid.Column="1"
                                 Clicked="ShowPas" x:Name="Circle"/>
-                                <FlexLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnFlexClicked" />
-                                </FlexLayout.GestureRecognizers>
-                            </FlexLayout>
-                        </Grid>
-                    </Grid>
-                    <Grid Grid.Row="2" RowSpacing="-30" Padding="50, 0">
-                        <Label Text="Подтвердите пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Grid Grid.Row="1">
-                            <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="PassConfirm" IsPassword="True" Grid.Column="0"/>
-                            <FlexLayout HeightRequest="0" JustifyContent="End">
-                                <Button Style="{StaticResource buttonStyle}"
-                                Clicked="ShowPasConfirm" x:Name="CircleConfirm"/>
-                                <FlexLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnFlexClickedConfirm" />
-                                </FlexLayout.GestureRecognizers>
-                            </FlexLayout>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -61,8 +46,7 @@
                 <Setter Property="BorderColor" Value="#528C83"/>
                 <Setter Property="CornerRadius" Value="100"/>
                 <Setter Property="BorderWidth" Value="6"/>
-                <Setter Property="HeightRequest" Value="40"/>
-                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="Scale" Value="0.5"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

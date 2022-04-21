@@ -20,7 +20,7 @@
             <ImageButton Style="{StaticResource imageButStyle}"/>
             <Label Text="Управление бюджетом" Style="{StaticResource textStyle}">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnChequeClicked" />
+                    <TapGestureRecognizer Tapped="OnBudgetClicked" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>

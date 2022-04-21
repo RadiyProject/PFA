@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +10,10 @@ using Xamarin.Forms.Xaml;
 namespace PFA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Login : ContentPage
+    public partial class Budget : ContentPage
     {
         private bool isHidden = true;
-        public Login()
+        public Budget()
         {
             InitializeComponent();
         }
@@ -26,9 +25,9 @@ namespace PFA.Views
         }
         async void Return(object sender, EventArgs e)
         {
-            await Arrow.ScaleTo(0.8, 50);
+            await Arrow.ScaleTo(0.9, 50);
             await Arrow.ScaleTo(1, 50);
-            await Navigation.PushAsync(new StartMenu());
+            await Navigation.PushAsync(new MainMenu());
         }
         void ShowPas(object sender, EventArgs e)
         {
@@ -43,12 +42,6 @@ namespace PFA.Views
                 Circle.BackgroundColor = Xamarin.Forms.Color.FromHex("#528C83");
                 Pass.IsPassword = false;
             }
-        }
-        void OnFlexClicked(object sender, EventArgs e)
-        {
-            if (Pass.IsFocused)
-                Pass.Unfocus();
-            Pass.Focus();
         }
     }
 }
