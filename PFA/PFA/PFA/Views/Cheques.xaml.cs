@@ -15,7 +15,6 @@ namespace PFA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Cheques : ContentPage
     {
-        public ICommand SharePostCommand { protected set; get; }
         public Cheques()
         {
             InitializeComponent();
