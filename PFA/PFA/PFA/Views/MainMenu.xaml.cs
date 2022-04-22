@@ -37,5 +37,12 @@ namespace PFA.Views
             await Settings.ScaleTo(1, 50);
             await Navigation.PushAsync(new Settings());
         }
+        async void OnInfoBlockClicked(object sender, EventArgs e)
+        {
+            await InfoBlock.ScaleTo(0.9, 50);
+            await InfoBlock.ScaleTo(1, 50);
+            await Navigation.PushAsync(new InfoBlock());
+        }
+
     }
 }
