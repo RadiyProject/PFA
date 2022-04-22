@@ -19,6 +19,12 @@ namespace PFA.Views
             await Cheques.ScaleTo(1, 50);
             await Navigation.PushAsync(new Cheques());
         }
+        async void OnBudgetClicked(object sender, EventArgs e)
+        {
+            await Budget.ScaleTo(0.9, 50);
+            await Budget.ScaleTo(1, 50);
+            await Navigation.PushAsync(new Budget());
+        }
         async void OnQuitClicked(object sender, EventArgs e)
         {
             await Quit.ScaleTo(0.9, 50);

@@ -15,7 +15,7 @@
                 <Grid Grid.Row="0">
                     <ImageButton Source="arrow.png" BackgroundColor="Transparent"
                         x:Name="Arrow" HorizontalOptions="Start" Clicked="Return" Padding="30, 30, 0, 0"/>
-                    <Label Text="Управление чеками" Style="{StaticResource titleStyle}" x:Name="text" Grid.Row="1"/>
+                    <Label Text="Управление чеками" Style="{StaticResource titleStyle}" Grid.Row="1"/>
                 </Grid>
                 <StackLayout Padding="40, 0, 40, 10" Grid.Row="1">
                     <ScrollView>

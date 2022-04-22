@@ -58,5 +58,17 @@ namespace PFA.Views
                 PassConfirm.IsPassword = false;
             }
         }
+        void OnFlexClicked(object sender, EventArgs e)
+        {
+            if (Pass.IsFocused)
+                Pass.Unfocus();
+            Pass.Focus();
+        }
+        void OnFlexClickedConfirm(object sender, EventArgs e)
+        {
+            if (PassConfirm.IsFocused)
+                PassConfirm.Unfocus();
+            PassConfirm.Focus();
+        }
     }
 }

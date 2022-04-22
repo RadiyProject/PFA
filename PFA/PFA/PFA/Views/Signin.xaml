@@ -16,24 +16,28 @@
                     </Grid>
                     <Grid Grid.Row="1" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Grid Grid.Row="1" Padding="0, 0, -20, 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                            </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="1">
                             <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="Pass" IsPassword="True" Grid.Column="0"/>
-                            <Button Style="{StaticResource buttonStyle}" Grid.Column="1"
+                            <FlexLayout HeightRequest="0" JustifyContent="End">
+                                <Button Style="{StaticResource buttonStyle}"
                                 Clicked="ShowPas" x:Name="Circle"/>
+                                <FlexLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFlexClicked" />
+                                </FlexLayout.GestureRecognizers>
+                            </FlexLayout>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Подтвердите пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Grid Grid.Row="1" Padding="0, 0, -20, 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                            </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="1">
                             <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="PassConfirm" IsPassword="True" Grid.Column="0"/>
-                            <Button Style="{StaticResource buttonStyle}" Grid.Column="1"
+                            <FlexLayout HeightRequest="0" JustifyContent="End">
+                                <Button Style="{StaticResource buttonStyle}"
                                 Clicked="ShowPasConfirm" x:Name="CircleConfirm"/>
+                                <FlexLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFlexClickedConfirm" />
+                                </FlexLayout.GestureRecognizers>
+                            </FlexLayout>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -57,7 +61,8 @@
                 <Setter Property="BorderColor" Value="#528C83"/>
                 <Setter Property="CornerRadius" Value="100"/>
                 <Setter Property="BorderWidth" Value="6"/>
-                <Setter Property="Scale" Value="0.5"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="40"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

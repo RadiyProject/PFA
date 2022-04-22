@@ -13,6 +13,7 @@ namespace PFA
     {
         static DBCheque cheques;
         static DBGood goods;
+        static DBBudget budget;
         public static DBCheque Cheques
         {
             get
@@ -29,6 +30,15 @@ namespace PFA
                 if (goods == null)
                     goods = new DBGood(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Goods.db3"));
                 return goods;
+            }
+        }
+        public static DBBudget Budget
+        {
+            get
+            {
+                if (budget == null)
+                    budget = new DBBudget(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Budget.db3"));
+                return budget;
             }
         }
         public App()
