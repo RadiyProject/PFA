@@ -3829,26 +3829,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\main\\.nuget\\packages\\": {},
-    "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\IS\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
+      "projectUniqueName": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
       "projectName": "PFA.Android",
-      "projectPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
-      "packagesPath": "C:\\Users\\main\\.nuget\\packages\\",
-      "outputPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA.Android\\obj\\",
+      "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.Android\\PFA.Android.csproj",
+      "packagesPath": "C:\\Users\\IS\\.nuget\\packages\\",
+      "outputPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\main\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\IS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -3863,8 +3863,8 @@
       "frameworks": {
         "monoandroid11.0": {
           "projectReferences": {
-            "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
-              "projectPath": "D:\\study\\4sem\\tp\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
+            "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj": {
+              "projectPath": "D:\\tusur\\TP\\PFA\\PFA\\PFA\\PFA\\PFA.csproj"
             }
           }
         }
