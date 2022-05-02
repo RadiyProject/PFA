@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using PFA.Database;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Rg.Plugins.Popup.Services;
 
 namespace PFA.Views
 {
@@ -22,40 +23,87 @@ namespace PFA.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await Refresh();
+        }
+        private async Task ResetOpenedCheques()
+        {
+            foreach (Cheque cheq in Task.Run(() => App.Cheques.GetAsync()).Result)
+            {
+                cheq.isOpened = false;
+                cheq.isClosed = true;
+                cheq.colFirst = 0.3f;
+                cheq.colSecond = 0.35f;
+                cheq.colThird = 0.28f;
+                cheq.colFourth = 0.07f;
+                await App.Cheques.Update(cheq);
+            }
+        }
+        public async Task Refresh()
+        {
+            await ResetOpenedCheques();
             BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
         }
-        void OpenCheque(object sender, EventArgs e)
+        void OnNameFocused(object sender, TextChangedEventArgs e)
         {
+            Entry entry = (Entry)sender;
+            Cheque cheq = (Cheque)entry.ReturnCommandParameter;
+            entry.Text = cheq.name;
         }
-        void CloseCheque(object sender, EventArgs e)
+        async void OnNameUnfocused(object sender, TextChangedEventArgs e)
         {
-        }
-        async void CreateCheque(object sender, EventArgs e)
-        {
-            await Add.ScaleTo(0.9, 50);
-            await Add.ScaleTo(1, 50);
-            string result = await DisplayPromptAsync("Новый чек", "Имя чека", "Добавить", "Отмена");
-            if (result != null)
+            Entry entry = (Entry)sender;
+            Cheque cheq = (Cheque)entry.ReturnCommandParameter;
+            if (!entry.IsFocused)
             {
-                if (result.Length != 0)
+                if (cheq.name != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
-                    await App.Cheques.Create(new Database.Cheque(result, DateTime.Today));
-                    Cheque cheq = Task.Run(() => App.Cheques.GetAsync()).Result.Last();
-                    cheq.goods.Add(new GoodsForCheque("Печеньки", 120, 5, cheq.id));
-                    cheq.goods.Add(new GoodsForCheque("Вода", 12, 8, cheq.id));
-                    cheq.goods.Add(new GoodsForCheque("Торт с клубникой", 520, 10, cheq.id));
-                    cheq.CalculatePrice();
-                    cheq.SetGoods();
+                    cheq.name = entry.Text;
                     await App.Cheques.Update(cheq);
+
                     BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
                 }
                 else
-                {
-                    await App.Cheques.Create(new Database.Cheque("Новый чек", DateTime.Today));
-                    BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
-                }
+                    entry.Text = cheq.name;
             }
-
+        }
+        async void ActWithCheque(object sender, EventArgs e)
+        {
+            ImageButton button = (ImageButton)sender;
+            await button.ScaleTo(0.8, 50);
+            await button.ScaleTo(1, 50);
+            Cheque cheq = (Cheque)button.CommandParameter;
+            if (cheq != null)
+            {
+                cheq.isOpened = cheq.isClosed;
+                cheq.isClosed = !cheq.isClosed;
+                if (cheq.isOpened)
+                {
+                    cheq.colFirst = 0.93f;
+                    cheq.colSecond = 0f;
+                    cheq.colThird = 0f;
+                    cheq.colFourth = 0.07f;
+                }
+                else
+                {
+                    cheq.colFirst = 0.3f;
+                    cheq.colSecond = 0.35f;
+                    cheq.colThird = 0.28f;
+                    cheq.colFourth = 0.07f;
+                }
+                await App.Cheques.Update(cheq);
+            }
+            if (button.RotationX == 0)
+                await button.RotateXTo(180, 200);
+            else
+                await button.RotateXTo(0, 200);
+            BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
+        }
+        private async void ShowChequePopup(object sender, EventArgs e)
+        {
+            Grid parent = (Grid)((Label)sender).Parent;
+            await parent.ScaleTo(0.9, 50);
+            await parent.ScaleTo(1, 50);
+            await PopupNavigation.Instance.PushAsync(new ChequePopup(this));
         }
         async void DeleteCheque(object sender, EventArgs e)
         {

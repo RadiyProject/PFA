@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:PFA.Views"
+             xmlns:local="clr-namespace:PFA.Views" xmlns:conv="clr-namespace:PFA.Converters"
              x:Class="PFA.Views.Cheques" BackgroundImageSource="background.png"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
@@ -25,40 +25,88 @@
                                     <Frame Style="{StaticResource frameStyle}">
                                         <StackLayout>
                                             <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding colFirst, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                    <ColumnDefinition Width="{Binding colSecond, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                    <ColumnDefinition Width="{Binding colThird, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                    <ColumnDefinition Width="{Binding colFourth, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                </Grid.ColumnDefinitions>
                                                 <Label 
+                                                Text="{Binding name}" 
+                                                FontSize="20" 
+                                                TextColor="#305C55" 
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
+                                                Grid.Column="0"
+                                                IsVisible="{Binding isClosed}"/>
+                                                <!--<Label 
                                                 Text="{Binding name}" 
                                                 FontSize="25" 
                                                 TextColor="#305C55" 
-                                                HorizontalOptions="Start"/>
-                                                <Label Text="X" 
-                                                    FontSize="25" 
-                                                    TextColor="#305C55"
-                                                    HorizontalOptions="End"
-                                                    VerticalOptions="Start"
-                                                    BackgroundColor="Transparent">
-                                                    <Label.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="CloseCheque" />
-                                                    </Label.GestureRecognizers>
-                                                </Label>
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                IsVisible="{Binding isOpened}"/>-->
+                                                <Entry Placeholder="{Binding name}" Style="{StaticResource entryStyle}"
+                                                Grid.Column="0" HorizontalTextAlignment="Start"
+                                                VerticalOptions="Center"
+                                                IsVisible="{Binding isOpened}"
+                                                Focused="OnNameFocused"
+                                                Unfocused="OnNameUnfocused"
+                                                ReturnCommandParameter="{Binding .}"/>
+                                                <Label 
+                                                Text="{Binding dateText}" 
+                                                FontSize="20" 
+                                                TextColor="#305C55" 
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
+                                                Grid.Column="1"
+                                                IsVisible="{Binding isClosed}"/>
+                                                <Label 
+                                                Text="{Binding totalPriceText}" 
+                                                FontSize="20" 
+                                                TextColor="#305C55" 
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
+                                                Grid.Column="2"
+                                                IsVisible="{Binding isClosed}"/>
+                                                <ImageButton Source="Triangle.png" Clicked="ActWithCheque" HorizontalOptions="End"
+                                                BackgroundColor="Transparent" VerticalOptions="Center" Grid.Column="3"
+                                                IsVisible="{Binding isClosed}" CommandParameter="{Binding .}"/>
+                                                <ImageButton Source="Triangle.png" Clicked="ActWithCheque" HorizontalOptions="End"
+                                                BackgroundColor="Transparent" VerticalOptions="Center" Grid.Column="3"
+                                                RotationX="180"
+                                                IsVisible="{Binding isOpened}" CommandParameter="{Binding .}"/>
                                             </Grid>
                                             <Line 
                                             Stroke="#305C55" 
                                             X1="550" 
-                                            StrokeThickness="2.5"/>
-                                            <StackLayout Margin="0, 10">
+                                            StrokeThickness="2.5"
+                                            IsVisible="{Binding isOpened}"/>
+                                            <StackLayout Margin="0, 10" IsVisible="{Binding isOpened}">
                                                 <StackLayout BindableLayout.ItemsSource="{Binding goodsN}" Spacing="5">
                                                     <BindableLayout.ItemTemplate>
                                                         <DataTemplate>
-                                                            <FlexLayout JustifyContent="SpaceBetween">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="0.4*"/>
+                                                                    <ColumnDefinition Width="0.1*"/>
+                                                                    <ColumnDefinition Width="0.2*"/>
+                                                                    <ColumnDefinition Width="0.3*"/>
+                                                                </Grid.ColumnDefinitions>
                                                                 <Label Text="{Binding name}" 
                                                                 HorizontalOptions="Start"
                                                                 FontSize="18" 
-                                                                TextColor="#305C55"/>
+                                                                TextColor="#305C55"
+                                                                LineBreakMode="TailTruncation"
+                                                                Grid.Column="0"/>
                                                                 <Label Text="{Binding amountText}"
                                                                 FontSize="18" 
                                                                 HorizontalOptions="Center"
-                                                                TextColor="#305C55"/>
-                                                                <Grid>
+                                                                TextColor="#305C55"
+                                                                LineBreakMode="TailTruncation"
+                                                                Grid.Column="1"/>
+                                                                <Grid Grid.Column="2">
                                                                     <Grid>
                                                                         <Button CornerRadius="100" WidthRequest="25" HeightRequest="25" BackgroundColor="#528C83"/>
                                                                         <Label Text="+" 
@@ -84,14 +132,16 @@
                                                                 </Grid>
                                                                 <Label Text="{Binding priceText}" 
                                                                 HorizontalOptions="End"
+                                                                LineBreakMode="TailTruncation"
                                                                 FontSize="18" 
-                                                                TextColor="#305C55"/>
-                                                            </FlexLayout>
+                                                                TextColor="#305C55"
+                                                                Grid.Column="3"/>
+                                                            </Grid>
                                                         </DataTemplate>
                                                     </BindableLayout.ItemTemplate>
                                                 </StackLayout>
                                             </StackLayout>
-                                            <Grid>
+                                            <Grid IsVisible="{Binding isOpened}">
                                                 <Line Stroke="#305C55" 
                                                 X1="550" 
                                                 Margin="0, 0, 0, 10"
@@ -118,13 +168,15 @@
                                             X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
-                                            StrokeThickness="2"/>
-                                            <Grid>
+                                            StrokeThickness="2"
+                                            IsVisible="{Binding isOpened}"/>
+                                            <Grid IsVisible="{Binding isOpened}">
                                                 <Label 
                                                 Text="ИТОГО:" 
                                                 TextColor="#305C55" 
                                                 FontSize="30"/>
-                                                <Label Text="{Binding totalPriceText}" 
+                                                <Label Text="{Binding totalPriceText}"
+                                                LineBreakMode="TailTruncation"
                                                 TextColor="#305C55" 
                                                 FontSize="30" 
                                                 HorizontalOptions="End"/>
@@ -134,12 +186,15 @@
                                             X1="550" 
                                             StrokeDashArray="2,2" 
                                             StrokeDashOffset="10" 
-                                            StrokeThickness="2"/>
+                                            StrokeThickness="2"
+                                            IsVisible="{Binding isOpened}"/>
                                             <Label 
                                             Text="{Binding dateText}" 
+                                            LineBreakMode="TailTruncation"
                                             TextColor="#305C55"
                                             HorizontalOptions="End"
-                                            FontSize="20"/>
+                                            FontSize="20"
+                                            IsVisible="{Binding isOpened}"/>
                                             <Button 
                                             WidthRequest="110" 
                                             HeightRequest="50"
@@ -148,7 +203,8 @@
                                             HorizontalOptions="Center" 
                                             ImageSource="delete.png"
                                             CommandParameter="{Binding .}"
-                                            Clicked="DeleteCheque"/>
+                                            Clicked="DeleteCheque"
+                                            IsVisible="{Binding isOpened}"/>
                                         </StackLayout>
                                     </Frame>
                                 </DataTemplate>
@@ -171,7 +227,7 @@
                     TextColor="Black"
                     Padding="2, 2, 0, 10">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="CreateCheque"/>
+                            <TapGestureRecognizer Tapped="ShowChequePopup"/>
                         </Label.GestureRecognizers>
                     </Label>
                     <Label 
@@ -183,7 +239,7 @@
                     TextColor="White"
                     Padding="0, 0, 0, 10">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="CreateCheque"/>
+                            <TapGestureRecognizer Tapped="ShowChequePopup"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
@@ -192,6 +248,13 @@
     </ContentPage.Content>
     <ContentPage.Resources>
         <ResourceDictionary>
+            <conv:NumberToGridLengthConverter x:Key="numberToGridLengthConverter"/>
+            <Style TargetType="Entry" x:Key="entryStyle">
+            <Setter Property="PlaceholderColor" Value="#305C55"/>
+            <Setter Property="TextColor" Value="#305C55"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
             <Style TargetType="Label" x:Key="titleStyle">
                 <Setter Property="FontSize" Value="33"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>

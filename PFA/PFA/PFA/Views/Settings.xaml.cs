@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,21 @@ namespace PFA.Views
         public Settings()
         {
             InitializeComponent();
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            User.Text = "Пользователь\n" + budget.userId;
+        }
+        async void ChangeUser(object sender, EventArgs e)
+        {
+            bool result = await DisplayAlert("Смена пользователя", "Вы действительно хотите выйти из текущего аккаунта?", "Выйти", "Отмена");
+            if (result)
+            {
+            }
         }
         async void GoBack(object sender, EventArgs e)
         {

@@ -21,16 +21,24 @@
                 HorizontalTextAlignment="Center"
             />
             <Frame 
-                x:Name="info_user"
                 Margin="0,15,0,30" 
                 WidthRequest="280"
-                HeightRequest="80"
                 BackgroundColor="#F0EEEE"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"
                 CornerRadius="8"
                 BorderColor="#305C55"
-                HasShadow="True"/>
+                HasShadow="True">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeUser"/>
+                </Frame.GestureRecognizers>
+                <Label Text="User" x:Name="User" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"
+                VerticalOptions="Center" TextColor="#305C55">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeUser"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
             <Grid 
                     Margin="0,0,0,30" 
                     x:Name="GoodDatabase" >

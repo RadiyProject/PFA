@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -12,12 +13,29 @@ namespace PFA.Views
         {
             InitializeComponent();
         }
-
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
+        }
         async void OnChequeClicked(object sender, EventArgs e)
         {
             await Cheques.ScaleTo(0.9, 50);
             await Cheques.ScaleTo(1, 50);
             await Navigation.PushAsync(new Cheques());
+        }
+        async void OnBudgetClicked(object sender, EventArgs e)
+        {
+            await Budget.ScaleTo(0.9, 50);
+            await Budget.ScaleTo(1, 50);
+            await Navigation.PushAsync(new Budget());
+        }
+        async void OnInfoBlockClicked(object sender, EventArgs e)
+        {
+            await InfoBlock.ScaleTo(0.9, 50);
+            await InfoBlock.ScaleTo(1, 50);
+            await Navigation.PushAsync(new InfoBlock());
         }
         async void OnQuitClicked(object sender, EventArgs e)
         {

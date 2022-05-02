@@ -22,7 +22,11 @@ namespace PFA.Views
             InitializeComponent();
             this.page = page;
         }
-
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            picker.ItemsSource = await App.Categories.GetAsync();
+        }
         async void ClosePopup(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -35,15 +39,17 @@ namespace PFA.Views
             Grid parent = (Grid)((Label)sender).Parent;
             await parent.ScaleTo(0.9, 50);
             await parent.ScaleTo(1, 50);
-            if (popup_Name.Text != null & popup_Price.Text != null)
-                await App.Goods.Create(new Database.Good(popup_Name.Text, float.Parse(popup_Price.Text)));
-            if (popup_Name.Text != null & popup_Price.Text == null)
-                await App.Goods.Create(new Database.Good(popup_Name.Text, 0));
-            if (popup_Price.Text != null & popup_Name.Text == null)
-                await App.Goods.Create(new Database.Good("Безымянный", float.Parse(popup_Price.Text)));
-            if (popup_Price.Text == null & popup_Name.Text == null)
-                await App.Goods.Create(new Database.Good("Безымянный", 0));
-            page.Refresh();
+            float price = 0;
+            int category = 0;
+            if (popup_Name.Text == null)
+                popup_Name.Text = "Новый товар";
+            if (popup_Price.Text == null || !float.TryParse(popup_Price.Text, out price)
+                || price <= 0)
+                price = 0;
+            if (picker.SelectedItem != null)
+                category = 0;
+            await App.Goods.Create(new Database.Good(popup_Name.Text, price, category));
+            await page.Refresh();
             await PopupNavigation.Instance.PopAllAsync();
         }
     }
