@@ -14,27 +14,43 @@ namespace WCFLibraryForTP
 
         public int AddUser(string login, string password)
         {
-            throw new NotImplementedException();
+            if (CheckLogin(login) == 0) return 0;
+            UserS user = new UserS(login, password);
+            db.Users.Add(user);
+            db.SaveChanges();
+            return 1;
         }
 
         public int AddUser(UserS user)
         {
-            throw new NotImplementedException();
+            if (CheckLogin(user.userId) == 0) return 0;
+            db.Users.Add(user);
+            db.SaveChanges();
+            return 1;
         }
 
         public int CheckLogin(string login)
         {
-            throw new NotImplementedException();
+            if (db.Users.Find(login) == null) return 1;
+            else return 0;
         }
 
         public int SignIn(string login, string password)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            UserS myUser = db.Users.Find(login);
+            if (myUser == null) result = 0;
+            if (password == myUser.userPassword) result = 1;
+            return result;
         }
 
         public int SignIn(UserS user)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            UserS myUser = db.Users.Find(user.userId);
+            if (myUser == null) result = 0;
+            if (user.userPassword == myUser.userPassword) result = 1;
+            return result;
         }
     }
 }

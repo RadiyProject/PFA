@@ -12,9 +12,9 @@ namespace WCFLibraryForTP
     public class UserS
     {
         [DataMember][Key]
-        private string userId { get; set; }
+        public string userId { get; set; }
         [DataMember]
-        private string userPassword { get; set; }
+        public string userPassword { get; set; }
 
         public UserS() { }
 
