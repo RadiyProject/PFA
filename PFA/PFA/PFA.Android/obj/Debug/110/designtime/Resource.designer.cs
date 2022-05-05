@@ -54,10 +54,6 @@ namespace PFA.Droid
 			global::Rg.Plugins.Popup.Resource.Animation.design_bottom_sheet_slide_out = global::PFA.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Rg.Plugins.Popup.Resource.Animation.design_snackbar_in = global::PFA.Droid.Resource.Animation.design_snackbar_in;
 			global::Rg.Plugins.Popup.Resource.Animation.design_snackbar_out = global::PFA.Droid.Resource.Animation.design_snackbar_out;
-			global::Rg.Plugins.Popup.Resource.Animation.EnterFromLeft = global::PFA.Droid.Resource.Animation.EnterFromLeft;
-			global::Rg.Plugins.Popup.Resource.Animation.EnterFromRight = global::PFA.Droid.Resource.Animation.EnterFromRight;
-			global::Rg.Plugins.Popup.Resource.Animation.ExitToLeft = global::PFA.Droid.Resource.Animation.ExitToLeft;
-			global::Rg.Plugins.Popup.Resource.Animation.ExitToRight = global::PFA.Droid.Resource.Animation.ExitToRight;
 			global::Rg.Plugins.Popup.Resource.Animation.fragment_close_enter = global::PFA.Droid.Resource.Animation.fragment_close_enter;
 			global::Rg.Plugins.Popup.Resource.Animation.fragment_close_exit = global::PFA.Droid.Resource.Animation.fragment_close_exit;
 			global::Rg.Plugins.Popup.Resource.Animation.fragment_fade_enter = global::PFA.Droid.Resource.Animation.fragment_fade_enter;
@@ -1812,7 +1808,6 @@ namespace PFA.Droid
 			global::Rg.Plugins.Popup.Resource.Layout.abc_search_view = global::PFA.Droid.Resource.Layout.abc_search_view;
 			global::Rg.Plugins.Popup.Resource.Layout.abc_select_dialog_material = global::PFA.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Rg.Plugins.Popup.Resource.Layout.abc_tooltip = global::PFA.Droid.Resource.Layout.abc_tooltip;
-			global::Rg.Plugins.Popup.Resource.Layout.BottomTabLayout = global::PFA.Droid.Resource.Layout.BottomTabLayout;
 			global::Rg.Plugins.Popup.Resource.Layout.browser_actions_context_menu_page = global::PFA.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::Rg.Plugins.Popup.Resource.Layout.browser_actions_context_menu_row = global::PFA.Droid.Resource.Layout.browser_actions_context_menu_row;
 			global::Rg.Plugins.Popup.Resource.Layout.custom_dialog = global::PFA.Droid.Resource.Layout.custom_dialog;
@@ -1831,9 +1826,6 @@ namespace PFA.Droid
 			global::Rg.Plugins.Popup.Resource.Layout.design_navigation_menu_item = global::PFA.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Rg.Plugins.Popup.Resource.Layout.design_text_input_end_icon = global::PFA.Droid.Resource.Layout.design_text_input_end_icon;
 			global::Rg.Plugins.Popup.Resource.Layout.design_text_input_start_icon = global::PFA.Droid.Resource.Layout.design_text_input_start_icon;
-			global::Rg.Plugins.Popup.Resource.Layout.FallbackTabbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackTabbarDoNotUse;
-			global::Rg.Plugins.Popup.Resource.Layout.FallbackToolbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackToolbarDoNotUse;
-			global::Rg.Plugins.Popup.Resource.Layout.FlyoutContent = global::PFA.Droid.Resource.Layout.FlyoutContent;
 			global::Rg.Plugins.Popup.Resource.Layout.mtrl_alert_dialog = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog;
 			global::Rg.Plugins.Popup.Resource.Layout.mtrl_alert_dialog_actions = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_actions;
 			global::Rg.Plugins.Popup.Resource.Layout.mtrl_alert_dialog_title = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_title;
@@ -1877,13 +1869,10 @@ namespace PFA.Droid
 			global::Rg.Plugins.Popup.Resource.Layout.notification_template_media_custom = global::PFA.Droid.Resource.Layout.notification_template_media_custom;
 			global::Rg.Plugins.Popup.Resource.Layout.notification_template_part_chronometer = global::PFA.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Rg.Plugins.Popup.Resource.Layout.notification_template_part_time = global::PFA.Droid.Resource.Layout.notification_template_part_time;
-			global::Rg.Plugins.Popup.Resource.Layout.RootLayout = global::PFA.Droid.Resource.Layout.RootLayout;
 			global::Rg.Plugins.Popup.Resource.Layout.select_dialog_item_material = global::PFA.Droid.Resource.Layout.select_dialog_item_material;
 			global::Rg.Plugins.Popup.Resource.Layout.select_dialog_multichoice_material = global::PFA.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Rg.Plugins.Popup.Resource.Layout.select_dialog_singlechoice_material = global::PFA.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::Rg.Plugins.Popup.Resource.Layout.ShellContent = global::PFA.Droid.Resource.Layout.ShellContent;
 			global::Rg.Plugins.Popup.Resource.Layout.support_simple_spinner_dropdown_item = global::PFA.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Rg.Plugins.Popup.Resource.Layout.Tabbar = global::PFA.Droid.Resource.Layout.Tabbar;
 			global::Rg.Plugins.Popup.Resource.Layout.test_action_chip = global::PFA.Droid.Resource.Layout.test_action_chip;
 			global::Rg.Plugins.Popup.Resource.Layout.test_chip_zero_corner_radius = global::PFA.Droid.Resource.Layout.test_chip_zero_corner_radius;
 			global::Rg.Plugins.Popup.Resource.Layout.test_design_checkbox = global::PFA.Droid.Resource.Layout.test_design_checkbox;
@@ -1898,7 +1887,6 @@ namespace PFA.Droid
 			global::Rg.Plugins.Popup.Resource.Layout.text_view_with_line_height_from_layout = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_layout;
 			global::Rg.Plugins.Popup.Resource.Layout.text_view_with_line_height_from_style = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_style;
 			global::Rg.Plugins.Popup.Resource.Layout.text_view_with_theme_line_height = global::PFA.Droid.Resource.Layout.text_view_with_theme_line_height;
-			global::Rg.Plugins.Popup.Resource.Layout.Toolbar = global::PFA.Droid.Resource.Layout.Toolbar;
 			global::Rg.Plugins.Popup.Resource.Plurals.mtrl_badge_content_description = global::PFA.Droid.Resource.Plurals.mtrl_badge_content_description;
 			global::Rg.Plugins.Popup.Resource.String.abc_action_bar_home_description = global::PFA.Droid.Resource.String.abc_action_bar_home_description;
 			global::Rg.Plugins.Popup.Resource.String.abc_action_bar_up_description = global::PFA.Droid.Resource.String.abc_action_bar_up_description;
@@ -3685,10 +3673,6 @@ namespace PFA.Droid
 			global::SkiaSharp.Views.Forms.Resource.Animation.design_bottom_sheet_slide_out = global::PFA.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::SkiaSharp.Views.Forms.Resource.Animation.design_snackbar_in = global::PFA.Droid.Resource.Animation.design_snackbar_in;
 			global::SkiaSharp.Views.Forms.Resource.Animation.design_snackbar_out = global::PFA.Droid.Resource.Animation.design_snackbar_out;
-			global::SkiaSharp.Views.Forms.Resource.Animation.EnterFromLeft = global::PFA.Droid.Resource.Animation.EnterFromLeft;
-			global::SkiaSharp.Views.Forms.Resource.Animation.EnterFromRight = global::PFA.Droid.Resource.Animation.EnterFromRight;
-			global::SkiaSharp.Views.Forms.Resource.Animation.ExitToLeft = global::PFA.Droid.Resource.Animation.ExitToLeft;
-			global::SkiaSharp.Views.Forms.Resource.Animation.ExitToRight = global::PFA.Droid.Resource.Animation.ExitToRight;
 			global::SkiaSharp.Views.Forms.Resource.Animator.design_appbar_state_list_animator = global::PFA.Droid.Resource.Animator.design_appbar_state_list_animator;
 			global::SkiaSharp.Views.Forms.Resource.Animator.design_fab_hide_motion_spec = global::PFA.Droid.Resource.Animator.design_fab_hide_motion_spec;
 			global::SkiaSharp.Views.Forms.Resource.Animator.design_fab_show_motion_spec = global::PFA.Droid.Resource.Animator.design_fab_show_motion_spec;
@@ -4883,7 +4867,6 @@ namespace PFA.Droid
 			global::SkiaSharp.Views.Forms.Resource.Layout.abc_search_view = global::PFA.Droid.Resource.Layout.abc_search_view;
 			global::SkiaSharp.Views.Forms.Resource.Layout.abc_select_dialog_material = global::PFA.Droid.Resource.Layout.abc_select_dialog_material;
 			global::SkiaSharp.Views.Forms.Resource.Layout.abc_tooltip = global::PFA.Droid.Resource.Layout.abc_tooltip;
-			global::SkiaSharp.Views.Forms.Resource.Layout.BottomTabLayout = global::PFA.Droid.Resource.Layout.BottomTabLayout;
 			global::SkiaSharp.Views.Forms.Resource.Layout.browser_actions_context_menu_page = global::PFA.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::SkiaSharp.Views.Forms.Resource.Layout.browser_actions_context_menu_row = global::PFA.Droid.Resource.Layout.browser_actions_context_menu_row;
 			global::SkiaSharp.Views.Forms.Resource.Layout.design_bottom_navigation_item = global::PFA.Droid.Resource.Layout.design_bottom_navigation_item;
@@ -4899,7 +4882,6 @@ namespace PFA.Droid
 			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_item_subheader = global::PFA.Droid.Resource.Layout.design_navigation_item_subheader;
 			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_menu = global::PFA.Droid.Resource.Layout.design_navigation_menu;
 			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_menu_item = global::PFA.Droid.Resource.Layout.design_navigation_menu_item;
-			global::SkiaSharp.Views.Forms.Resource.Layout.FlyoutContent = global::PFA.Droid.Resource.Layout.FlyoutContent;
 			global::SkiaSharp.Views.Forms.Resource.Layout.mtrl_layout_snackbar = global::PFA.Droid.Resource.Layout.mtrl_layout_snackbar;
 			global::SkiaSharp.Views.Forms.Resource.Layout.mtrl_layout_snackbar_include = global::PFA.Droid.Resource.Layout.mtrl_layout_snackbar_include;
 			global::SkiaSharp.Views.Forms.Resource.Layout.notification_action = global::PFA.Droid.Resource.Layout.notification_action;
@@ -4917,11 +4899,9 @@ namespace PFA.Droid
 			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_media_custom = global::PFA.Droid.Resource.Layout.notification_template_media_custom;
 			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_part_chronometer = global::PFA.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_part_time = global::PFA.Droid.Resource.Layout.notification_template_part_time;
-			global::SkiaSharp.Views.Forms.Resource.Layout.RootLayout = global::PFA.Droid.Resource.Layout.RootLayout;
 			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_item_material = global::PFA.Droid.Resource.Layout.select_dialog_item_material;
 			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_multichoice_material = global::PFA.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_singlechoice_material = global::PFA.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::SkiaSharp.Views.Forms.Resource.Layout.ShellContent = global::PFA.Droid.Resource.Layout.ShellContent;
 			global::SkiaSharp.Views.Forms.Resource.Layout.support_simple_spinner_dropdown_item = global::PFA.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
 			global::SkiaSharp.Views.Forms.Resource.String.abc_action_bar_home_description = global::PFA.Droid.Resource.String.abc_action_bar_home_description;
 			global::SkiaSharp.Views.Forms.Resource.String.abc_action_bar_up_description = global::PFA.Droid.Resource.String.abc_action_bar_up_description;
@@ -6397,10 +6377,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_bottom_sheet_slide_out = global::PFA.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_snackbar_in = global::PFA.Droid.Resource.Animation.design_snackbar_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_snackbar_out = global::PFA.Droid.Resource.Animation.design_snackbar_out;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.EnterFromLeft = global::PFA.Droid.Resource.Animation.EnterFromLeft;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.EnterFromRight = global::PFA.Droid.Resource.Animation.EnterFromRight;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.ExitToLeft = global::PFA.Droid.Resource.Animation.ExitToLeft;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.ExitToRight = global::PFA.Droid.Resource.Animation.ExitToRight;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.fragment_close_enter = global::PFA.Droid.Resource.Animation.fragment_close_enter;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.fragment_close_exit = global::PFA.Droid.Resource.Animation.fragment_close_exit;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.fragment_fade_enter = global::PFA.Droid.Resource.Animation.fragment_fade_enter;
@@ -8144,7 +8120,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_search_view = global::PFA.Droid.Resource.Layout.abc_search_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_select_dialog_material = global::PFA.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_tooltip = global::PFA.Droid.Resource.Layout.abc_tooltip;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.BottomTabLayout = global::PFA.Droid.Resource.Layout.BottomTabLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.custom_dialog = global::PFA.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_navigation_item = global::PFA.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_sheet_dialog = global::PFA.Droid.Resource.Layout.design_bottom_sheet_dialog;
@@ -8161,9 +8136,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_navigation_menu_item = global::PFA.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_text_input_end_icon = global::PFA.Droid.Resource.Layout.design_text_input_end_icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_text_input_start_icon = global::PFA.Droid.Resource.Layout.design_text_input_start_icon;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.FallbackTabbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackTabbarDoNotUse;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.FallbackToolbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackToolbarDoNotUse;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.FlyoutContent = global::PFA.Droid.Resource.Layout.FlyoutContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_alert_dialog = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_alert_dialog_actions = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_alert_dialog_title = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_title;
@@ -8207,13 +8179,10 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_media_custom = global::PFA.Droid.Resource.Layout.notification_template_media_custom;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_part_chronometer = global::PFA.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.notification_template_part_time = global::PFA.Droid.Resource.Layout.notification_template_part_time;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.RootLayout = global::PFA.Droid.Resource.Layout.RootLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_item_material = global::PFA.Droid.Resource.Layout.select_dialog_item_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_multichoice_material = global::PFA.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_singlechoice_material = global::PFA.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.ShellContent = global::PFA.Droid.Resource.Layout.ShellContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::PFA.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.Tabbar = global::PFA.Droid.Resource.Layout.Tabbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_action_chip = global::PFA.Droid.Resource.Layout.test_action_chip;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_chip_zero_corner_radius = global::PFA.Droid.Resource.Layout.test_chip_zero_corner_radius;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_design_checkbox = global::PFA.Droid.Resource.Layout.test_design_checkbox;
@@ -8228,7 +8197,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.text_view_with_line_height_from_layout = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.text_view_with_line_height_from_style = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_style;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.text_view_with_theme_line_height = global::PFA.Droid.Resource.Layout.text_view_with_theme_line_height;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.Toolbar = global::PFA.Droid.Resource.Layout.Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Plurals.mtrl_badge_content_description = global::PFA.Droid.Resource.Plurals.mtrl_badge_content_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_home_description = global::PFA.Droid.Resource.String.abc_action_bar_home_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_up_description = global::PFA.Droid.Resource.String.abc_action_bar_up_description;
@@ -10022,10 +9990,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Resource.Animation.design_bottom_sheet_slide_out = global::PFA.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.design_snackbar_in = global::PFA.Droid.Resource.Animation.design_snackbar_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.design_snackbar_out = global::PFA.Droid.Resource.Animation.design_snackbar_out;
-			global::Xamarin.Forms.Platform.Resource.Animation.EnterFromLeft = global::PFA.Droid.Resource.Animation.EnterFromLeft;
-			global::Xamarin.Forms.Platform.Resource.Animation.EnterFromRight = global::PFA.Droid.Resource.Animation.EnterFromRight;
-			global::Xamarin.Forms.Platform.Resource.Animation.ExitToLeft = global::PFA.Droid.Resource.Animation.ExitToLeft;
-			global::Xamarin.Forms.Platform.Resource.Animation.ExitToRight = global::PFA.Droid.Resource.Animation.ExitToRight;
 			global::Xamarin.Forms.Platform.Resource.Animation.fragment_close_enter = global::PFA.Droid.Resource.Animation.fragment_close_enter;
 			global::Xamarin.Forms.Platform.Resource.Animation.fragment_close_exit = global::PFA.Droid.Resource.Animation.fragment_close_exit;
 			global::Xamarin.Forms.Platform.Resource.Animation.fragment_fade_enter = global::PFA.Droid.Resource.Animation.fragment_fade_enter;
@@ -11769,7 +11733,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.abc_search_view = global::PFA.Droid.Resource.Layout.abc_search_view;
 			global::Xamarin.Forms.Platform.Resource.Layout.abc_select_dialog_material = global::PFA.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Xamarin.Forms.Platform.Resource.Layout.abc_tooltip = global::PFA.Droid.Resource.Layout.abc_tooltip;
-			global::Xamarin.Forms.Platform.Resource.Layout.BottomTabLayout = global::PFA.Droid.Resource.Layout.BottomTabLayout;
 			global::Xamarin.Forms.Platform.Resource.Layout.custom_dialog = global::PFA.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_bottom_navigation_item = global::PFA.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_bottom_sheet_dialog = global::PFA.Droid.Resource.Layout.design_bottom_sheet_dialog;
@@ -11786,9 +11749,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_menu_item = global::PFA.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_text_input_end_icon = global::PFA.Droid.Resource.Layout.design_text_input_end_icon;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_text_input_start_icon = global::PFA.Droid.Resource.Layout.design_text_input_start_icon;
-			global::Xamarin.Forms.Platform.Resource.Layout.FallbackTabbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackTabbarDoNotUse;
-			global::Xamarin.Forms.Platform.Resource.Layout.FallbackToolbarDoNotUse = global::PFA.Droid.Resource.Layout.FallbackToolbarDoNotUse;
-			global::Xamarin.Forms.Platform.Resource.Layout.FlyoutContent = global::PFA.Droid.Resource.Layout.FlyoutContent;
 			global::Xamarin.Forms.Platform.Resource.Layout.mtrl_alert_dialog = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog;
 			global::Xamarin.Forms.Platform.Resource.Layout.mtrl_alert_dialog_actions = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_actions;
 			global::Xamarin.Forms.Platform.Resource.Layout.mtrl_alert_dialog_title = global::PFA.Droid.Resource.Layout.mtrl_alert_dialog_title;
@@ -11832,13 +11792,10 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_media_custom = global::PFA.Droid.Resource.Layout.notification_template_media_custom;
 			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_part_chronometer = global::PFA.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_part_time = global::PFA.Droid.Resource.Layout.notification_template_part_time;
-			global::Xamarin.Forms.Platform.Resource.Layout.RootLayout = global::PFA.Droid.Resource.Layout.RootLayout;
 			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_item_material = global::PFA.Droid.Resource.Layout.select_dialog_item_material;
 			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_multichoice_material = global::PFA.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_singlechoice_material = global::PFA.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.ShellContent = global::PFA.Droid.Resource.Layout.ShellContent;
 			global::Xamarin.Forms.Platform.Resource.Layout.support_simple_spinner_dropdown_item = global::PFA.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Xamarin.Forms.Platform.Resource.Layout.Tabbar = global::PFA.Droid.Resource.Layout.Tabbar;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_action_chip = global::PFA.Droid.Resource.Layout.test_action_chip;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_chip_zero_corner_radius = global::PFA.Droid.Resource.Layout.test_chip_zero_corner_radius;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_design_checkbox = global::PFA.Droid.Resource.Layout.test_design_checkbox;
@@ -11853,7 +11810,6 @@ namespace PFA.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.text_view_with_line_height_from_layout = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_layout;
 			global::Xamarin.Forms.Platform.Resource.Layout.text_view_with_line_height_from_style = global::PFA.Droid.Resource.Layout.text_view_with_line_height_from_style;
 			global::Xamarin.Forms.Platform.Resource.Layout.text_view_with_theme_line_height = global::PFA.Droid.Resource.Layout.text_view_with_theme_line_height;
-			global::Xamarin.Forms.Platform.Resource.Layout.Toolbar = global::PFA.Droid.Resource.Layout.Toolbar;
 			global::Xamarin.Forms.Platform.Resource.Plurals.mtrl_badge_content_description = global::PFA.Droid.Resource.Plurals.mtrl_badge_content_description;
 			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_home_description = global::PFA.Droid.Resource.String.abc_action_bar_home_description;
 			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_up_description = global::PFA.Droid.Resource.String.abc_action_bar_up_description;
@@ -13709,16 +13665,16 @@ namespace PFA.Droid
 			public const int design_snackbar_out = 2130771995;
 			
 			// aapt resource value: 0x7F01001C
-			public const int EnterFromLeft = 2130771996;
+			public const int enterfromleft = 2130771996;
 			
 			// aapt resource value: 0x7F01001D
-			public const int EnterFromRight = 2130771997;
+			public const int enterfromright = 2130771997;
 			
 			// aapt resource value: 0x7F01001E
-			public const int ExitToLeft = 2130771998;
+			public const int exittoleft = 2130771998;
 			
 			// aapt resource value: 0x7F01001F
-			public const int ExitToRight = 2130771999;
+			public const int exittoright = 2130771999;
 			
 			// aapt resource value: 0x7F010020
 			public const int fragment_close_enter = 2130772000;
@@ -19188,7 +19144,7 @@ namespace PFA.Droid
 			public const int abc_tooltip = 2131427355;
 			
 			// aapt resource value: 0x7F0B001C
-			public const int BottomTabLayout = 2131427356;
+			public const int bottomtablayout = 2131427356;
 			
 			// aapt resource value: 0x7F0B001D
 			public const int browser_actions_context_menu_page = 2131427357;
@@ -19245,13 +19201,13 @@ namespace PFA.Droid
 			public const int design_text_input_start_icon = 2131427374;
 			
 			// aapt resource value: 0x7F0B002F
-			public const int FallbackTabbarDoNotUse = 2131427375;
+			public const int fallbacktabbardonotuse = 2131427375;
 			
 			// aapt resource value: 0x7F0B0030
-			public const int FallbackToolbarDoNotUse = 2131427376;
+			public const int fallbacktoolbardonotuse = 2131427376;
 			
 			// aapt resource value: 0x7F0B0031
-			public const int FlyoutContent = 2131427377;
+			public const int flyoutcontent = 2131427377;
 			
 			// aapt resource value: 0x7F0B0032
 			public const int mtrl_alert_dialog = 2131427378;
@@ -19383,7 +19339,7 @@ namespace PFA.Droid
 			public const int notification_template_part_time = 2131427420;
 			
 			// aapt resource value: 0x7F0B005D
-			public const int RootLayout = 2131427421;
+			public const int rootlayout = 2131427421;
 			
 			// aapt resource value: 0x7F0B005E
 			public const int select_dialog_item_material = 2131427422;
@@ -19395,13 +19351,13 @@ namespace PFA.Droid
 			public const int select_dialog_singlechoice_material = 2131427424;
 			
 			// aapt resource value: 0x7F0B0061
-			public const int ShellContent = 2131427425;
+			public const int shellcontent = 2131427425;
 			
 			// aapt resource value: 0x7F0B0062
 			public const int support_simple_spinner_dropdown_item = 2131427426;
 			
 			// aapt resource value: 0x7F0B0063
-			public const int Tabbar = 2131427427;
+			public const int tabbar = 2131427427;
 			
 			// aapt resource value: 0x7F0B0064
 			public const int test_action_chip = 2131427428;
@@ -19446,7 +19402,7 @@ namespace PFA.Droid
 			public const int text_view_with_theme_line_height = 2131427440;
 			
 			// aapt resource value: 0x7F0B0072
-			public const int Toolbar = 2131427442;
+			public const int toolbar = 2131427442;
 			
 			static Layout()
 			{

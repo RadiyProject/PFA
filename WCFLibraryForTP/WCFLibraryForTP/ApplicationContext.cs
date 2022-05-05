@@ -14,6 +14,7 @@ namespace WCFLibraryForTP
         public DbSet<CategoryS> Categories { get; set; }
         public DbSet<ChequeS> Cheques { get; set; }
         public DbSet<GoodS> Goods { get; set; }
+        public DbSet<RecomendationS> Recomendations { get; set; }
 
         public ApplicationContext() : base("DefaultConnection") { }
     }
