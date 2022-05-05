@@ -11,26 +11,37 @@ namespace WCFLibraryForTP
     [DataContract]
     public class BudgetS
     {
-        [DataMember][Key]   
-        private int budgetId { get; set; }
         [DataMember]
-        private float limit { get; set; }
+        [Key]
+        public int budgetId { get; set; }
         [DataMember]
-        private int hasLimit { get; set; }
+        public float limit { get; set; }
         [DataMember]
-        private string userId { get; set; }
+        public int hasLimit { get; set; }
         [DataMember]
-        private string targetsString { get; set; }
+        public string userId { get; set; }
+        [DataMember]
+        public string targetsString { get; set; }
 
 
         public BudgetS() { }
 
-        public BudgetS(float limit,int hasLimit, string userId, string targetsString)
+        public BudgetS(float limit, int hasLimit, string userId, string targetsString)
         {
             this.limit = limit;
             this.hasLimit = hasLimit;
             this.userId = userId;
             this.targetsString = targetsString;
+        }
+
+        public BudgetS(Budget b)
+        {
+            budgetId = b.id;
+            limit = b.limit;
+            if (b.hasLimit == false) hasLimit = 0;
+            else hasLimit = 1;
+            userId = b.userId;
+            targetsString = b.targetsString;
         }
 
 

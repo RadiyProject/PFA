@@ -11,32 +11,33 @@ namespace WCFLibraryForTP
     [DataContract]
     public class ChequeS
     {
-        [DataMember][Key]
-        private int chequeId { get; set; }
         [DataMember]
-        private string chequeName { get; set; }
+        [Key]
+        public int chequeId { get; set; }
         [DataMember]
-        private string dateText { get; set; }
+        public string chequeName { get; set; }
         [DataMember]
-        private float totalPrice { get; set; }
+        public string dateText { get; set; }
         [DataMember]
-        private string totalPriceText { get; set; }
+        public float totalPrice { get; set; }
         [DataMember]
-        private string userId { get; set; }
+        public string totalPriceText { get; set; }
         [DataMember]
-        private string goodString { get; set; }
+        public string userId { get; set; }
         [DataMember]
-        private int isOpened { get; set; }
+        public string goodString { get; set; }
         [DataMember]
-        private int isClosed { get; set; }
+        public int isOpened { get; set; }
         [DataMember]
-        private float colFirst { get; set; }
+        public int isClosed { get; set; }
         [DataMember]
-        private float colSecond { get; set; }
+        public float colFirst { get; set; }
         [DataMember]
-        private float colThird { get; set; }
+        public float colSecond { get; set; }
         [DataMember]
-        private float colFourth { get; set; }
+        public float colThird { get; set; }
+        [DataMember]
+        public float colFourth { get; set; }
 
 
 
@@ -57,5 +58,24 @@ namespace WCFLibraryForTP
             this.colThird = colThird;
             this.colFourth = colFourth;
         }
+
+        public ChequeS(Cheque c)
+        {
+            chequeName = c.name;
+            dateText = c.dateText;
+            totalPrice = c.totalPrice;
+            totalPriceText = c.totalPriceText;
+            userId = c.userId;
+            goodString = c.goodsString;
+            if (c.isOpened == false) isOpened = 0;
+            else isOpened = 1;
+            if (c.isClosed == false) isClosed = 0;
+            else isClosed = 1;
+            colFirst = c.colFirst;
+            colSecond = c.colSecond;
+            colThird = c.colThird;
+            colFourth = c.colFourth;
+        }
+
     }
 }
