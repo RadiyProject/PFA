@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WCFLibraryForTP
 {
-    class User
+    [DataContract]
+    public class UserS
     {
+        [DataMember][Key]
         private string userId { get; set; }
+        [DataMember]
         private string userPassword { get; set; }
 
-        public User() { }
+        public UserS() { }
 
-        public User(string userPassword)
+        public UserS(string userId, string userPassword)
         {
             this.userPassword = userPassword;
         }
