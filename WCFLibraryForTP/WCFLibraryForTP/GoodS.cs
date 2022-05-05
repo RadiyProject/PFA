@@ -12,27 +12,29 @@ namespace WCFLibraryForTP
     public class GoodS
     {
         [DataMember][Key]
-        private int goodId { get; set; }
+        public int goodId { get; set; }
         [DataMember]
-        private string goodName { get; set; }
+        public string goodName { get; set; }
         [DataMember]
-        private float price { get; set; }
+        public string nameWithPrice { get; set; }
         [DataMember]
-        private string priceText { get; set; }
+        public float price { get; set; }
         [DataMember]
-        private int isOpened { get; set; }
+        public string priceText { get; set; }
         [DataMember]
-        private int isClosed { get; set; }
+        public int isOpened { get; set; }
         [DataMember]
-        private float colFirst { get; set; }
+        public int isClosed { get; set; }
         [DataMember]
-        private float colSecond { get; set; }
+        public float colFirst { get; set; }
         [DataMember]
-        private float colThird { get; set; }
+        public float colSecond { get; set; }
         [DataMember]
-        private int categoty { get; set; }
+        public float colThird { get; set; }
         [DataMember]
-        private string userId { get; set; }
+        public int categoty { get; set; }
+        [DataMember]
+        public string userId { get; set; }
 
         public GoodS() { }
 
@@ -48,6 +50,24 @@ namespace WCFLibraryForTP
             this.colThird = colThird;
             this.categoty = categoty;
             this.userId = userId;
+        }
+
+        public GoodS(Good good) 
+        {
+            this.goodId = good.id;
+            this.goodName = good.name;
+            this.nameWithPrice = good.nameWithPrice;
+            this.price = good.price;
+            this.priceText = good.priceText;
+            if (good.isOpened == false) this.isOpened = 0;
+            else this.isOpened = 1;
+            if (good.isClosed == false) this.isClosed = 0;
+            else this.isClosed = 1;
+            this.colFirst = good.colFirst;
+            this.colSecond = good.colSecond;
+            this.colThird = good.colThird;
+            this.categoty = good.category;
+            this.userId = good.userId;
         }
 
     }

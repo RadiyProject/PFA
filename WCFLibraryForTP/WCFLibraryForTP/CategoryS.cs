@@ -12,15 +12,20 @@ namespace WCFLibraryForTP
     public class CategoryS
     {
         [DataMember][Key]
-        private int categoryId { get; set; }
+        public int categoryId { get; set; }
         [DataMember]
-        private string categoryName { get; set; }
+        public string categoryName { get; set; }
 
         public CategoryS() { }
 
         public CategoryS(string categoryName)
         {
             this.categoryName = categoryName;
+        }
+        public CategoryS(Category category)
+        {
+            this.categoryId = category.id;
+            this.categoryName = category.name;
         }
     }
 }
