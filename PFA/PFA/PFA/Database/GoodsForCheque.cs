@@ -15,18 +15,20 @@ namespace PFA.Database
         public int amount { get; set; }
         public string amountText { get; set; }
         public int id { get; set; }
+        public int category { get; set; }
         public GoodsForCheque()
         {
             name = "Новый чек";
             price = 0;
             GetTextPrice();
         }
-        public GoodsForCheque(string name, float price, int amount, int id)
+        public GoodsForCheque(string name, float price, int amount, int id, int category)
         {
             this.name = name;
             this.price = price;
             this.amount = amount;
             this.id = id;
+            this.category = category;
             GetTextPrice();
         }
         public void IncreaseAmount()

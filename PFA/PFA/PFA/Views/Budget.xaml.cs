@@ -1,10 +1,11 @@
 ﻿using PFA.Database;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,10 +18,91 @@ namespace PFA.Views
         {
             InitializeComponent();
         }
-        protected override async void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
+            await AddMoneyToTargets();
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            Limit.Placeholder = budget.limit.ToString() + "р.";
+            await Refresh();
+        }
+        async Task AddMoneyToTargets()
+        {
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            budget.targets = budget.targetsN;
+            if (budget.targets == null)
+                budget.targets = new List<Target>();
+            bool hasLimit = budget.hasLimit;
+            DateTime today = DateTime.Today;
+            foreach (Target tar in budget.targets)
+            {
+                if (hasLimit && tar.lastAccessTime != null)
+                {
+                    List<Cheque> cheques = Task.Run(() => App.Cheques.GetWithDateAsync(tar.lastAccessTime)).Result;
+                    float sum = 0;
+                    foreach (Cheque cheq in cheques)
+                        sum += cheq.totalPrice;
+                    float res = budget.limit - sum;
+                    int days = (int)(today - tar.lastAccessTime).TotalDays;
+                    if (days > 0)
+                    {
+                        if (res > 0)
+                            tar.AddMoney(res / budget.targets.Count);
+                        tar.AddMoney((days - 1) * budget.limit / budget.targets.Count);
+                    }
+                }
+                tar.lastAccessTime = today;
+            }
+            budget.SetTargets();
+            await App.Budget.Update(budget);
+        }
+        async void ActWithTarget(object sender, EventArgs e)
+        {
+            ImageButton button = (ImageButton)sender;
+            await button.ScaleTo(0.8, 50);
+            await button.ScaleTo(1, 50);
+            Target target = (Target)button.CommandParameter;
+            if (target != null)
+            {
+                Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+                budget.targets = budget.targetsN;
+                if (budget.targets == null)
+                    budget.targets = new List<Target>();
+                foreach (Target tar in budget.targets)
+                {
+                    if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
+                        && tar.currentMoney == target.currentMoney)
+                    {
+                        tar.isOpened = tar.isClosed;
+                        tar.isClosed = !tar.isClosed;
+                        if (tar.isOpened)
+                        {
+                            tar.colFirst = 0.93f;
+                            tar.colSecond = 0f;
+                            tar.colThird = 0f;
+                            tar.colFourth = 0.07f;
+                        }
+                        else
+                        {
+                            tar.colFirst = 0.3f;
+                            tar.colSecond = 0.35f;
+                            tar.colThird = 0.28f;
+                            tar.colFourth = 0.07f;
+                        }
+                    }
+                }
+                budget.SetTargets();
+                await App.Budget.Update(budget);
+            }
+            if (button.RotationX == 0)
+                await button.RotateXTo(180, 200);
+            else
+                await button.RotateXTo(0, 200);
+            BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+        }
+        List<Target> GetTargets()
+        {
+            return Task.Run(() => App.Budget.GetAsync()).Result.Last().targetsN;
         }
         void OpenCheque(object sender, EventArgs e)
         {
@@ -28,122 +110,152 @@ namespace PFA.Views
         void CloseCheque(object sender, EventArgs e)
         {
         }
-        async void CreateCheque(object sender, EventArgs e)
+        public async Task Refresh()
         {
-            await Add.ScaleTo(0.9, 50);
-            await Add.ScaleTo(1, 50);
-            string result = await DisplayPromptAsync("Новый чек", "Имя чека", "Добавить", "Отмена");
-            if (result != null)
+            await ResetOpenedTargets();
+            BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+        }
+        private async Task ResetOpenedTargets()
+        {
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            budget.targets = budget.targetsN;
+            if (budget.targets == null)
+                budget.targets = new List<Target>();
+            foreach (Target tar in budget.targets)
             {
-                if (result.Length != 0)
+                tar.isOpened = false;
+                tar.isClosed = true;
+                tar.colFirst = 0.3f;
+                tar.colSecond = 0.35f;
+                tar.colThird = 0.28f;
+                tar.colFourth = 0.07f;
+            }
+            budget.SetTargets();
+            await App.Budget.Update(budget);
+        }
+        void OnLimitFocused(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = (Entry)sender;
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            entry.Text = budget.limit.ToString();
+        }
+        async void OnLimitUnfocused(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = (Entry)sender;
+            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+            if (!entry.IsFocused)
+            {
+                if (budget.limit.ToString() != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
-                    await App.Cheques.Create(new Database.Cheque(result, DateTime.Today));
-                    Cheque cheq = Task.Run(() => App.Cheques.GetAsync()).Result.Last();
-                    cheq.goods.Add(new GoodsForCheque("Печеньки", 120, 5, cheq.id));
-                    cheq.goods.Add(new GoodsForCheque("Вода", 12, 8, cheq.id));
-                    cheq.goods.Add(new GoodsForCheque("Торт с клубникой", 520, 10, cheq.id));
-                    cheq.CalculatePrice();
-                    cheq.SetGoods();
-                    await App.Cheques.Update(cheq);
-                    BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
+                    float lim = 0;
+                    if (float.TryParse(entry.Text, out lim))
+                    {
+                        budget.limit = lim;
+                        entry.Text = budget.limit.ToString() + "р.";
+                        await App.Budget.Update(budget);
+                    }
                 }
                 else
-                {
-                    await App.Cheques.Create(new Database.Cheque("Новый чек", DateTime.Today));
-                    BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
-                }
+                    entry.Text = budget.limit.ToString() + "р.";
             }
-
         }
-        async void DeleteCheque(object sender, EventArgs e)
+        void OnNameFocused(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = (Entry)sender;
+            Target target = (Target)entry.ReturnCommandParameter;
+            entry.Text = target.name;
+        }
+        async void OnNameUnfocused(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = (Entry)sender;
+            Target target = (Target)entry.ReturnCommandParameter;
+            if (!entry.IsFocused)
+            {
+                if (target.name != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
+                {
+                    Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+                    budget.targets = budget.targetsN;
+                    if (budget.targets == null)
+                        budget.targets = new List<Target>();
+                    foreach (Target tar in budget.targets)
+                    {
+                        if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
+                            && tar.currentMoney == target.currentMoney)
+                            tar.name = entry.Text;
+                    }
+                    budget.SetTargets();
+                    await App.Budget.Update(budget);
+
+                    BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+                }
+                else
+                    entry.Text = target.name;
+            }
+        }
+        async void OnDescriptionUnfocused(object sender, TextChangedEventArgs e)
+        {
+            Editor editor = (Editor)sender;
+            Grid parent = (Grid)(editor.Parent);
+            Button button = new Button();
+            foreach (Object obj in parent.Children)
+                if (TypeDescriptor.GetClassName(obj) == TypeDescriptor.GetClassName(button))
+                    button = (Button)obj;
+            Target target = (Target)button.CommandParameter;
+            if (!editor.IsFocused)
+            {
+                if (target.name != editor.Text && editor.Text != null && editor.Text.Trim() != string.Empty)
+                {
+                    Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+                    budget.targets = budget.targetsN;
+                    if (budget.targets == null)
+                        budget.targets = new List<Target>();
+                    foreach (Target tar in budget.targets)
+                        if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
+                            && tar.currentMoney == target.currentMoney)
+                        {
+                            tar.description = editor.Text;
+                            break;
+                        }
+                    budget.SetTargets();
+                    await App.Budget.Update(budget);
+
+                    BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+                }
+                else
+                    editor.Text = target.description;
+            }
+        }
+        async void CreateTarget(object sender, EventArgs e)
+        {
+            Grid parent = (Grid)((Label)sender).Parent;
+            await parent.ScaleTo(0.9, 50);
+            await parent.ScaleTo(1, 50);
+            await PopupNavigation.Instance.PushAsync(new TargetPopup(this));
+        }
+        async void DeleteTarget(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             await button.ScaleTo(0.9, 50);
             await button.ScaleTo(1, 50);
-            bool result = await DisplayAlert("Удаление чека", "Вы действительно хотите удалить чек?", "Удалить", "Отмена");
+            bool result = await DisplayAlert("Удаление цели", "Вы действительно хотите удалить цель?", "Удалить", "Отмена");
             if (result)
             {
-                Cheque cheque = (Cheque)button.CommandParameter;
-                if (cheque != null)
-                    await App.Cheques.Delete(cheque);
-                BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
-            }
-        }
-        async void AddGood(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            Grid parent = (Grid)(button.Parent);
-            await parent.ScaleTo(0.85, 50);
-            await parent.ScaleTo(1, 50);
-            Picker picker = (Picker)button.CommandParameter;
-            int selectedIndex = picker.SelectedIndex;
-            if (selectedIndex != -1)
-            {
-                GoodsForCheque good = (GoodsForCheque)picker.ItemsSource[selectedIndex];
-                Cheque cheq = Task.Run(() => App.Cheques.GetWithIdAsync(good.id)).Result.Last();
-                cheq.goods = cheq.goodsN;
-                bool canAdd = true;
-                if (cheq.goodsN != null && cheq.goodsN.Count > 0)
-                    foreach (GoodsForCheque temp in cheq.goodsN)
-                        if (temp.name == good.name && temp.price == good.price)
-                            canAdd = false;
-                if (canAdd)
-                {
-                    if (cheq.goods != null)
-                        cheq.goods.Add(good);
-                    else
+                Target target = (Target)button.CommandParameter;
+                Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
+                budget.targets = budget.targetsN;
+                if (budget.targets == null)
+                    budget.targets = new List<Target>();
+                foreach (Target tar in budget.targets)
+                    if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
+                        && tar.currentMoney == target.currentMoney)
                     {
-                        cheq.goods = new List<GoodsForCheque>();
-                        cheq.goods.Add(good);
+                        budget.targets.Remove(tar);
+                        break;
                     }
-                    cheq.CalculatePrice();
-                    cheq.SetGoods();
-                    await App.Cheques.Update(cheq);
-                    BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
-                }
+                budget.SetTargets();
+                await App.Budget.Update(budget);
+                BindableLayout.SetItemsSource(BudgetStack, GetTargets());
             }
-        }
-        async void IncreaseVal(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            Grid parent = (Grid)(button.Parent);
-            await parent.ScaleTo(0.85, 50);
-            await parent.ScaleTo(1, 50);
-            GoodsForCheque good = (GoodsForCheque)button.CommandParameter;
-            if (good != null)
-            {
-                Cheque cheq = Task.Run(() => App.Cheques.GetWithIdAsync(good.id)).Result.Last();
-                List<GoodsForCheque> goods = cheq.goodsN;
-                foreach (GoodsForCheque goodEd in goods)
-                    if (goodEd.name == good.name && goodEd.price == good.price && goodEd.id == good.id)
-                        goodEd.IncreaseAmount();
-                cheq.goods = goods;
-                cheq.CalculatePrice();
-                cheq.SetGoods();
-                await App.Cheques.Update(cheq);
-            }
-            BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
-        }
-        async void DecreaseVal(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            Grid parent = (Grid)(button.Parent);
-            await parent.ScaleTo(0.85, 50);
-            await parent.ScaleTo(1, 50);
-            GoodsForCheque good = (GoodsForCheque)button.CommandParameter;
-            if (good != null)
-            {
-                Cheque cheq = Task.Run(() => App.Cheques.GetWithIdAsync(good.id)).Result.Last();
-                List<GoodsForCheque> goods = cheq.goodsN;
-                foreach (GoodsForCheque goodEd in goods)
-                    if (goodEd.name == good.name && goodEd.price == good.price && goodEd.id == good.id)
-                        goodEd.DecreaseAmount();
-                cheq.goods = goods;
-                cheq.CalculatePrice();
-                cheq.SetGoods();
-                await App.Cheques.Update(cheq);
-            }
-            BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetAsync());
         }
         async void Return(object sender, EventArgs e)
         {

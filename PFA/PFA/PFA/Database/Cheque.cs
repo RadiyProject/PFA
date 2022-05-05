@@ -19,6 +19,7 @@ namespace PFA.Database
         public string dateText { get; set; }
         public float totalPrice { get; set; } = 0;
         public string totalPriceText { get; set; }
+        public string userId { get; set; }
         [Ignore]
         public List<GoodsForCheque> allGoods
         {
@@ -28,7 +29,7 @@ namespace PFA.Database
                 List<Good> good = Task.Run(() => App.Goods.GetAsync()).Result;
                 if (good != null && good.Count > 0)
                     foreach (Good temp in good)
-                        all.Add(new GoodsForCheque(temp.name, temp.price, 1, id));
+                        all.Add(new GoodsForCheque(temp.name, temp.price, 1, id, temp.category));
                 return all;
             }
         }
@@ -44,6 +45,12 @@ namespace PFA.Database
             }
         }
         public string goodsString { get; set; }
+        public bool isOpened { get; set; }
+        public bool isClosed { get; set; }
+        public float colFirst { get; set; }
+        public float colSecond { get; set; }
+        public float colThird { get; set; }
+        public float colFourth { get; set; }
         public void SetGoods()
         {
             goodsString = JsonConvert.SerializeObject(goods);

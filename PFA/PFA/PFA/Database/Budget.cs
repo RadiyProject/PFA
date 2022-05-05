@@ -12,6 +12,7 @@ namespace PFA.Database
         public int id { get; set; }
         public float limit { get; set; }
         public bool hasLimit { get; set; }
+        public string userId { get; set; }
         [Ignore]
         public List<Target> targets { get; set; } = new List<Target>();
         public List<Target> targetsN

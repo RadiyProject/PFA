@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:conv="clr-namespace:PFA.Converters"
              x:Class="PFA.Views.GoodsBase"
              x:Name="GoodsBasePage"
              NavigationPage.HasNavigationBar="false"
@@ -29,11 +29,8 @@
                 <StackLayout Margin="40,0,40,10"
                          x:Name="Frame_informations" Grid.Row="1">
                     <ScrollView>
-                        <CollectionView  x:Name="name_colec">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"/>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
+                        <StackLayout x:Name="GoodsStack" Spacing="20">
+                            <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Frame 
                                     x:Name="info_card"
@@ -45,55 +42,106 @@
                                     HasShadow="True">
                                         <StackLayout x:Name="mini_information_card">
                                             <Grid x:Name="Information_of_card">
-                                                <Label 
-                                                x:Name="GoodName"
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{Binding colFirst, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                    <ColumnDefinition Width="{Binding colSecond, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                    <ColumnDefinition Width="{Binding colThird, Converter={StaticResource numberToGridLengthConverter}}"/>
+                                                </Grid.ColumnDefinitions>
+                                                <!--<Label 
                                                 Text="{Binding name}" 
                                                 FontSize="25" 
                                                 TextColor="#305C55"
                                                 FontAttributes="Bold"
                                                 HorizontalOptions="Center"
-                                                />
-                                                <Label Text="X" 
-                                                    FontSize="25" 
-                                                    TextColor="#305C55"
-                                                    HorizontalOptions="End"
-                                                    VerticalOptions="Start"
-                                                    BackgroundColor="Transparent">
-                                                </Label>
-                                            </Grid>
-                                            <Grid>
+                                                VerticalOptions="Center"
+                                                Grid.Column="0"
+                                                IsVisible="{Binding isOpened}"
+                                                />-->
+                                                <Entry Placeholder="{Binding name}" Style="{StaticResource entryStyle}"
+                                                Grid.Column="0" HorizontalTextAlignment="Center"
+                                                VerticalOptions="Center"
+                                                FontAttributes="Bold"
+                                                IsVisible="{Binding isOpened}"
+                                                Focused="OnNameFocused"
+                                                Unfocused="OnNameUnfocused"
+                                                ReturnCommandParameter="{Binding .}"/>
                                                 <Label 
-                                                Text="Стоимость:" 
-                                                TextColor="#305C55" 
-                                                FontSize="20"/>
+                                                Text="{Binding name}" 
+                                                FontSize="20" 
+                                                TextColor="#305C55"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
+                                                Grid.Column="0"
+                                                IsVisible="{Binding isClosed}"
+                                                />
                                                 <Label Text="{Binding priceText}" 
                                                 TextColor="#305C55" 
                                                 FontSize="20" 
-                                                HorizontalOptions="End"
-                                                x:Name="GoodPrice"/>
+                                                VerticalOptions="Center"
+                                                Grid.Column="1"
+                                                IsVisible="{Binding isClosed}"/>
+                                                <ImageButton Source="Triangle.png" Clicked="ActWithGood" HorizontalOptions="End"
+                                                BackgroundColor="Transparent" VerticalOptions="Center" Grid.Column="2"
+                                                IsVisible="{Binding isClosed}" CommandParameter="{Binding .}"/>
+                                                <ImageButton Source="Triangle.png" Clicked="ActWithGood" HorizontalOptions="End"
+                                                BackgroundColor="Transparent" VerticalOptions="Center" Grid.Column="2"
+                                                RotationX="180"
+                                                IsVisible="{Binding isOpened}" CommandParameter="{Binding .}"/>
                                             </Grid>
                                             <Grid>
-                                                <Button WidthRequest="110" 
-                                                    HeightRequest="50"
-                                                    Margin="20,10,0,0" 
-                                                    CornerRadius="24" 
-                                                    HorizontalOptions="Start"
-                                                    ImageSource="edit.png"/>
-                                                <Button 
-                                                    WidthRequest="110" 
-                                                    HeightRequest="50"
-                                                    Margin="0,10,20,0" 
-                                                    CornerRadius="24" 
-                                                    HorizontalOptions="End" 
-                                                    ImageSource="delete.png"
-                                                    CommandParameter="{Binding .}"
-                                                    Clicked="delete_button"/>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="110"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label 
+                                                Text="Стоимость:" 
+                                                TextColor="#305C55" 
+                                                VerticalOptions="Center"
+                                                FontSize="20"
+                                                IsVisible="{Binding isOpened}"
+                                                Grid.Column="0"/>
+                                                <!--<Label Text="{Binding priceText}" 
+                                                TextColor="#305C55" 
+                                                FontSize="20" 
+                                                HorizontalOptions="End"
+                                                x:Name="GoodPrice"
+                                                IsVisible="{Binding isOpened}"/>-->
+                                                <Entry Placeholder="{Binding priceText}" Style="{StaticResource entryStyle}"
+                                                FontSize="20" 
+                                                HorizontalTextAlignment="End"
+                                                VerticalOptions="Center"
+                                                IsVisible="{Binding isOpened}"
+                                                Focused="OnPriceFocused"
+                                                Unfocused="OnPriceUnfocused"
+                                                ReturnCommandParameter="{Binding .}"
+                                                Grid.Column="1"/>
                                             </Grid>
+                                            <Grid IsVisible="{Binding isOpened}" RowSpacing="-20" Margin="0, 10, 0, 0">
+                                                <Button IsVisible="false" CommandParameter="{Binding .}" Grid.Row="0"/>
+                                                <Label Text="{Binding selected}" Grid.Row="0"
+                                                FontSize="20" TextColor="#305C55" HorizontalTextAlignment="Start"/>
+                                                <Picker ItemsSource="{Binding allCategories}" ItemDisplayBinding="{Binding name}" 
+                                                Title="Выберите категорию" 
+                                                TitleColor="#305C55" FontSize="20" TextColor="#305C55" x:Name="picker"
+                                                SelectedIndexChanged="CategoryChanged"
+                                                HorizontalTextAlignment="Start"
+                                                Grid.Row="1"/>
+                                            </Grid>
+                                            <Button 
+                                            WidthRequest="110" 
+                                            HeightRequest="50"
+                                            Margin="0,10,20,0" 
+                                            CornerRadius="24" 
+                                            HorizontalOptions="Center" 
+                                            ImageSource="delete.png"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="delete_button"
+                                            IsVisible="{Binding isOpened}"/>
                                         </StackLayout>
                                     </Frame>
                                 </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                     </ScrollView>
                 </StackLayout>
                 <Grid Margin="0,0,0,30" x:Name="AddProduct" Grid.Row="2">
@@ -130,4 +178,15 @@
             </Grid>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:NumberToGridLengthConverter x:Key="numberToGridLengthConverter"/>
+            <Style TargetType="Entry" x:Key="entryStyle">
+                <Setter Property="PlaceholderColor" Value="#305C55"/>
+                <Setter Property="TextColor" Value="#305C55"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

@@ -21,6 +21,10 @@ namespace PFA.Database
         {
             return database.InsertAsync(good);
         }
+        public Task<int> Update(Good good)
+        {
+            return database.UpdateAsync(good);
+        }
         public Task<int> Delete(Good good)
         {
             return database.DeleteAsync(good);

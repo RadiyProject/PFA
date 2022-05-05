@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Personal Financial Analyst/0.0.2": {
         "dependencies": {
+          "Microcharts.Forms": "0.9.5.9",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.1",
           "Rg.Plugins.Popup": "2.1.0",
@@ -21,6 +22,37 @@
         },
         "runtime": {
           "Personal Financial Analyst.dll": {}
+        }
+      },
+      "Microcharts/0.9.5.9": {
+        "dependencies": {
+          "SkiaSharp": "2.80.2",
+          "System.ValueTuple": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microcharts.dll": {
+            "assemblyVersion": "0.9.5.1",
+            "fileVersion": "0.9.5.1"
+          }
+        }
+      },
+      "Microcharts.Forms/0.9.5.9": {
+        "dependencies": {
+          "Microcharts": "0.9.5.9",
+          "SkiaSharp": "2.80.2",
+          "SkiaSharp.Views.Forms": "2.80.2",
+          "System.ValueTuple": "4.5.0",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microcharts.Forms.dll": {
+            "assemblyVersion": "0.9.5.1",
+            "fileVersion": "0.9.5.1"
+          },
+          "lib/netstandard2.0/Microcharts.dll": {
+            "assemblyVersion": "0.9.5.1",
+            "fileVersion": "0.9.5.1"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -58,6 +90,23 @@
             "assemblyVersion": "1.2.0.0",
             "fileVersion": "1.2.0.0"
           }
+        }
+      },
+      "SkiaSharp/2.80.2": {
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.80.0.0",
+            "fileVersion": "2.80.2.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Forms/2.80.2": {
+        "dependencies": {
+          "SkiaSharp": "2.80.2",
+          "Xamarin.Forms": "5.0.0.2012"
         }
       },
       "sqlite-net-pcl/1.8.116": {
@@ -168,6 +217,7 @@
           }
         }
       },
+      "System.ValueTuple/4.5.0": {},
       "ThomasLevesque.WeakEvent/4.1.0": {
         "runtime": {
           "lib/netstandard2.0/WeakEvent.dll": {
@@ -211,6 +261,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microcharts/0.9.5.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oiaPjsC+l211tRXw17bxT7D1uPHLZG4wZq7w9h9w7LFX76s4ppLN9UGVkUQJ2vBammdFH0JXtbvEUVtbOq85UQ==",
+      "path": "microcharts/0.9.5.9",
+      "hashPath": "microcharts.0.9.5.9.nupkg.sha512"
+    },
+    "Microcharts.Forms/0.9.5.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qWph+JII7fWqx/ObgqT0IQ9ICGTHSUfvXT1l+Yf/LlLK4DAhDdvn0AKKUatz2uvHy1xHmzBFS+nzdreOpBA2Vw==",
+      "path": "microcharts.forms/0.9.5.9",
+      "hashPath": "microcharts.forms.0.9.5.9.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -245,6 +309,20 @@
       "sha512": "sha512-zjHTh6pZXpGb0viQ5wL5XtFrQNA5xeNzkveVAJvH8x7HLFRnUIXaJ6QzbUfeAdAL2nEAJSffcaeE3wQP6a6m0g==",
       "path": "sharpnado.shadows/1.2.0",
       "hashPath": "sharpnado.shadows.1.2.0.nupkg.sha512"
+    },
+    "SkiaSharp/2.80.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg==",
+      "path": "skiasharp/2.80.2",
+      "hashPath": "skiasharp.2.80.2.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Forms/2.80.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8aRDb98O2cHymB94O8FBj85qMC+MYEY6591wBpHcwgfz4HMo4orSMApD5y8VDmHpA5KR0Yh2ija+HTylz/9CgA==",
+      "path": "skiasharp.views.forms/2.80.2",
+      "hashPath": "skiasharp.views.forms.2.80.2.nupkg.sha512"
     },
     "sqlite-net-pcl/1.8.116": {
       "type": "package",
@@ -322,6 +400,13 @@
       "sha512": "sha512-wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
       "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    },
+    "System.ValueTuple/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "path": "system.valuetuple/4.5.0",
+      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     },
     "ThomasLevesque.WeakEvent/4.1.0": {
       "type": "package",

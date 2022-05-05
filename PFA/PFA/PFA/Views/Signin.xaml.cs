@@ -22,7 +22,7 @@ namespace PFA.Views
         {
             await Authorize.ScaleTo(0.9, 50);
             await Authorize.ScaleTo(1, 50);
-            await Navigation.PushAsync(new MainMenu());
+            App.Current.MainPage = new NavigationPage(new MainMenu());
         }
         async void Return(object sender, EventArgs e)
         {

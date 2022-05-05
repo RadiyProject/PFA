@@ -48,3 +48,6 @@ D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Settings.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Budget.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\FiveAdvices.xaml.g.cs
 D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\InfoBlock.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\Statistics.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\TargetPopup.xaml.g.cs
+D:\tusur\TP\PFA\PFA\PFA\PFA\obj\Debug\netstandard2.0\Views\ChequePopup.xaml.g.cs
