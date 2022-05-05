@@ -12,34 +12,17 @@ namespace WCFLibraryForTP
     public interface IService1
     {
         [OperationContract]
-        string GetData(int value);
-
+        int AddUser(string login, string password);
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Добавьте здесь операции служб
+        int CheckLogin(string login);
+        [OperationContract]
+        int SignIn(string login, string password);
+        [OperationContract]
+        int AddUser(UserS user);
+        [OperationContract]
+        int SignIn(UserS user);
     }
 
-    // Используйте контракт данных, как показано в примере ниже, чтобы добавить составные типы к операциям служб.
-    // В проект можно добавлять XSD-файлы. После построения проекта вы можете напрямую использовать в нем определенные типы данных с пространством имен "WCFLibraryForTP.ContractType".
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
     }
 }

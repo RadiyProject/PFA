@@ -10,22 +10,31 @@ namespace WCFLibraryForTP
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Service1" в коде и файле конфигурации.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        ApplicationContext db = new ApplicationContext();
+
+        public int AddUser(string login, string password)
         {
-            return string.Format("You entered: {0}", value);
+            throw new NotImplementedException();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int AddUser(UserS user)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
+        }
+
+        public int CheckLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SignIn(string login, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SignIn(UserS user)
+        {
+            throw new NotImplementedException();
         }
     }
 }
