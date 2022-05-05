@@ -92,14 +92,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="Budget.cs" />
-    <Compile Include="Category.cs" />
-    <Compile Include="Cheque.cs" />
-    <Compile Include="Good.cs" />
+    <Compile Include="BudgetS.cs" />
+    <Compile Include="CategoryS.cs" />
+    <Compile Include="ChequeS.cs" />
+    <Compile Include="GoodS.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="UserS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
