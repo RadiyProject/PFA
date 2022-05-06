@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -12,16 +13,33 @@ namespace WCFLibraryForTP
     {
         ApplicationContext db = new ApplicationContext();
 
-        public int AddUser(string login, string password)
+        public string AddUser(string login, string password)
         {
-            if (CheckLogin(login) == 0) return 0;
-            UserS user = new UserS(login, password);
+            if (CheckLogin(login) == 0) return "0";
+            User user = new User(login, password);
             db.Users.Add(user);
-            db.SaveChanges();
-            return 1;
+            try
+            {
+
+                db.SaveChanges();
+
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    string response = "Object: " + validationError.Entry.Entity.ToString();
+                        foreach (DbValidationError err in validationError.ValidationErrors)
+                        {
+                        response = response + err.ErrorMessage + "";
+                        }
+                    return response;
+                }
+            }
+            return "1";
         }
 
-        public int AddUser(UserS user)
+        public int AddUserObject(User user)
         {
             if (CheckLogin(user.userId) == 0) return 0;
             db.Users.Add(user);
@@ -37,20 +55,18 @@ namespace WCFLibraryForTP
 
         public int SignIn(string login, string password)
         {
-            int result = 0;
-            UserS myUser = db.Users.Find(login);
-            if (myUser == null) result = 0;
-            if (password == myUser.userPassword) result = 1;
-            return result;
+            User myUser = db.Users.Find(login);
+            if (myUser == null) return 0;
+            if (password == myUser.userPassword) return 1;
+            else return 0;
         }
 
-        public int SignIn(UserS user)
+        public int SignInObject(User user)
         {
-            int result = 0;
-            UserS myUser = db.Users.Find(user.userId);
-            if (myUser == null) result = 0;
-            if (user.userPassword == myUser.userPassword) result = 1;
-            return result;
+            User myUser = db.Users.Find(user.userId);
+            if (myUser == null) return 0;
+            if (user.userPassword == myUser.userPassword) return 1;
+            else return 0;
         }
     }
 }

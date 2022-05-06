@@ -9,7 +9,7 @@ namespace WCFLibraryForTP
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet <UserS> Users { get; set; }
+        public DbSet <User> Users { get; set; }
         public DbSet<BudgetS> Budgets { get; set; }
         public DbSet<CategoryS> Categories { get; set; }
         public DbSet<ChequeS> Cheques { get; set; }

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serviceHostWorkBook", "serviceHostWorkBook\serviceHostWorkBook.csproj", "{D3C2A6C3-3D37-439E-9BC3-77897BE0C4A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3C2A6C3-3D37-439E-9BC3-77897BE0C4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C2A6C3-3D37-439E-9BC3-77897BE0C4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C2A6C3-3D37-439E-9BC3-77897BE0C4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C2A6C3-3D37-439E-9BC3-77897BE0C4A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33F2744C-46EF-43CE-B462-E522B4378E0E}
+	EndGlobalSection
+EndGlobal

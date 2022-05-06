@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 namespace WCFLibraryForTP
 {
     [DataContract]
-    public class UserS
+    public class User
     {
         [DataMember][Key]
         public string userId { get; set; }
         [DataMember]
         public string userPassword { get; set; }
 
-        public UserS() { }
+        public User() { }
 
-        public UserS(string userId, string userPassword)
+        public User(string userId, string userPassword)
         {
+            this.userId = userId;
             this.userPassword = userPassword;
         }
     }

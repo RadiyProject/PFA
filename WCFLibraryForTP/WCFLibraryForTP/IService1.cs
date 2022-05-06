@@ -12,17 +12,17 @@ namespace WCFLibraryForTP
     public interface IService1
     {
         [OperationContract]
-        int AddUser(string login, string password);
+        string AddUser(string login, string password);
         [OperationContract]
         int CheckLogin(string login);
         [OperationContract]
         int SignIn(string login, string password);
         [OperationContract]
-        int AddUser(UserS user);
+        int AddUserObject(User user);
         [OperationContract]
-        int SignIn(UserS user);
+        int SignInObject(User user);
     }
 
 
-    }
+    
 }
