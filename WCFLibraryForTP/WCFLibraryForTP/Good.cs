@@ -52,7 +52,7 @@ namespace WCFLibraryForTP
             this.colFirst = goodS.colFirst;
             this.colSecond = goodS.colSecond;
             this.colThird = goodS.colThird;
-            this.category = goodS.categoty;
+            this.category = goodS.category;
             this.userId = goodS.userId;
         }
     }

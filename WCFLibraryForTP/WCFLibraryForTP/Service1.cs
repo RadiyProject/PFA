@@ -36,7 +36,27 @@ namespace WCFLibraryForTP
 
         public Good AddGood(string name, string nameWithPrice, float price, string priceText, bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, int category, string userId)
         {
-            throw new NotImplementedException();
+            if (db.Users.Find(userId) == null)
+            {
+                return null;
+            }
+            GoodS goods = new GoodS();
+            goods.goodName = name;
+            goods.nameWithPrice = nameWithPrice;
+            goods.price = price;
+            goods.priceText = priceText;
+            if (isOpened == true) goods.isOpened = 1;
+            else goods.isOpened = 0;
+            if (isClosed == true) goods.isClosed = 1;
+            else goods.isClosed = 0;
+            goods.colFirst = colFirst;
+            goods.colSecond = colSecond;
+            goods.colThird = colThird;
+            goods.category = category;
+            goods.userId = userId;
+            db.Goods.Add(goods);
+            db.SaveChanges();
+            return new Good(goods);
         }
 
         public string AddUser(string login, string password)
@@ -84,7 +104,7 @@ namespace WCFLibraryForTP
             if (db.Budgets.Find(idBudget) == null) return "not found";
             db.Budgets.Remove(db.Budgets.Find(idBudget));
             db.SaveChanges();
-            return "1";
+            return "OK";
         }
 
         public string DeleteCheque(int idCheque)
@@ -94,7 +114,10 @@ namespace WCFLibraryForTP
 
         public string DeleteGood(int idGood)
         {
-            throw new NotImplementedException();
+            if (db.Goods.Where(g => g.goodId == idGood).FirstOrDefault() == null) return "not found";
+            db.Goods.Remove(db.Goods.Where(g => g.goodId == idGood).FirstOrDefault());
+            db.SaveChanges();
+            return "OK";
         }
 
         public List<Cheque> GetAllCheque(string userId)
@@ -104,7 +127,13 @@ namespace WCFLibraryForTP
 
         public List<Good> GetAllGoods(string userId)
         {
-            throw new NotImplementedException();
+            List<GoodS> goods = db.Goods.Where(g => g.userId == userId).ToList();
+            List<Good> good = new List<Good>();
+            foreach (GoodS gs in goods)
+            {
+                good.Add(new Good(gs));
+            }
+            return good;
         }
 
         public List<Recomendation> GetAllRecomendations()
@@ -131,7 +160,8 @@ namespace WCFLibraryForTP
 
         public Good GetGood(int idGood)
         {
-            throw new NotImplementedException();
+            if (db.Goods.Where(g => g.goodId == idGood).FirstOrDefault() == null) return null;
+            return new Good(db.Goods.Where(g => g.goodId == idGood).FirstOrDefault());
         }
 
         public List<Recomendation> GetRecomendationCath(int idCategory)
@@ -184,7 +214,22 @@ namespace WCFLibraryForTP
 
         public Good UpdateGood(Good good)
         {
-            throw new NotImplementedException();
+            if (db.Goods.Where(g => g.goodId == good.id).FirstOrDefault() == null) return null;
+            GoodS goods = db.Goods.Where(g => g.goodId == good.id).FirstOrDefault();
+            goods.goodName = good.name;
+            goods.nameWithPrice = good.nameWithPrice;
+            goods.price = good.price;
+            goods.priceText = good.priceText;
+            if (good.isOpened == true) goods.isOpened = 1;
+            else goods.isOpened = 0;
+            if (good.isClosed == true) goods.isClosed = 1;
+            else goods.isClosed = 0;
+            goods.colFirst = good.colFirst;
+            goods.colSecond = good.colSecond;
+            goods.colThird = good.colThird;
+            goods.category = good.category;
+            db.SaveChanges();
+            return new Good(goods);
         }
     }
 }

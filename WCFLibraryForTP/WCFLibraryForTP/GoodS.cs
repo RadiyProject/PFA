@@ -32,7 +32,7 @@ namespace WCFLibraryForTP
         [DataMember]
         public float colThird { get; set; }
         [DataMember]
-        public int categoty { get; set; }
+        public int category { get; set; }
         [DataMember]
         public string userId { get; set; }
 
@@ -48,7 +48,7 @@ namespace WCFLibraryForTP
             this.colFirst = colFirst;
             this.colSecond = colSecond;
             this.colThird = colThird;
-            this.categoty = categoty;
+            this.category = category;
             this.userId = userId;
         }
 
@@ -66,7 +66,7 @@ namespace WCFLibraryForTP
             this.colFirst = good.colFirst;
             this.colSecond = good.colSecond;
             this.colThird = good.colThird;
-            this.categoty = good.category;
+            this.category = good.category;
             this.userId = good.userId;
         }
 

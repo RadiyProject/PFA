@@ -51,15 +51,15 @@ namespace WCFLibraryForTP
         [OperationContract]
         Good AddGood(string name, string nameWithPrice, float price, string priceText,
             bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, 
-            int category, string userId); //return created Good object
+            int category, string userId); //complete
         [OperationContract]
-        string DeleteGood(int idGood);//return result: 1 - success, 0 - unsuccess
+        string DeleteGood(int idGood);//complete
         [OperationContract]
-        Good GetGood(int idGood);//return found Good object
+        Good GetGood(int idGood);//complete
         [OperationContract]
-        Good UpdateGood(Good good);//return updated Good object
+        Good UpdateGood(Good good);//complete
         [OperationContract]
-        List<Good> GetAllGoods(string userId);//return good list of user
+        List<Good> GetAllGoods(string userId);//complete
 
         [OperationContract]
         List<Recomendation> GetRecomendationCath(int idCategory);//return list of recomendateions filtered by category
