@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace WCFLibraryForTP
 {
     [DataContract]
-    public class RecomendationS
+    public class Recomendation
     {
         [DataMember] [Key]
         public int recomendationId { get; set; }
@@ -20,8 +20,8 @@ namespace WCFLibraryForTP
         [DataMember]
         public int cathegoryId { get; set; }
 
-        public RecomendationS() { }
-        public RecomendationS(string name, string description, int cathegoryId)
+        public Recomendation() { }
+        public Recomendation(string name, string description, int cathegoryId)
         {
             this.name = name;
             this.cathegoryId = cathegoryId;

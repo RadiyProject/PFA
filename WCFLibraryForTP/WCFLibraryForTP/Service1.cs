@@ -75,5 +75,6 @@ namespace WCFLibraryForTP
             if (user.userPassword == myUser.userPassword) return 1;
             else return 0;
         }
+
     }
 }

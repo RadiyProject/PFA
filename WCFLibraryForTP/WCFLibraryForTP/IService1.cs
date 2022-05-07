@@ -22,34 +22,49 @@ namespace WCFLibraryForTP
         int AddUserObject(User user);//complete
         [OperationContract]
         int SignInObject(User user);//complete
-        [OperationContract]
 
-        string AddBudget(string userId); //return result: 1 - success, 2 - unsuccess
+        [OperationContract]
+        Budget AddBudget(float limit, bool haslimit, string userId, string targetsString); //return created Budget object
         [OperationContract]
         Budget GetBudget(string userId); //return Budget of this User
         [OperationContract]
-        string UpdateBudget(string userId, Budget budget); //return result: 1 - success, 2 - unsuccess
+        Budget UpdateBudget(Budget budget); //return updated Budget object
+        [OperationContract]
+        string DeleteBudget(int idBudget); //return result: 1 - success, 2 - unsuccess
 
         [OperationContract]
         List<Category> GetCategories(); //return list of categories
 
         [OperationContract]
-        int AddCheque(string userId, Cheque cheque); //DO NOT IMPLEMENT, return chequeId
+        Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, 
+            string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, 
+            float colSecond, float colThird, float colFourth); //return created Cheque object
         [OperationContract]
-        string DeleteCheque(string userId, int idCheque);//DO NOT IMPLEMENT
+        string DeleteCheque(int idCheque);//return result: 1 - success, 0 - unsuccess
         [OperationContract]
-        Cheque GetCheque(string userId, int idCheque);//DO NOT IMPLEMENT
+        Cheque GetCheque(int idCheque);// return found Cheque object
         [OperationContract]
-        string UpdateCheque(string userId, int idCheque);//DO NOT IMPLEMENT
+        Cheque UpdateCheque(Cheque cheque);// return updated Cheque object
+        [OperationContract]
+        List<Cheque> GetAllCheque(string userId); //return all cheques of this user
 
         [OperationContract]
-        int AddGood(string userId, Good good); //DO NOT IMPLEMENT, return good id
+        Good AddGood(string name, string nameWithPrice, float price, string priceText,
+            bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, 
+            int category, string userId); //return created Good object
         [OperationContract]
-        string DeleteGood(string userId, int idGood);//DO NOT IMPLEMENT
+        string DeleteGood(int idGood);//return result: 1 - success, 0 - unsuccess
         [OperationContract]
-        Good GetGood(string userId, int idGood);//DO NOT IMPLEMENT
+        Good GetGood(int idGood);//return found Good object
         [OperationContract]
-        string UpdateGood(string userId, int idGood);//DO NOT IMPLEMENT
+        Good UpdateGood(Good good);//return updated Good object
+        [OperationContract]
+        List<Good> GetAllGoods(string userId);//return good list of user
+
+        [OperationContract]
+        List<Recomendation> GetRecomendationCath(int idCategory);//return list of recomendateions filtered by category
+        [OperationContract]
+        List<Recomendation> GetAllRecomendations();//return list of all recomendations
     }
 
 
