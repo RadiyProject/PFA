@@ -39,7 +39,12 @@ namespace WCFLibraryForTP
         public float colThird { get; set; }
         [DataMember]
         public float colFourth { get; set; }
-
+        [DataMember]
+        public List<GoodsForCheque> allGoods { get; set; } = null;
+        [DataMember]
+        public List<GoodsForCheque> goods { get; set; } = null;
+        [DataMember]
+        public List<GoodsForCheque> goodsN { get; set; } = null;
         public Cheque(ChequeS cheques)
         {
             id = cheques.chequeId;

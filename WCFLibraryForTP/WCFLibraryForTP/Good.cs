@@ -35,6 +35,8 @@ namespace WCFLibraryForTP
         public int category { get; set; }
         [DataMember]
         public string userId { get; set; }
+        [DataMember]
+        public List<Category> allCategories { get; set; } = null;
         public Good() { }
         public Good(GoodS goodS)
         {

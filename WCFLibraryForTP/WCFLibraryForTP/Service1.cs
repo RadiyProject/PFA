@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WCFLibraryForTP
 {
@@ -52,6 +53,12 @@ namespace WCFLibraryForTP
             if (db.Users.Find(login) == null) return 1;
             else return 0;
         }
+
+        //public Task<int> CheckLoginAsync(string login)
+        //{
+        //    if (db.Users.Find(login) == null) return Task.FromResult(1);
+        //    else return Task.FromResult(0);
+        //}
 
         public int SignIn(string login, string password)
         {
