@@ -103,7 +103,7 @@
     <Compile Include="GoodsForCheque.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecomendationS.cs" />
+    <Compile Include="Recomendation.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="Target.cs" />
     <Compile Include="User.cs" />

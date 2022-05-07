@@ -24,13 +24,13 @@ namespace WCFLibraryForTP
         int SignInObject(User user);//complete
 
         [OperationContract]
-        Budget AddBudget(float limit, bool haslimit, string userId, string targetsString); //return created Budget object
+        Budget AddBudget(float limit, bool haslimit, string userId, string targetsString); //complete
         [OperationContract]
-        Budget GetBudget(string userId); //return Budget of this User
+        Budget GetBudget(string userId); //complete
         [OperationContract]
-        Budget UpdateBudget(Budget budget); //return updated Budget object
+        Budget UpdateBudget(Budget budget); //complete
         [OperationContract]
-        string DeleteBudget(int idBudget); //return result: 1 - success, 2 - unsuccess
+        string DeleteBudget(int idBudget); //complete
 
         [OperationContract]
         List<Category> GetCategories(); //return list of categories
@@ -65,6 +65,8 @@ namespace WCFLibraryForTP
         List<Recomendation> GetRecomendationCath(int idCategory);//return list of recomendateions filtered by category
         [OperationContract]
         List<Recomendation> GetAllRecomendations();//return list of all recomendations
+        [OperationContract]
+        Recomendation GetRecomendationCathRandom(int idCategory);//return one random recomendation filtered by category
     }
 
 

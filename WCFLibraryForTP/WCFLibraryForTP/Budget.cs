@@ -34,6 +34,7 @@ namespace WCFLibraryForTP
             limit = budgetS.limit;
             if (budgetS.hasLimit == 0) hasLimit = false;
             else hasLimit = true;
+            userId = budgetS.userId;
             targetsString = budgetS.targetsString;
         }
     }

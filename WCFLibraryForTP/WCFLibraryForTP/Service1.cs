@@ -16,7 +16,17 @@ namespace WCFLibraryForTP
 
         public Budget AddBudget(float limit, bool haslimit, string userId, string targetsString)
         {
-            throw new NotImplementedException();
+            if (db.Users.Find(userId) == null)
+            {
+                return null;
+            }
+            int hasL;
+            if (haslimit == true) hasL = 1;
+            else hasL = 0;
+            BudgetS budgetS = new BudgetS(limit, hasL, userId, targetsString);
+            db.Budgets.Add(budgetS);
+            db.SaveChanges();
+            return new Budget(budgetS);
         }
 
         public Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, float colFourth)
@@ -71,7 +81,10 @@ namespace WCFLibraryForTP
 
         public string DeleteBudget(int idBudget)
         {
-            throw new NotImplementedException();
+            if (db.Budgets.Find(idBudget) == null) return "not found";
+            db.Budgets.Remove(db.Budgets.Find(idBudget));
+            db.SaveChanges();
+            return "1";
         }
 
         public string DeleteCheque(int idCheque)
@@ -101,7 +114,9 @@ namespace WCFLibraryForTP
 
         public Budget GetBudget(string userId)
         {
-            throw new NotImplementedException();
+            BudgetS budgetS = db.Budgets.Where(b => b.userId == userId).FirstOrDefault();
+            if (budgetS == null) return null;
+            else return new Budget(budgetS);
         }
 
         public List<Category> GetCategories()
@@ -124,6 +139,11 @@ namespace WCFLibraryForTP
             throw new NotImplementedException();
         }
 
+        public Recomendation GetRecomendationCathRandom(int idCategory)
+        {
+            throw new NotImplementedException();
+        }
+
         public int SignIn(string login, string password)
         {
             User myUser = db.Users.Find(login);
@@ -142,6 +162,18 @@ namespace WCFLibraryForTP
 
         public Budget UpdateBudget(Budget budget)
         {
+            BudgetS budgetSnew = new BudgetS(budget);
+            BudgetS budgetS = db.Budgets.Find(budgetSnew.budgetId);
+            if (budgetS == null) return null;
+            else
+            {
+                budgetS.limit = budgetSnew.limit;
+                budgetS.hasLimit = budgetSnew.hasLimit;
+                budgetS.targetsString = budgetSnew.targetsString;
+
+                db.SaveChanges();
+                return new Budget(budgetS);
+            }
             throw new NotImplementedException();
         }
 
