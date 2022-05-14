@@ -51,7 +51,7 @@ namespace WCFLibraryForTP
         [OperationContract]
         Good AddGood(string name, string nameWithPrice, float price, string priceText,
             bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, 
-            int category, string userId); //complete
+            int category, string userId, string selected); //complete
         [OperationContract]
         string DeleteGood(int idGood);//complete
         [OperationContract]

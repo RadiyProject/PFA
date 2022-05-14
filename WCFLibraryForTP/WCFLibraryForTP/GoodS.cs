@@ -35,10 +35,12 @@ namespace WCFLibraryForTP
         public int category { get; set; }
         [DataMember]
         public string userId { get; set; }
+        [DataMember]
+        public string selected { get; set; }
 
         public GoodS() { }
 
-        public GoodS(string goodName, float price, string priceText, int isOpened, int isClosed, float colFirst, float colSecond, float colThird, int category, string userId)
+        public GoodS(string goodName, float price, string priceText, int isOpened, int isClosed, float colFirst, float colSecond, float colThird, int category, string userId, string selected)
         {
             this.goodName = goodName;
             this.price = price;
@@ -50,6 +52,7 @@ namespace WCFLibraryForTP
             this.colThird = colThird;
             this.category = category;
             this.userId = userId;
+            this.selected = selected;
         }
 
         public GoodS(Good good) 
@@ -68,6 +71,7 @@ namespace WCFLibraryForTP
             this.colThird = good.colThird;
             this.category = good.category;
             this.userId = good.userId;
+            this.selected = good.selected;
         }
 
     }

@@ -37,6 +37,8 @@ namespace WCFLibraryForTP
         public string userId { get; set; }
         [DataMember]
         public List<Category> allCategories { get; set; } = null;
+        [DataMember]
+        public string selected { get; set; }
         public Good() { }
         public Good(GoodS goodS)
         {
@@ -54,6 +56,13 @@ namespace WCFLibraryForTP
             this.colThird = goodS.colThird;
             this.category = goodS.category;
             this.userId = goodS.userId;
+            this.selected = goodS.selected;
+        }
+        public string GetTextPrice()
+        {
+            priceText = price + "р.";
+            nameWithPrice = name + " " + priceText;
+            return priceText;
         }
     }
 }
