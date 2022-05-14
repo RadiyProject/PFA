@@ -34,11 +34,13 @@ namespace WCFLibraryForTP
 
         [OperationContract]
         List<Category> GetCategories(); //return list of categories
+        [OperationContract]
+        int AddCaterories(Category category);
 
         [OperationContract]
         Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, 
             string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, 
-            float colSecond, float colThird, float colFourth); //return created Cheque object
+            float colSecond, float colThird, float colFourth, string allGoodCheque); //return created Cheque object
         [OperationContract]
         string DeleteCheque(int idCheque);//return result: 1 - success, 0 - unsuccess
         [OperationContract]
@@ -67,6 +69,8 @@ namespace WCFLibraryForTP
         List<Recomendation> GetAllRecomendations();//return list of all recomendations
         [OperationContract]
         Recomendation GetRecomendationCathRandom(int idCategory);//return one random recomendation filtered by category
+        [OperationContract]
+        int AddRecomendation(Recomendation recomendation);
     }
 
 

@@ -38,12 +38,14 @@ namespace WCFLibraryForTP
         public float colThird { get; set; }
         [DataMember]
         public float colFourth { get; set; }
+        [DataMember]
+        public string allGoodCheque { get; set; }
 
 
 
         public ChequeS() { }
 
-        public ChequeS(string chequeName, string dateText, float totalPrice, string totalPriceText, string userId, string goodString, int isOpened, int isClosed, float colFirst, float colSecond, float colThird, float colFourth)
+        public ChequeS(string chequeName, string dateText, float totalPrice, string totalPriceText, string userId, string goodString, int isOpened, int isClosed, float colFirst, float colSecond, float colThird, float colFourth, string allGoodCheque)
         {
             this.chequeName = chequeName;
             this.dateText = dateText;
@@ -57,6 +59,7 @@ namespace WCFLibraryForTP
             this.colSecond = colSecond;
             this.colThird = colThird;
             this.colFourth = colFourth;
+            this.allGoodCheque = allGoodCheque;
         }
 
         public ChequeS(Cheque c)
@@ -75,6 +78,7 @@ namespace WCFLibraryForTP
             colSecond = c.colSecond;
             colThird = c.colThird;
             colFourth = c.colFourth;
+            allGoodCheque = c.allGoodsString;
         }
 
     }

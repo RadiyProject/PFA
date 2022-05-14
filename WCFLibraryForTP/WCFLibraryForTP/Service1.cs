@@ -36,25 +36,40 @@ namespace WCFLibraryForTP
             }
         }
 
-        public Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, float colFourth)
+        public int AddCaterories(Category category)
         {
-            if (db.Users.Find(userId) == null)
+            db.Categories.Add(new CategoryS(category));
+            db.SaveChanges();
+            return 1;
+        }
+
+        public Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, float colFourth, string allGoodCheque)
+        {
+            try
+            {
+                if (db.Users.Find(userId) == null)
+                {
+                    return null;
+                }
+                int isOpened_int;
+                if (isOpened == true)
+                    isOpened_int = 1;
+                else
+                    isOpened_int = 0;
+                int isClosed_int;
+                if (isClosed == true)
+                    isClosed_int = 1;
+                else
+                    isClosed_int = 0;
+                ChequeS chequeS = new ChequeS(name, date.ToString(), totalPrice, totalPrice.ToString(), userId, goodsString, isOpened_int, isClosed_int, colFirst, colSecond, colThird, colFourth, allGoodCheque);
+                db.Cheques.Add(chequeS);
+                db.SaveChanges();
+                return new Cheque(chequeS);
+            }
+            catch(Exception ex)
             {
                 return null;
             }
-            int isOpened_int;
-            if (isOpened == true) 
-                isOpened_int = 1;
-            else 
-                isOpened_int = 0;
-            int isClosed_int;
-            if (isClosed == true)
-                isClosed_int = 1;
-            else
-                isClosed_int = 0;
-            ChequeS chequeS = new ChequeS(name, dateText, totalPrice, totalPrice.ToString(), userId, goodsString, isOpened_int, isClosed_int, colFirst, colSecond, colThird, colFourth);
-            db.Cheques.Add(chequeS);
-            return new Cheque(chequeS);
         }
 
         public Good AddGood(string name, string nameWithPrice, float price, string priceText, bool isOpened, bool isClosed, float colFirst, float colSecond, float colThird, int category, string userId, string selected)
@@ -88,7 +103,14 @@ namespace WCFLibraryForTP
             {
                 return null;
             }
-        } 
+        }
+
+        public int AddRecomendation(Recomendation recomendation)
+        {
+            db.Recomendations.Add(recomendation);
+            db.SaveChanges();
+            return 1;
+        }
 
         public string AddUser(string login, string password)
         {
@@ -151,10 +173,17 @@ namespace WCFLibraryForTP
 
         public string DeleteCheque(int idCheque)
         {
-            if (db.Cheques.Find(idCheque) == null) return "not found";
-            db.Cheques.Remove(db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault());
-            db.SaveChanges();
-            return "OK";
+            try
+            {
+                if (db.Cheques.Find(idCheque) == null) return "not found";
+                db.Cheques.Remove(db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault());
+                db.SaveChanges();
+                return "OK";
+            }
+            catch(Exception ex)
+            {
+                return "-1";
+            }
         }
 
         public string DeleteGood(int idGood)
@@ -172,15 +201,22 @@ namespace WCFLibraryForTP
             }
         }
 
-        public List<Cheque> GetAllCheques(string userId)
+        public List<Cheque> GetAllCheque(string userId)
         {
-            List<ChequeS> chequeS = db.Cheques.Where(c => c.userId == userId).ToList();
-            List<Cheque> cheque = new List<Cheque>();
-            foreach (ChequeS cs in chequeS)
-            {
-                cheque.Add(new Cheque(cs));
-            }
-            return cheque;
+            //try
+            //{
+                List<ChequeS> chequeS = db.Cheques.Where(c => c.userId == userId).ToList();
+                List<Cheque> cheque = new List<Cheque>();
+                foreach (ChequeS cs in chequeS)
+                {
+                    cheque.Add(new Cheque(cs));
+                }
+                return cheque;
+            //}
+            //catch(Exception ex)
+            //{
+            //    return null;
+            //}
         }
 
         public List<Good> GetAllGoods(string userId)
@@ -203,7 +239,15 @@ namespace WCFLibraryForTP
 
         public List<Recomendation> GetAllRecomendations()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Recomendation> recomendations = db.Recomendations.ToList();
+                return recomendations;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public Budget GetBudget(string userId)
@@ -222,13 +266,33 @@ namespace WCFLibraryForTP
 
         public List<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Category> category = new List<Category>();
+                List<CategoryS> categoryS = db.Categories.ToList();
+                foreach(CategoryS c in categoryS)
+                {
+                    category.Add(new Category(c));
+                }
+                return category;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public Cheque GetCheque(int idCheque)
         {
-            if (db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault() == null) return null;
-            return new Cheque(db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault());
+            try
+            {
+                if (db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault() == null) return null;
+                return new Cheque(db.Cheques.Where(c => c.chequeId == idCheque).FirstOrDefault());
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public Good GetGood(int idGood)
@@ -246,12 +310,28 @@ namespace WCFLibraryForTP
 
         public List<Recomendation> GetRecomendationCath(int idCategory)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return db.Recomendations.Where(r => r.cathegoryId == idCategory).ToList();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public Recomendation GetRecomendationCathRandom(int idCategory)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Recomendation[] rec = db.Recomendations.Where(r => r.cathegoryId == idCategory).ToArray();
+                Random rnd = new Random();
+                return rec[rnd.Next(0, rec.Length)];
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public int SignIn(string login, string password)
@@ -309,23 +389,31 @@ namespace WCFLibraryForTP
 
         public Cheque UpdateCheque(Cheque cheque)
         {
-            if (db.Cheques.Where(c => c.chequeId == cheque.id).FirstOrDefault() == null) return null;
-            ChequeS chequeS = db.Cheques.Where(c => c.chequeId == cheque.id).FirstOrDefault();
-            chequeS.chequeName = cheque.name;
-            chequeS.dateText = cheque.dateText;
-            chequeS.totalPrice = cheque.totalPrice;
-            chequeS.totalPriceText = cheque.totalPriceText;
-            chequeS. goodString = cheque.goodsString;
-            if (cheque.isOpened == false) chequeS.isOpened = 0;
-            else chequeS.isOpened = 1;
-            if (cheque.isClosed == false) chequeS.isClosed = 0;
-            else chequeS.isClosed = 1;
-            chequeS.colFirst = cheque.colFirst;
-            chequeS.colSecond = cheque.colSecond;
-            chequeS.colThird = cheque.colThird;
-            chequeS.colFourth = cheque.colFourth;
-            db.SaveChanges();
-            return new Cheque(chequeS);
+            try
+            {
+                if (db.Cheques.Where(c => c.chequeId == cheque.id).FirstOrDefault() == null) return null;
+                ChequeS chequeS = db.Cheques.Where(c => c.chequeId == cheque.id).FirstOrDefault();
+                chequeS.chequeName = cheque.name;
+                chequeS.dateText = cheque.dateText;
+                chequeS.totalPrice = cheque.totalPrice;
+                chequeS.totalPriceText = cheque.totalPriceText;
+                chequeS.goodString = cheque.goodsString;
+                if (cheque.isOpened == false) chequeS.isOpened = 0;
+                else chequeS.isOpened = 1;
+                if (cheque.isClosed == false) chequeS.isClosed = 0;
+                else chequeS.isClosed = 1;
+                chequeS.colFirst = cheque.colFirst;
+                chequeS.colSecond = cheque.colSecond;
+                chequeS.colThird = cheque.colThird;
+                chequeS.colFourth = cheque.colFourth;
+                chequeS.allGoodCheque = cheque.allGoodsString;
+                db.SaveChanges();
+                return new Cheque(chequeS);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public Good UpdateGood(Good good)
