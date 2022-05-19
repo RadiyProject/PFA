@@ -21,6 +21,10 @@ namespace WCFLibraryForTP
         public string userId { get; set; }
         [DataMember]
         public string targetsString { get; set; }
+        [DataMember]
+        public List<Target> targets = null;
+        [DataMember]
+        public List<Target> targetsN = null;
 
         public Budget() { }
 
@@ -30,6 +34,7 @@ namespace WCFLibraryForTP
             limit = budgetS.limit;
             if (budgetS.hasLimit == 0) hasLimit = false;
             else hasLimit = true;
+            userId = budgetS.userId;
             targetsString = budgetS.targetsString;
         }
     }

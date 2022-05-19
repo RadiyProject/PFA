@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace WCFLibraryForTP
         [DataMember]
         public string goodsString { get; set; }
         [DataMember]
+        public string allGoodsString { get; set; }
+        [DataMember]
         public bool isOpened { get; set; }
         [DataMember]
         public bool isClosed { get; set; }
@@ -39,12 +42,33 @@ namespace WCFLibraryForTP
         public float colThird { get; set; }
         [DataMember]
         public float colFourth { get; set; }
+        [DataMember]
+        public List<GoodsForCheque> allGoods;// {
+        //    get
+        //    {
+        //        if (allGoodsString != null)
+        //            return JsonConvert.DeserializeObject<List<GoodsForCheque>>(allGoodsString);
+        //        else return null;
+        //    }
+        //}
+            [DataMember]
+        public List<GoodsForCheque> goods { get; set; } = null;
+        [DataMember]
+        public List<GoodsForCheque> goodsN
+        {
+            get
+            {
+                if (goodsString != null)
+                    return JsonConvert.DeserializeObject < List < GoodsForCheque>>(goodsString);
+                else return null;
+            }
+        }
 
         public Cheque(ChequeS cheques)
         {
             id = cheques.chequeId;
             name = cheques.chequeName;
-            date = DateTime.Parse(cheques.dateText);
+            date = DateTime.Now;
             dateText = cheques.dateText;
             totalPrice = cheques.totalPrice;
             totalPriceText = cheques.totalPriceText;
@@ -58,6 +82,8 @@ namespace WCFLibraryForTP
             colSecond = cheques.colSecond;
             colThird = cheques.colThird;
             colFourth = cheques.colFourth;
+            allGoodsString = cheques.allGoodCheque;
         }
+        public Cheque() { }
     }
 }

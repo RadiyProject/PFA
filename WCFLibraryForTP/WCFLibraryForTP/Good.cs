@@ -35,6 +35,10 @@ namespace WCFLibraryForTP
         public int category { get; set; }
         [DataMember]
         public string userId { get; set; }
+        [DataMember]
+        public List<Category> allCategories { get; set; } = null;
+        [DataMember]
+        public string selected { get; set; }
         public Good() { }
         public Good(GoodS goodS)
         {
@@ -50,8 +54,15 @@ namespace WCFLibraryForTP
             this.colFirst = goodS.colFirst;
             this.colSecond = goodS.colSecond;
             this.colThird = goodS.colThird;
-            this.category = goodS.categoty;
+            this.category = goodS.category;
             this.userId = goodS.userId;
+            this.selected = goodS.selected;
+        }
+        public string GetTextPrice()
+        {
+            priceText = price + "р.";
+            nameWithPrice = name + " " + priceText;
+            return priceText;
         }
     }
 }
