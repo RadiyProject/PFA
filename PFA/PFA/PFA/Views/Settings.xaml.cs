@@ -23,13 +23,15 @@ namespace PFA.Views
             if (PopupNavigation.Instance.PopupStack.Count > 0)
                 await PopupNavigation.Instance.PopAllAsync();
             Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            User.Text = "Пользователь\n" + budget.userId;
+            User.Text = "Пользователь\n" + App.Current.Properties["user"];
         }
         async void ChangeUser(object sender, EventArgs e)
         {
             bool result = await DisplayAlert("Смена пользователя", "Вы действительно хотите выйти из текущего аккаунта?", "Выйти", "Отмена");
             if (result)
             {
+                App.Current.Properties["user"] = "";
+                App.Current.MainPage = new NavigationPage(new StartMenu());
             }
         }
         async void GoBack(object sender, EventArgs e)

@@ -33,7 +33,7 @@
                     <TapGestureRecognizer Tapped="ChangeUser"/>
                 </Frame.GestureRecognizers>
                 <Label Text="User" x:Name="User" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"
-                VerticalOptions="Center" TextColor="#305C55">
+                VerticalOptions="Center" TextColor="#305C55" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ChangeUser"/>
                     </Label.GestureRecognizers>

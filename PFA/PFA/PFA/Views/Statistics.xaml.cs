@@ -22,67 +22,83 @@ namespace PFA.Views
         public Statistics()
         {
             InitializeComponent();
-            first = DateTime.Today;
-            last = DateTime.Today;
-            GetChart();
         }
-        void GetChart()
+        async Task GetChart()
         {
-            int categoriesCount = Task.Run(() => App.Categories.GetAsync()).Result.Count;
-            List<Cheque> cheques = Task.Run(async () => await App.Cheques.GetAsync()).Result;
+            ServiceReference1.Category[] categs = null;
+            Task t1 = Task.Run(() => categs = App.server.GetCategories());
+            await Task.WhenAll(t1);
+            int categoriesCount = categs.Length;
+            ServiceReference1.Cheque[] cheques = null;
+            t1 = Task.Run(() => cheques = App.server.GetAllCheque((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
             float sum = 0;
             categories = new float[categoriesCount + 1];
             categoriesNames = new string[categoriesCount + 1];
             categoriesNames[categories.Length - 1] = "Без категории";
-            List<Category> cats = Task.Run(() => App.Categories.GetAsync()).Result;
             int j = 0;
-            foreach (Category cat in cats)
+            foreach (ServiceReference1.Category cat in categs)
             {
                 categoriesNames[j] = cat.name;
                 j++;
             }
-            foreach (Cheque cheque in cheques)
+            foreach (ServiceReference1.Cheque cheque in cheques)
             {
                 sum += cheque.totalPrice;
-                cheque.goods = cheque.goodsN;
                 if (cheque.goods != null)
-                    foreach (GoodsForCheque good in cheque.goods)
+                    foreach (ServiceReference1.GoodsForCheque good in cheque.goods)
                     {
-                        Category category = GetCategory(good.category);
+                        sum += cheque.totalPrice;
+                        ServiceReference1.Category category = Task.Run(async() => await GetCategory(good.category)).Result;
                         if (category != null)
-                            categories[GetIndex(good.category, cats)] += good.amount * good.price;
+                            categories[GetIndex(good.category, categs)] += good.amount * good.price;
                         else
                             categories[categories.Length - 1] += good.amount * good.price;
                     }
             }
             List<Entry> entries = new List<Entry>();
             Random random = new Random();
+            int categoryType = 0;
+            float val = 0;
             for (int i = 0; i < categories.Length; i++)
             {
                 Entry entry = new Entry(categories[i]);
                 entry.Label = categoriesNames[i];
+                entry.TextColor = SKColors.Black;
                 entry.ValueLabel = categories[i].ToString() + "р.";
+                if (categories[i] > val)
+                {
+                    categoryType = i;
+                    val = categories[i];
+                }
                 entry.Color = SKColor.Parse(String.Format("#{0:X6}", random.Next(0x1000000)));
                 entry.ValueLabelColor = entry.Color;
                 entries.Add(entry);
             }
             Chart.HeightRequest = 50 * categories.Length;
-            Chart.Chart = new DonutChart { Entries = entries, BackgroundColor = SKColors.Transparent, LabelTextSize = 45 };
+            Chart.Chart = new DonutChart { Entries = entries, BackgroundColor = SKColors.Transparent, LabelTextSize = 35,  HoleRadius = 2, };
+            ServiceReference1.Recomendation recom = null;
+            t1 = Task.Run(() => recom = App.server.GetRecomendationCathRandom(categoryType));
+            await Task.WhenAll(t1);
+            if (recom != null)
+                Recommendation.Text = recom.description;
         }
-        int GetIndex(int id, List<Category> categories)
+        int GetIndex(int id, ServiceReference1.Category[] categories)
         {
             int i = 0;
-            foreach (Category category in categories) {
+            foreach (ServiceReference1.Category category in categories) {
                 if (category.id == id)
                     return i;
                 i++;
             }
             return -1;
         }
-        Category GetCategory(int id)
+        async Task<ServiceReference1.Category> GetCategory(int id)
         {
-            List<Category> categories = Task.Run(() => App.Categories.GetAsync()).Result;
-            foreach (Category category in categories)
+            ServiceReference1.Category[] categories = App.server.GetCategories();
+            Task t1 = Task.Run(() => categories = App.server.GetCategories());
+            await Task.WhenAll(t1);
+            foreach (ServiceReference1.Category category in categories)
                 if (category.id == id)
                     return category;
             return null;
@@ -90,6 +106,9 @@ namespace PFA.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            first = DateTime.Today.AddDays(- 1);
+            last = DateTime.Today.AddDays(1);
+            await GetChart();
             await Refresh();
         }
         async void OnMinDateSelected(object sender, DateChangedEventArgs args)
@@ -104,7 +123,10 @@ namespace PFA.Views
         }
         public async Task Refresh()
         {
-            BindableLayout.SetItemsSource(ChequesStack, await App.Cheques.GetWithIntervalAsync(first, last));
+            ServiceReference1.Cheque[] cheques = null;
+            Task t1 = Task.Run(() => cheques = App.server.GetChequeInInterval((string)App.Current.Properties["user"], first, last));
+            await Task.WhenAll(t1);
+            BindableLayout.SetItemsSource(ChequesStack, cheques);
         }
 
         async void GoBack(object sender, EventArgs e)

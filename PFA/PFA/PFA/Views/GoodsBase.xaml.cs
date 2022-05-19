@@ -36,14 +36,21 @@ namespace PFA.Views
         }
         private async Task ResetOpenedGoods()
         {
-            foreach (Good good in Task.Run(() => App.Goods.GetAsync()).Result)
+            ServiceReference1.Good[] goods = null;
+            Task t1 = Task.Run(() => goods = App.server.GetAllGoods((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            if (goods != null)
             {
-                good.isOpened = false;
-                good.isClosed = true;
-                good.colFirst = 0.63f;
-                good.colSecond = 0.3f;
-                good.colThird = 0.07f;
-                await App.Goods.Update(good);
+                foreach (ServiceReference1.Good good in goods)
+                {
+                    good.isOpened = false;
+                    good.isClosed = true;
+                    good.colFirst = 0.63f;
+                    good.colSecond = 0.3f;
+                    good.colThird = 0.07f;
+                    t1 = Task.Run(() => App.server.UpdateGood(good));
+                    await Task.WhenAll(t1);
+                }
             }
         }
         async void ActWithGood(object sender, EventArgs e)
@@ -51,7 +58,7 @@ namespace PFA.Views
             ImageButton button = (ImageButton)sender;
             await button.ScaleTo(0.8, 50);
             await button.ScaleTo(1, 50);
-            Good good = (Good)button.CommandParameter;
+            ServiceReference1.Good good = (ServiceReference1.Good)button.CommandParameter;
             if (good != null)
             {
                 good.isOpened = good.isClosed;
@@ -68,37 +75,39 @@ namespace PFA.Views
                     good.colSecond = 0.3f;
                     good.colThird = 0.07f;
                 }
-                await App.Goods.Update(good);
+                Task t1 = Task.Run(() => App.server.UpdateGood(good));
+                await Task.WhenAll(t1);
             }
             if (button.RotationX == 0)
                 await button.RotateXTo(180, 200);
             else
                 await button.RotateXTo(0, 200);
-            BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+            await RefreshData ();
         }
         public async Task Refresh()
         {
             await ResetOpenedGoods();
-            BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+            await RefreshData();
         }
         void OnNameFocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Good good = (Good)entry.ReturnCommandParameter;
+            ServiceReference1.Good good = (ServiceReference1.Good)entry.ReturnCommandParameter;
             entry.Text = good.name;
         }
         async void OnNameUnfocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Good good = (Good)entry.ReturnCommandParameter;
+            ServiceReference1.Good good = (ServiceReference1.Good)entry.ReturnCommandParameter;
             if (!entry.IsFocused)
             {
                 if (good.name != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
                     good.name = entry.Text;
-                    await App.Goods.Update(good);
+                    Task t1 = Task.Run(() => App.server.UpdateGood(good));
+                    await Task.WhenAll(t1);
 
-                    BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+                    await RefreshData ();
                 }
                 else
                     entry.Text = good.name;
@@ -112,34 +121,42 @@ namespace PFA.Views
             foreach (Object obj in parent.Children)
                 if (TypeDescriptor.GetClassName(obj) == TypeDescriptor.GetClassName(button))
                     button = (Button)obj;
-            Good good = (Good)button.CommandParameter;
-            good.category = ((Category)picker.SelectedItem).id;
-            await App.Goods.Update(good);
+            ServiceReference1.Good good = (ServiceReference1.Good)button.CommandParameter;
+            good.category = ((ServiceReference1.Category)picker.SelectedItem).id;
+            string name = "";
+            Task t1 = Task.Run(() => name = App.server.GetCategoryName(good.category));
+            await Task.WhenAll(t1);
+            good.selected = name;
+            t1 = Task.Run(() => App.server.UpdateGood(good));
+            await Task.WhenAll(t1);
 
-            BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+            await RefreshData ();
         }
         void OnPriceFocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Good good = (Good)entry.ReturnCommandParameter;
+            ServiceReference1.Good good = (ServiceReference1.Good)entry.ReturnCommandParameter;
             entry.Text = good.price.ToString();
         }
         async void OnPriceUnfocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Good good = (Good)entry.ReturnCommandParameter;
+            ServiceReference1.Good good = (ServiceReference1.Good)entry.ReturnCommandParameter;
             if (!entry.IsFocused)
             {
                 if (entry.Text != null && entry.Text.Trim() != string.Empty && good.price != float.Parse(entry.Text))
                 {
                     good.price = float.Parse(entry.Text);
-                    good.GetTextPrice();
-                    await App.Goods.Update(good);
+                    good.priceText = good.price + "р.";
+                    good.nameWithPrice = good.name + " " + good.priceText;
+                    entry.Text = good.priceText.ToString();
+                    Task t1 = Task.Run(() => App.server.UpdateGood(good));
+                    await Task.WhenAll(t1);
 
-                    BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+                    await RefreshData();
                 }
                 else
-                    entry.Text = good.price.ToString();
+                    entry.Text = good.priceText.ToString();
             }
         }
         async void delete_button(object sender, EventArgs e)
@@ -150,11 +167,21 @@ namespace PFA.Views
             bool result = await DisplayAlert("Удаление чека", "Вы действительно хотите удалить чек?", "Удалить", "Отмена");
             if (result)
             {
-                Good good = (Good)button.CommandParameter;
+                ServiceReference1.Good good = (ServiceReference1.Good)button.CommandParameter;
                 if (good != null)
-                    await App.Goods.Delete(good);
-                BindableLayout.SetItemsSource(GoodsStack, await App.Goods.GetAsync());
+                {
+                    Task t1 = Task.Run(() => App.server.DeleteGood(good.id));
+                    await Task.WhenAll(t1);
+                }
+                await RefreshData ();
             }
+        }
+        async Task RefreshData()
+        {
+            ServiceReference1.Good[] goods = null;
+            Task t1 = Task.Run(() => goods = App.server.GetAllGoods((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            BindableLayout.SetItemsSource(GoodsStack, goods);
         }
         async void GoBack(object sender, EventArgs e)
         {

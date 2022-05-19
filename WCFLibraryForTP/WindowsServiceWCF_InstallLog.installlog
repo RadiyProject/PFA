@@ -1,0 +1,29 @@
+﻿Выполняется установка сборки 'C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.InstallLog
+   assemblypath = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe
+Устанавливается служба BookService...
+Создается исходный EventLog BookService в журнале Application...
+Выполняется откат для сборки 'C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.InstallLog
+   assemblypath = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe
+Восстанавливается исходное состояние журнала событий для источника BookService.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.InstallLog
+   assemblypath = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe
+Устанавливается служба BookService...
+Служба BookService успешно установлена.
+Создается исходный EventLog BookService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.InstallLog
+   assemblypath = C:\Users\user\Desktop\Solutions\WindowsServiceWCF\WindowsServiceWCF\bin\Debug\WindowsServiceWCF.exe

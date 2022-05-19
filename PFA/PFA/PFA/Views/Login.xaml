@@ -10,10 +10,11 @@
             <ImageButton Source="arrow.png" BackgroundColor="Transparent"
                 Clicked="Return" x:Name="Arrow" FlexLayout.AlignSelf="Start" Padding="30, 30, 0, 0"/>
             <FlexLayout FlexLayout.Grow="1" Direction="Column" JustifyContent="Center">
-                <Grid RowSpacing="15" Margin="0, 0, 0, 80">
+                <Grid RowSpacing="-10" Margin="0, 0, 0, 80">
                     <Grid Grid.Row="0" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Логин" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Entry Placeholder="Username" Style="{StaticResource entryStyle}" Grid.Row="1"/>
+                        <Entry Placeholder="Username" Style="{StaticResource entryStyle}" x:Name="Username" Grid.Row="1"/>
+                        <Label Text="Логин или пароль введены неверно" Style="{StaticResource errorStyle}" x:Name="UserError" IsVisible="false" Margin="0, 25, 0, 0" Grid.Row="2" HorizontalTextAlignment="End"/>
                     </Grid>
                     <Grid Grid.Row="1" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
@@ -27,6 +28,7 @@
                                 </FlexLayout.GestureRecognizers>
                             </FlexLayout>
                         </Grid>
+                        <Label Text="Пароль введён неверно" Style="{StaticResource errorStyle}" IsVisible="false" Margin="0, 25, 0, 0" Grid.Row="2" HorizontalTextAlignment="End"/>
                     </Grid>
                 </Grid>
                 <ImageButton Source="button3.png" BackgroundColor="Transparent" x:Name="Authorize" Clicked="Authorization"/>
@@ -43,6 +45,10 @@
             <Style TargetType="Label" x:Key="textStyle">
                 <Setter Property="TextColor" Value="#305C55"/>
                 <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style TargetType="Label" x:Key="errorStyle">
+                <Setter Property="TextColor" Value="#D05353"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
             <Style TargetType="Button" x:Key="buttonStyle">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
