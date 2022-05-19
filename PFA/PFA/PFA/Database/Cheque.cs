@@ -21,8 +21,8 @@ namespace PFA.Database
         public string totalPriceText { get; set; }
         public string userId { get; set; }
         [Ignore]
-        public List<GoodsForCheque> allGoods
-        {
+        public List<GoodsForCheque> allGoods { get; set; }
+        /*{
             get
             {
                 List<GoodsForCheque> all = new List<GoodsForCheque>();
@@ -32,7 +32,7 @@ namespace PFA.Database
                         all.Add(new GoodsForCheque(temp.name, temp.price, 1, id, temp.category));
                 return all;
             }
-        }
+        }*/
         [Ignore]
         public List<GoodsForCheque> goods { get; set; } = new List<GoodsForCheque>();
         public List<GoodsForCheque> goodsN {
@@ -85,6 +85,11 @@ namespace PFA.Database
         {
             totalPriceText = totalPrice + "р.";
             return totalPriceText;
+        }
+        public void GetGoods(string goods)
+        {
+            if (goods != null)
+                this.goods = (List<GoodsForCheque>)JsonConvert.DeserializeObject(goods);
         }
     }
 }

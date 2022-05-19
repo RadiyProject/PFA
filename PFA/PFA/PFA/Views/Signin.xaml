@@ -9,16 +9,17 @@
             <ImageButton Source="arrow.png" BackgroundColor="Transparent"
                 Clicked="Return" x:Name="Arrow" FlexLayout.AlignSelf="Start" Padding="30, 30, 0, 0"/>
             <FlexLayout FlexLayout.Grow="1" Direction="Column" JustifyContent="Center">
-                <Grid RowSpacing="15" Margin="0, 0, 0, 60">
+                <Grid RowSpacing="-10" Margin="0, 0, 0, 60">
                     <Grid Grid.Row="0" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Логин" Style="{StaticResource textStyle}" Grid.Row="0"/>
-                        <Entry Placeholder="Username" Style="{StaticResource entryStyle}" Grid.Row="1"/>
+                        <Entry Placeholder="Username" Style="{StaticResource entryStyle}" x:Name="Username" Grid.Row="1"/>
+                        <Label Text="Логин уже существует" Style="{StaticResource errorStyle}" x:Name="UserError" IsVisible="false" Margin="0, 25, 0, 0" Grid.Row="2" HorizontalTextAlignment="End"/>
                     </Grid>
                     <Grid Grid.Row="1" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
                         <Grid Grid.Row="1">
-                            <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="Pass" IsPassword="True" Grid.Column="0"/>
-                            <FlexLayout HeightRequest="0" JustifyContent="End">
+                            <Entry Placeholder="*********" Style="{StaticResource entryStyle}" x:Name="Pass" IsPassword="True" Grid.Column="0" Grid.Row="0"/>
+                            <FlexLayout HeightRequest="0" JustifyContent="End" Grid.Row="0">
                                 <Button Style="{StaticResource buttonStyle}"
                                 Clicked="ShowPas" x:Name="Circle"/>
                                 <FlexLayout.GestureRecognizers>
@@ -26,6 +27,7 @@
                                 </FlexLayout.GestureRecognizers>
                             </FlexLayout>
                         </Grid>
+                        <Label Text="Пароли не совпадают" Style="{StaticResource errorStyle}" IsVisible="false" Grid.Row="2" HorizontalTextAlignment="End"/>
                     </Grid>
                     <Grid Grid.Row="2" RowSpacing="-30" Padding="50, 0">
                         <Label Text="Подтвердите пароль" Style="{StaticResource textStyle}" Grid.Row="0"/>
@@ -39,6 +41,7 @@
                                 </FlexLayout.GestureRecognizers>
                             </FlexLayout>
                         </Grid>
+                        <Label Text="Пароли не совпадают" Style="{StaticResource errorStyle}" x:Name="PassError" Grid.Row="2" IsVisible="false" Margin="0, 25, 0, 0" HorizontalTextAlignment="End"/>
                     </Grid>
                 </Grid>
                 <ImageButton Source="button3.png" BackgroundColor="Transparent" x:Name="Authorize" Clicked="Authorization"/>
@@ -55,6 +58,10 @@
             <Style TargetType="Label" x:Key="textStyle">
                 <Setter Property="TextColor" Value="#305C55"/>
                 <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style TargetType="Label" x:Key="errorStyle">
+                <Setter Property="TextColor" Value="#D05353"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
             <Style TargetType="Button" x:Key="buttonStyle">
                 <Setter Property="BackgroundColor" Value="Transparent"/>

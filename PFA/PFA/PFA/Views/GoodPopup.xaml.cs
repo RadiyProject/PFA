@@ -25,14 +25,18 @@ namespace PFA.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            picker.ItemsSource = await App.Categories.GetAsync();
+            ServiceReference1.Category[] categories = null;
+            Task t1 = Task.Run(() => categories = App.server.GetCategories());
+            await Task.WhenAll(t1);
+            picker.ItemsSource = categories;
         }
         async void ClosePopup(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
             await button.ScaleTo(0.5, 50);
             await button.ScaleTo(1, 50);
-            await PopupNavigation.Instance.PopAllAsync();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
         async void new_prod(object sender, EventArgs e)
         {
@@ -47,10 +51,15 @@ namespace PFA.Views
                 || price <= 0)
                 price = 0;
             if (picker.SelectedItem != null)
-                category = 0;
-            await App.Goods.Create(new Database.Good(popup_Name.Text, price, category));
+                category = ((ServiceReference1.Category)picker.SelectedItem).id;
+            Good temp = new Database.Good(popup_Name.Text, price, category);
+            Task t1 = Task.Run(() => App.server.AddGood(temp.name, temp.nameWithPrice, temp.price, temp.priceText, temp.isOpened,
+                temp.isClosed, temp.colFirst, temp.colSecond, temp.colThird, temp.category,
+                (string)App.Current.Properties["user"], temp.selected));
+            await Task.WhenAll(t1);
             await page.Refresh();
-            await PopupNavigation.Instance.PopAllAsync();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
     }
 }

@@ -21,57 +21,36 @@ namespace PFA.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await AddMoneyToTargets();
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            Limit.Placeholder = budget.limit.ToString() + "р.";
-            await Refresh();
-        }
-        async Task AddMoneyToTargets()
-        {
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            budget.targets = budget.targetsN;
-            if (budget.targets == null)
-                budget.targets = new List<Target>();
-            bool hasLimit = budget.hasLimit;
-            DateTime today = DateTime.Today;
-            foreach (Target tar in budget.targets)
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            if (budget == null)
             {
-                if (hasLimit && tar.lastAccessTime != null)
-                {
-                    List<Cheque> cheques = Task.Run(() => App.Cheques.GetWithDateAsync(tar.lastAccessTime)).Result;
-                    float sum = 0;
-                    foreach (Cheque cheq in cheques)
-                        sum += cheq.totalPrice;
-                    float res = budget.limit - sum;
-                    int days = (int)(today - tar.lastAccessTime).TotalDays;
-                    if (days > 0)
-                    {
-                        if (res > 0)
-                            tar.AddMoney(res / budget.targets.Count);
-                        tar.AddMoney((days - 1) * budget.limit / budget.targets.Count);
-                    }
-                }
-                tar.lastAccessTime = today;
+                t1 = Task.Run(() => budget = App.server.AddBudget(0, false, (string)App.Current.Properties["user"], ""));
+                await Task.WhenAll(t1);
+                Limit.Placeholder = budget.limit.ToString() + "р.";
+                await Refresh();
             }
-            budget.SetTargets();
-            await App.Budget.Update(budget);
+            else
+            {
+                Limit.Placeholder = budget.limit.ToString() + "р.";
+                await Refresh();
+            }
         }
         async void ActWithTarget(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
             await button.ScaleTo(0.8, 50);
             await button.ScaleTo(1, 50);
-            Target target = (Target)button.CommandParameter;
+            ServiceReference1.Target target = (ServiceReference1.Target)button.CommandParameter;
             if (target != null)
             {
-                Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-                budget.targets = budget.targetsN;
-                if (budget.targets == null)
-                    budget.targets = new List<Target>();
-                foreach (Target tar in budget.targets)
+                ServiceReference1.Budget budget = null;
+                Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+                await Task.WhenAll(t1);
+                foreach (ServiceReference1.Target tar in budget.targets)
                 {
-                    if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
-                        && tar.currentMoney == target.currentMoney)
+                    if (tar.id == target.id)
                     {
                         tar.isOpened = tar.isClosed;
                         tar.isClosed = !tar.isClosed;
@@ -91,18 +70,14 @@ namespace PFA.Views
                         }
                     }
                 }
-                budget.SetTargets();
-                await App.Budget.Update(budget);
+                t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                await Task.WhenAll(t1);
             }
             if (button.RotationX == 0)
                 await button.RotateXTo(180, 200);
             else
                 await button.RotateXTo(0, 200);
-            BindableLayout.SetItemsSource(BudgetStack, GetTargets());
-        }
-        List<Target> GetTargets()
-        {
-            return Task.Run(() => App.Budget.GetAsync()).Result.Last().targetsN;
+            await RefreshData();
         }
         void OpenCheque(object sender, EventArgs e)
         {
@@ -113,15 +88,21 @@ namespace PFA.Views
         public async Task Refresh()
         {
             await ResetOpenedTargets();
-            BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+            await RefreshData();
+        }
+        async Task RefreshData()
+        {
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            BindableLayout.SetItemsSource(BudgetStack, budget.targets);
         }
         private async Task ResetOpenedTargets()
         {
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            budget.targets = budget.targetsN;
-            if (budget.targets == null)
-                budget.targets = new List<Target>();
-            foreach (Target tar in budget.targets)
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            foreach (ServiceReference1.Target tar in budget.targets)
             {
                 tar.isOpened = false;
                 tar.isClosed = true;
@@ -130,20 +111,25 @@ namespace PFA.Views
                 tar.colThird = 0.28f;
                 tar.colFourth = 0.07f;
             }
-            budget.SetTargets();
-            await App.Budget.Update(budget);
+            t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+            await Task.WhenAll(t1);
         }
-        void OnLimitFocused(object sender, TextChangedEventArgs e)
+        async void OnLimitFocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            entry.Text = budget.limit.ToString();
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            if (budget != null)
+                entry.Text = budget.limit.ToString();
         }
         async void OnLimitUnfocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            if (!entry.IsFocused)
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            if (!entry.IsFocused && budget != null)
             {
                 if (budget.limit.ToString() != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
@@ -152,41 +138,69 @@ namespace PFA.Views
                     {
                         budget.limit = lim;
                         entry.Text = budget.limit.ToString() + "р.";
-                        await App.Budget.Update(budget);
+                        t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                        await Task.WhenAll(t1);
                     }
                 }
                 else
                     entry.Text = budget.limit.ToString() + "р.";
             }
         }
+        async void AddMoney(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            Grid parent = (Grid)(button.Parent);
+            await parent.ScaleTo(0.85, 50);
+            await parent.ScaleTo(1, 50);
+            Entry entry = (Entry)button.CommandParameter;
+            foreach (Object obj in parent.Children)
+                if (TypeDescriptor.GetClassName(obj) == TypeDescriptor.GetClassName(button) && ((Button)obj).IsVisible == false)
+                    button = (Button)obj;
+            ServiceReference1.Target target = (ServiceReference1.Target)button.CommandParameter;
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            float money = 0;
+            if (float.TryParse(entry.Text, out money))
+                foreach (ServiceReference1.Target tar in budget.targets)
+                {
+                    if (tar.id == target.id)
+                    {
+                        tar.currentMoney += money;
+                        tar.totalText = tar.currentMoney + "/" + tar.requiredMoney + "р.";
+                    }
+                }
+            t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+            await Task.WhenAll(t1);
+
+            await RefreshData();
+        }
         void OnNameFocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Target target = (Target)entry.ReturnCommandParameter;
+            ServiceReference1.Target target = (ServiceReference1.Target)entry.ReturnCommandParameter;
             entry.Text = target.name;
         }
         async void OnNameUnfocused(object sender, TextChangedEventArgs e)
         {
             Entry entry = (Entry)sender;
-            Target target = (Target)entry.ReturnCommandParameter;
+            ServiceReference1.Target target = (ServiceReference1.Target)entry.ReturnCommandParameter;
             if (!entry.IsFocused)
             {
                 if (target.name != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
-                    Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-                    budget.targets = budget.targetsN;
-                    if (budget.targets == null)
-                        budget.targets = new List<Target>();
-                    foreach (Target tar in budget.targets)
+                    ServiceReference1.Budget budget = null;
+                    Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+                    await Task.WhenAll(t1);
+                    foreach (ServiceReference1.Target tar in budget.targets)
                     {
-                        if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
-                            && tar.currentMoney == target.currentMoney)
+                        if (tar.id == target.id)
                             tar.name = entry.Text;
                     }
-                    budget.SetTargets();
-                    await App.Budget.Update(budget);
+                    t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                    await Task.WhenAll(t1);
 
-                    BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+                    await RefreshData();
                 }
                 else
                     entry.Text = target.name;
@@ -200,26 +214,24 @@ namespace PFA.Views
             foreach (Object obj in parent.Children)
                 if (TypeDescriptor.GetClassName(obj) == TypeDescriptor.GetClassName(button))
                     button = (Button)obj;
-            Target target = (Target)button.CommandParameter;
+            ServiceReference1.Target target = (ServiceReference1.Target)button.CommandParameter;
             if (!editor.IsFocused)
             {
                 if (target.name != editor.Text && editor.Text != null && editor.Text.Trim() != string.Empty)
                 {
-                    Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-                    budget.targets = budget.targetsN;
-                    if (budget.targets == null)
-                        budget.targets = new List<Target>();
-                    foreach (Target tar in budget.targets)
-                        if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
-                            && tar.currentMoney == target.currentMoney)
+                    ServiceReference1.Budget budget = null;
+                    Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+                    await Task.WhenAll(t1);
+                    foreach (ServiceReference1.Target tar in budget.targets)
+                        if (tar.id == target.id)
                         {
                             tar.description = editor.Text;
                             break;
                         }
-                    budget.SetTargets();
-                    await App.Budget.Update(budget);
+                    t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                    await Task.WhenAll(t1);
 
-                    BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+                    await RefreshData();
                 }
                 else
                     editor.Text = target.description;
@@ -240,21 +252,21 @@ namespace PFA.Views
             bool result = await DisplayAlert("Удаление цели", "Вы действительно хотите удалить цель?", "Удалить", "Отмена");
             if (result)
             {
-                Target target = (Target)button.CommandParameter;
-                Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-                budget.targets = budget.targetsN;
-                if (budget.targets == null)
-                    budget.targets = new List<Target>();
-                foreach (Target tar in budget.targets)
-                    if (tar.name == target.name && tar.deadLine == target.deadLine && tar.requiredMoney == target.requiredMoney
-                        && tar.currentMoney == target.currentMoney)
-                    {
-                        budget.targets.Remove(tar);
-                        break;
+                ServiceReference1.Target target = (ServiceReference1.Target)button.CommandParameter;
+                ServiceReference1.Budget budget = null;
+                Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+                await Task.WhenAll(t1);
+                ServiceReference1.Target[] tars = new ServiceReference1.Target[budget.targets.Length - 1];
+                int i = 0;
+                foreach (ServiceReference1.Target tar in budget.targets)
+                    if (tar.id != target.id) {
+                        tars[i] = tar;
+                        i++;
                     }
-                budget.SetTargets();
-                await App.Budget.Update(budget);
-                BindableLayout.SetItemsSource(BudgetStack, GetTargets());
+                budget.targets = tars;
+                t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                await Task.WhenAll(t1);
+                await RefreshData();
             }
         }
         async void Return(object sender, EventArgs e)

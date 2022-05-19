@@ -26,7 +26,7 @@ namespace PFA.Database
         {
             get
             {
-                return Task.Run(() => App.Categories.GetAsync()).Result;
+                return Task.Run(() => App.Categories.GetAsync()).Result;//Подтягивать с сервера
             }
         }
         [Ignore]

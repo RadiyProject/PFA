@@ -22,7 +22,22 @@ namespace PFA.Views
         {
             await Authorize.ScaleTo(0.9, 50);
             await Authorize.ScaleTo(1, 50);
-            App.Current.MainPage = new NavigationPage(new MainMenu());
+            if (Pass.Text != null && Username.Text != null)
+            {
+                int result = 0;
+                Task t1 = Task.Run(() => result = App.server.SignIn(Username.Text, Pass.Text));
+                await Task.WhenAll(t1);
+                if (result == 1)
+                {
+                    UserError.IsVisible = false;//Сделать асинхронный вызов методов сервера
+                    App.Current.Properties["user"] = Username.Text;
+                    App.Current.MainPage = new NavigationPage(new MainMenu());
+                }
+                else
+                    UserError.IsVisible = true;
+            }
+            else
+                UserError.IsVisible = true;
         }
         async void Return(object sender, EventArgs e)
         {

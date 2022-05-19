@@ -5,158 +5,97 @@
              BackgroundImageSource="background.png"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.18*"/>
+                <RowDefinition Height="0.69*"/>
+                <RowDefinition Height="0.13*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
                 <ImageButton Source="arrow.png" BackgroundColor="Transparent"
-                 x:Name="Arrow" Grid.Column="0" HorizontalOptions="Start" Padding="30, 30, 0, 0"
-                Clicked="GoBack"/>
+                        x:Name="Arrow" HorizontalOptions="Start" Clicked="Return" Padding="30, 30, 0, 0"/>
+                <Label Text="Информационный блок" x:Name="temp" Style="{StaticResource titleStyle}" Grid.Row="1"/>
             </Grid>
-            <Label Text="Информационный блок"
-                FontSize="33" 
-                Padding="0, 10, 0, 0"
-                HorizontalOptions="Center"
-                FontFamily="Montserrat" 
-                LineHeight="0"
-                FontAttributes="Bold"
-                TextColor="#305C55" 
-                HorizontalTextAlignment="Center"
-            />
-            <ScrollView Margin="10,17,10,0">
-                <StackLayout>
-                    <Grid>
-                        <Rectangle Fill="#D3A354"
-                             Stroke="#9E6C1A"
-                             StrokeThickness="2"
-                             WidthRequest="320"
-                             HeightRequest="25"
-                             HorizontalOptions="Center" />
-
-                        <Label Text="Общее" 
-                               FontSize="20"
-                               TextColor="#865318"
-                               VerticalOptions="CenterAndExpand" 
-                               HorizontalOptions="CenterAndExpand">
-                        </Label>
-                    </Grid>
-                    <StackLayout>
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text="5 советов как тратить меньше денег"
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                Clicked="OpenFiveAdvices"       
-                                />
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                    </StackLayout>
-                    <Grid>
-                        <Rectangle Fill="#D3A354"
-                             Stroke="#9E6C1A"
-                             StrokeThickness="2"
-                             WidthRequest="320"
-                             HeightRequest="25"
-                             HorizontalOptions="Center" />
-
-                        <Label Text="Транспорт" 
-                               FontSize="20"
-                               TextColor="#865318"
-                               VerticalOptions="CenterAndExpand" 
-                               HorizontalOptions="CenterAndExpand">
-                        </Label>
-                    </Grid>
-                    <StackLayout>
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                        <Button HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320"
-                                HeightRequest="45"
-                                BackgroundColor="#F0EEEE"
-                                BorderColor="#305C55"
-                                BorderWidth="1"
-                                CornerRadius="8"
-                                Text=". . ."
-                                TextColor="#305C55"
-                                Margin="0,0,0,10"
-                                />
-                    </StackLayout>
+                <StackLayout Padding="40, 0, 40, 10" Grid.Row="1">
+                    <ScrollView>
+                        <StackLayout x:Name="RecommendationsStack" Spacing="20">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Style="{StaticResource frameStyle}">
+                                        <StackLayout>
+                                            <Grid>
+                                                <Grid Grid.Row="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="0.5*"/>
+                                                        <ColumnDefinition Width="0.5*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label 
+                                                    Text="{Binding categoryName}" 
+                                                    FontSize="20" 
+                                                    TextColor="#305C55" 
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Center"
+                                                    LineBreakMode="TailTruncation"
+                                                    Grid.Column="0"/>
+                                                    <Label 
+                                                    Text="{Binding name}" 
+                                                    FontSize="20" 
+                                                    TextColor="#305C55" 
+                                                    VerticalOptions="Center"
+                                                    LineBreakMode="TailTruncation"
+                                                    Grid.Column="1"/>
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnRecom"/>
+                                                    </Grid.GestureRecognizers>
+                                                </Grid>
+                                                <Button Grid.Row="0" IsVisible="false" CommandParameter="{Binding .}"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
                 </StackLayout>
-            </ScrollView>
-        </StackLayout>
+            </Grid>
+    </StackLayout>
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="entryStyle">
+                <Setter Property="PlaceholderColor" Value="#305C55"/>
+                <Setter Property="TextColor" Value="#305C55"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="Label" x:Key="titleStyle">
+                <Setter Property="FontSize" Value="33"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="LineHeight" Value="0"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#305C55"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="frameStyle">
+                <Setter Property="BackgroundColor" Value="#F0EEEE"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderColor" Value="#305C55"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+            <Style TargetType="Label" x:Key="textStyle">
+                <Setter Property="TextColor" Value="#865318"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="Padding" Value="0, 0, 0, 10"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Grid" x:Key="gridStyle">
+                <Setter Property="Margin" Value="0, 0, 0, 20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

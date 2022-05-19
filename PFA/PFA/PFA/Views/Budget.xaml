@@ -26,7 +26,8 @@
                         <Entry x:Name="Limit" Style="{StaticResource entryStyle}"
                                Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Center"
                                Focused="OnLimitFocused"
-                               Unfocused="OnLimitUnfocused"/>
+                               Unfocused="OnLimitUnfocused"
+                               Keyboard="Numeric"/>
                     </Grid>
                     <Label Text="Цели" Style="{StaticResource titleStyle}" Grid.Row="3"/>
                 </Grid>
@@ -101,6 +102,23 @@
                                                 IsVisible="{Binding isOpened}"
                                                 Unfocused="OnDescriptionUnfocused"
                                                 />
+                                            </Grid>
+                                            <Grid IsVisible="{Binding isOpened}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Entry x:Name="entry" Style="{StaticResource entryStyle}"
+                                                    Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Center"
+                                                    Keyboard="Numeric"/>
+                                                <Grid>
+                                                    <Label Text="+" 
+                                                        FontSize="40" 
+                                                        HorizontalOptions="Start"
+                                                        VerticalOptions="Center"
+                                                        TextColor="#305C55" Grid.Column="0"/>
+                                                    <Button BackgroundColor="Transparent" Grid.Column="0" Clicked="AddMoney" CommandParameter="{x:Reference entry}"/>
+                                                    <Button BackgroundColor="Transparent" IsVisible ="false" CommandParameter="{Binding .}"/>
+                                                </Grid>
                                             </Grid>
                                             <Line Stroke="#305C55" 
                                             X1="550" 

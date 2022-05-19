@@ -26,7 +26,8 @@ namespace PFA.Views
             ImageButton button = (ImageButton)sender;
             await button.ScaleTo(0.5, 50);
             await button.ScaleTo(1, 50);
-            await PopupNavigation.Instance.PopAllAsync();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
         async void newTarget(object sender, EventArgs e)
         {
@@ -49,15 +50,53 @@ namespace PFA.Views
             target.description = "...";
             target.lastAccessTime = DateTime.Today;
             target.SetTotal();
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
-            budget.targets = budget.targetsN;
-            if (budget.targets == null)
-                budget.targets = new List<Target>();
-            budget.targets.Add(target);
-            budget.SetTargets();
-            await App.Budget.Update(budget);
-            await page.Refresh();
-            await PopupNavigation.Instance.PopAllAsync();
+            ServiceReference1.Budget budget = null;
+            Task t1 = Task.Run(() => budget = App.server.GetBudget((string)App.Current.Properties["user"]));
+            await Task.WhenAll(t1);
+            if (budget != null)
+            {
+                ServiceReference1.Target[] targets = new ServiceReference1.Target[budget.targets.Length];
+                if (targets == null || targets.Length == 0)
+                {
+                    targets = new ServiceReference1.Target[1];
+                    targets[0] = new ServiceReference1.Target();
+                    targets[0].budgetId = budget.id;
+                    targets[0].name = popup_Name.Text;
+                    targets[0].requiredMoney = money;
+                    targets[0].currentMoney = 0;
+                    targets[0].totalText = targets[0].currentMoney + "/" + targets[0].requiredMoney + "р.";
+                    targets[0].deadLine = today.AddDays(daysCount);
+                    targets[0].deadLineText = targets[0].deadLine.ToString("d");
+                    targets[0].description = "...";
+                    targets[0].lastAccessTime = DateTime.Today;
+                }
+                else
+                {
+                    targets = new ServiceReference1.Target[budget.targets.Length + 1];
+                    int i = 0;
+                    foreach (ServiceReference1.Target tar in budget.targets) {
+                        targets[i] = tar;
+                        i++;
+                    }
+                    targets[i] = new ServiceReference1.Target();
+                    targets[i].budgetId = budget.id;
+                    targets[i].name = popup_Name.Text;
+                    targets[i].requiredMoney = money;
+                    targets[i].currentMoney = 0;
+                    targets[i].totalText = targets[i].currentMoney + "/" + targets[i].requiredMoney + "р.";
+                    targets[i].deadLine = today.AddDays(daysCount);
+                    targets[i].deadLineText = targets[i].deadLine.ToString("d");
+                    targets[i].description = "...";
+                    targets[i].lastAccessTime = DateTime.Today;
+
+                }
+                budget.targets = targets;
+                t1 = Task.Run(() => budget = App.server.UpdateBudget(budget));
+                await Task.WhenAll(t1);
+                await page.Refresh();
+            }
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
     }
 }

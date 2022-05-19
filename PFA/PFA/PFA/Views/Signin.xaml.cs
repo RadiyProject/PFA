@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ServiceReference1;
 
 namespace PFA.Views
 {
@@ -22,7 +23,36 @@ namespace PFA.Views
         {
             await Authorize.ScaleTo(0.9, 50);
             await Authorize.ScaleTo(1, 50);
-            App.Current.MainPage = new NavigationPage(new MainMenu());
+            if (Pass.Text != null && PassConfirm.Text != null && Username.Text != null)
+            {
+                if (Pass.Text != PassConfirm.Text)
+                {
+                    PassError.IsVisible = true;
+                }
+                else
+                {
+                    PassError.IsVisible = false;
+                    int result = 0;
+                    Task t1 = Task.Run(() => result = App.server.CheckLogin(Username.Text));
+                    await Task.WhenAll(t1);
+                    if (result != 1)
+                    {
+                        UserError.IsVisible = true;
+                    }
+                    else
+                    {
+                        UserError.IsVisible = false;
+                        string res = "";
+                        t1 = Task.Run(() => res = App.server.AddUser(Username.Text, Pass.Text));
+                        await Task.WhenAll(t1);
+                        if (res == "1")
+                        {
+                            App.Current.Properties["user"] = Username.Text;
+                            App.Current.MainPage = new NavigationPage(new MainMenu());
+                        }
+                    }
+                }
+            }
         }
         async void Return(object sender, EventArgs e)
         {

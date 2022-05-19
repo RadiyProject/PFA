@@ -24,7 +24,8 @@ namespace PFA.Views
             ImageButton button = (ImageButton)sender;
             await button.ScaleTo(0.5, 50);
             await button.ScaleTo(1, 50);
-            await PopupNavigation.Instance.PopAllAsync();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
         async void NewCheque(object sender, EventArgs e)
         {
@@ -33,9 +34,16 @@ namespace PFA.Views
             await parent.ScaleTo(1, 50);
             if (popup_Name.Text == null)
                 popup_Name.Text = "Новый чек";
-            await App.Cheques.Create(new Database.Cheque(popup_Name.Text, DateTime.Today));
+            Database.Cheque cheq = new Database.Cheque(popup_Name.Text, DateTime.Today);
+            cheq.totalPriceText = cheq.totalPrice + "р.";
+            cheq.dateText = DateTime.Today.ToString("d");
+            Task t1 = Task.Run(() => App.server.AddCheque(cheq.name, cheq.date, cheq.dateText, cheq.totalPrice,
+                (string)App.Current.Properties["user"], cheq.goodsString, cheq.isOpened, cheq.isClosed, cheq.colFirst, 
+                cheq.colSecond, cheq.colThird, cheq.colFourth, "", null));
+            await Task.WhenAll(t1);
             await page.Refresh();
-            await PopupNavigation.Instance.PopAllAsync();
+            if (PopupNavigation.Instance.PopupStack.Count > 0)
+                await PopupNavigation.Instance.PopAllAsync();
         }
     }
 }
