@@ -19,6 +19,8 @@ namespace WCFLibraryForTP
         public string description { get; set; }
         [DataMember]
         public int cathegoryId { get; set; }
+        [DataMember]
+        public string categoryName { get; set; }
 
         public Recomendation() { }
         public Recomendation(string name, string description, int cathegoryId)

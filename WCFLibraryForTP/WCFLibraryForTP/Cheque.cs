@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WCFLibraryForTP
 {
+    [KnownType(typeof(GoodsForCheque))]
     [DataContract]
     public class Cheque
     {
@@ -52,24 +53,18 @@ namespace WCFLibraryForTP
         //    }
         //}
             [DataMember]
-        public List<GoodsForCheque> goods { get; set; } = null;
+        public List<GoodsForCheque> goods { get; set; }
         [DataMember]
-        public List<GoodsForCheque> goodsN
-        {
-            get
-            {
-                if (goodsString != null)
-                    return JsonConvert.DeserializeObject < List < GoodsForCheque>>(goodsString);
-                else return null;
-            }
-        }
+        public List<GoodsForCheque> goodsN { get; set; }
 
         public Cheque(ChequeS cheques)
         {
             id = cheques.chequeId;
             name = cheques.chequeName;
-            date = DateTime.Now;
             dateText = cheques.dateText;
+            DateTime dateTime;
+            DateTime.TryParse(dateText, out dateTime);
+            date = dateTime;
             totalPrice = cheques.totalPrice;
             totalPriceText = cheques.totalPriceText;
             userId = cheques.userId;

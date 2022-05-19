@@ -98,7 +98,6 @@
     <Compile Include="Budget.cs" />
     <Compile Include="BudgetS.cs" />
     <Compile Include="Category.cs" />
-    <Compile Include="CategoryS.cs" />
     <Compile Include="Cheque.cs" />
     <Compile Include="ChequeS.cs" />
     <Compile Include="Good.cs" />
@@ -109,6 +108,7 @@
     <Compile Include="Recomendation.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="Target.cs" />
+    <Compile Include="TargetS.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

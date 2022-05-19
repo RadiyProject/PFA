@@ -16,10 +16,9 @@ namespace WCFLibraryForTP
         [DataMember]
         public string name { get; set; }
         public Category() { }
-        public Category(CategoryS categoryS) 
+        public Category(string name) 
         {
-            this.id = categoryS.categoryId;
-            this.name = categoryS.categoryName;
+            this.name = name;
         }
     }
     

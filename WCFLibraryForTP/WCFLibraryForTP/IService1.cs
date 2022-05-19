@@ -35,12 +35,14 @@ namespace WCFLibraryForTP
         [OperationContract]
         List<Category> GetCategories(); //return list of categories
         [OperationContract]
-        int AddCaterories(Category category);
+        int AddCaterories(string name);
+        [OperationContract]
+        string GetCategoryName(int id);
 
         [OperationContract]
         Cheque AddCheque(string name, DateTime date, string dateText, float totalPrice, 
             string userId, string goodsString, bool isOpened, bool isClosed, float colFirst, 
-            float colSecond, float colThird, float colFourth, string allGoodCheque); //return created Cheque object
+            float colSecond, float colThird, float colFourth, string allGoodCheque, List<GoodsForCheque> goods); //return created Cheque object
         [OperationContract]
         string DeleteCheque(int idCheque);//return result: 1 - success, 0 - unsuccess
         [OperationContract]
@@ -49,6 +51,8 @@ namespace WCFLibraryForTP
         Cheque UpdateCheque(Cheque cheque);// return updated Cheque object
         [OperationContract]
         List<Cheque> GetAllCheque(string userId); //return all cheques of this user
+        [OperationContract]
+        List<Cheque> GetChequeInInterval(string userId, DateTime A, DateTime B);
 
         [OperationContract]
         Good AddGood(string name, string nameWithPrice, float price, string priceText,

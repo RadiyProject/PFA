@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace WCFLibraryForTP
 {
     [DataContract]
-    public class Target
+    public class TargetS
     {
         [DataMember]
         public string name { get; set; }
@@ -19,15 +20,13 @@ namespace WCFLibraryForTP
         [DataMember]
         public string totalText { get; set; }
         [DataMember]
-        public DateTime deadLine { get; set; }
-        [DataMember]
         public string deadLineText { get; set; }
         [DataMember]
         public string description { get; set; }
         [DataMember]
-        public bool isOpened { get; set; }
+        public int isOpened { get; set; }
         [DataMember]
-        public bool isClosed { get; set; }
+        public int isClosed { get; set; }
         [DataMember]
         public float colFirst { get; set; }
         [DataMember]
@@ -37,37 +36,33 @@ namespace WCFLibraryForTP
         [DataMember]
         public float colFourth { get; set; }
         [DataMember]
-        public DateTime lastAccessTime { get; set; }
+        public string lastAccessTime { get; set; }
         [DataMember]
         public int budgetId { get; set; }
-        [DataMember]
+        [DataMember] [Key]
         public int id { get; set; }
 
-        public Target() { }
+        public TargetS() { }
 
-        public Target(TargetS target)
+        public TargetS(Target target)
         {
             name = target.name;
             requiredMoney = target.requiredMoney;
             currentMoney = target.currentMoney;
             totalText = target.totalText;
-            DateTime dateTime;
-            DateTime.TryParse(target.deadLineText, out dateTime);
-            deadLine = dateTime;
             deadLineText = target.deadLineText;
             description = target.description;
-            if (target.isOpened == 1) isOpened = true;
-            else isOpened = false;
-            if (target.isClosed == 1) isClosed = true;
-            else isClosed = false;
+            if (target.isOpened == true) isOpened = 1;
+            else isOpened = 0;
+            if (target.isClosed == true) isClosed = 1;
+            else isClosed = 0;
             colFirst = target.colFirst;
             colSecond = target.colSecond;
             colThird = target.colThird;
             colFourth = target.colFourth;
-            DateTime.TryParse(target.lastAccessTime, out dateTime);
-            lastAccessTime = dateTime;
+            lastAccessTime = target.lastAccessTime.ToString("d");
             budgetId = target.budgetId;
-            id = target.id;
         }
+
     }
 }
