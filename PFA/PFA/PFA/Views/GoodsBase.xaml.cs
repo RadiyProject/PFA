@@ -104,6 +104,7 @@ namespace PFA.Views
                 if (good.name != entry.Text && entry.Text != null && entry.Text.Trim() != string.Empty)
                 {
                     good.name = entry.Text;
+                    good.nameWithPrice = good.name + " " + good.priceText;
                     Task t1 = Task.Run(() => App.server.UpdateGood(good));
                     await Task.WhenAll(t1);
 

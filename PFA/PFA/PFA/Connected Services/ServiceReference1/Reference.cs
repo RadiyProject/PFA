@@ -1679,7 +1679,7 @@ namespace ServiceReference1
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService1))
             {
-                return new System.ServiceModel.EndpointAddress("http://192.168.100.6:8733/Design_Time_Addresses/WCFLibraryForTP/Service1/");
+                return new System.ServiceModel.EndpointAddress("http://192.168.43.108:8733/Design_Time_Addresses/WCFLibraryForTP/Service1/");
             }
             throw new System.InvalidOperationException(string.Format("Не удалось найти конечную точку с именем \"{0}\".", endpointConfiguration));
         }

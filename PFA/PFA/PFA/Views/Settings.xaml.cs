@@ -22,7 +22,6 @@ namespace PFA.Views
             base.OnAppearing();
             if (PopupNavigation.Instance.PopupStack.Count > 0)
                 await PopupNavigation.Instance.PopAllAsync();
-            Database.Budget budget = Task.Run(() => App.Budget.GetAsync()).Result.Last();
             User.Text = "Пользователь\n" + App.Current.Properties["user"];
         }
         async void ChangeUser(object sender, EventArgs e)

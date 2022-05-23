@@ -75,6 +75,22 @@ namespace PFA.Views
                 entry.ValueLabelColor = entry.Color;
                 entries.Add(entry);
             }
+            if (categoryType != categories.Length - 1)
+            {
+                j = 0;
+                foreach (ServiceReference1.Category cat in categs)
+                {
+                    if (categoriesNames[categoryType] == cat.name)
+                    {
+                        categoriesNames[j] = cat.name;
+                        categoryType = cat.id;
+                        break;
+                    }
+                    j++;
+                }
+            }
+            else
+                categoryType = 0;
             Chart.HeightRequest = 50 * categories.Length;
             Chart.Chart = new DonutChart { Entries = entries, BackgroundColor = SKColors.Transparent, LabelTextSize = 35,  HoleRadius = 2, };
             ServiceReference1.Recomendation recom = null;
